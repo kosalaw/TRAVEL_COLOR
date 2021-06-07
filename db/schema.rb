@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_114928) do
+ActiveRecord::Schema.define(version: 2021_06_07_135612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "alerts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "country_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_alerts_on_country_id"
+    t.index ["user_id"], name: "index_alerts_on_user_id"
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.string "iso"
+    t.string "status"
+    t.text "quarantine"
+    t.text "test"
+    t.text "content"
+    t.string "government_url"
+    t.string "color"
+    t.text "upcoming_changes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "stars"
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "country_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_reviews_on_country_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +57,14 @@ ActiveRecord::Schema.define(version: 2021_06_07_114928) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "alerts", "countries"
+  add_foreign_key "alerts", "users"
+  add_foreign_key "reviews", "countries"
+  add_foreign_key "reviews", "users"
 end
