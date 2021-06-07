@@ -1,1 +1,11 @@
-compare.html.erb
+<%= simple_form_for compare_countries_path, method: :get do |f| %>
+  <%= f.input :country_1, collection: @countries, value_method: :id, label_method: :name %>
+  <%= f.input :country_2, collection: @countries, value_method: :id, label_method: :name %>
+  <%= f.input :country_3, collection: @countries, value_method: :id, label_method: :name %>
+  <%= f.submit "Search", class: "btn btn-primary" %>
+<% end %>
+
+
+<%= @country_1&.name %>
+<%= @country_2&.name %>
+<%= @country_3&.name %>
