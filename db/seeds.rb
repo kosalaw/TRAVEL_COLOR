@@ -12,7 +12,7 @@ quarantine: 'Yes',
 test: 'Yes',
 content: 'La France" redirects here. For other uses of "La France", see Lafrance. For other uses of "France", see France (disambiguation).',
 government_url: 'https://www.gouvernement.fr/en/news',
-color: 'Amber',
+color: 'orange',
 upcoming_changes: 'N/A')
 
 country_2 = Country.create!(name: 'Italy',
@@ -22,7 +22,7 @@ quarantine: 'Yes',
 test: 'Yes',
 content: 'Italy applies health-related restriction measures to incoming travellers, which may vary depending on their country of origin.',
 government_url: 'http://www.italia.it/en/useful-info/covid-19-updates-information-for-tourists.html',
-color: 'Red',
+color: 'red',
 upcoming_changes: 'N/A')
 
 country_3 = Country.create!(name: 'Germany',
@@ -33,7 +33,7 @@ test: 'No',
 content: 'This article is about the country. For other uses, see Germany (disambiguation) and Deutschland (disambiguation).
 "Federal Republic of Germany" redirects here. For the country from 1949 to 1990',
 government_url: 'https://www.bundesregierung.de/breg-en',
-color: 'Green',
+color: 'green',
 upcoming_changes: 'N/A')
 
 puts 'done creating countries'
