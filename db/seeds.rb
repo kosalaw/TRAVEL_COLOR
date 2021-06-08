@@ -1,3 +1,8 @@
+# type the following into "rails console" to test seed:
+#   list = Country.where("test >= :query", query: "%#{24}%")
+#   list.count
+# should return => 26
+
 require 'nokogiri'
 require 'open-uri'
 
@@ -149,6 +154,7 @@ html_file = URI.open(url).read
 noko_doc = Nokogiri::HTML(html_file)
 # p noko_doc
 
+color_list = []
 noko_doc.search("table").each do |element|
   color = element.search("thead > tr > th:nth-child(1)").text.strip.split(" ")[0]
 
@@ -156,17 +162,46 @@ noko_doc.search("table").each do |element|
     name = row.search("th").text.strip
     upcoming_changes = row.search("td").text.strip
     # puts "#{color}: #{name} - #{upcoming_changes}"
-
+    name = name.split(" (")[0]
     if !name.nil? && ARRAY.include?(name)
-      country = Country.find_by_name(name)
-
+      sql_query = "name @@ :name"
+      country = Country.where(sql_query, name: "%#{name}%")[0]
+      color_list << country[:name]
       country[:color] = color
       country[:upcoming_changes] = upcoming_changes
-      puts country
+      country.save!
     end
   end
 end
+
+# Ireland - green
+ireland = Country.find_by_name("Ireland")
+ireland[:color] = "Green"
+ireland.save!
+
+# Azores and Madeira - same as Portugal
+portugal = Country.find_by_name("Portugal")
+
+azores = Country.find_by_name("Azores")
+azores[:color] = portugal[:color]
+azores[:upcoming_changes] = portugal[:upcoming_changes]
+azores.save!
+
+madeira = Country.find_by_name("Madeira")
+madeira[:color] = portugal[:color]
+madeira[:upcoming_changes] = portugal[:upcoming_changes]
+madeira.save!
+
+# ARRAY.each do |country|
+#   if !color_list.include?(country)
+#     puts "ERROR! UKgov info not available for: #{country}"
+#   end
+# end
+
+
 ################################################################################
+
+
 
 
 
