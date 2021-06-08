@@ -1,5 +1,4 @@
 class AlertsController < ApplicationController
-
   # display in account page
   def index
     @alerts = Alert.all
@@ -26,10 +25,9 @@ class AlertsController < ApplicationController
     redirect_to alerts_path
   end
 
-  private
+  # private
 
   # def alert_params
   #   params.require(:alert).permit()
   # end
-
 end
