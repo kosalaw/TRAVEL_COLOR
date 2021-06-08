@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :reviews
   has_many :alerts
+  has_one_attached :photo
 end
