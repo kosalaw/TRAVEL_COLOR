@@ -1,1 +1,11 @@
-<% current_user.name %>
+
+
+<div class="container">
+  <h1>My details</h1>
+  <p><b>First Name: </b><%= current_user.first_name %> <b>Last Name: </b><%= current_user.last_name %></p>
+  <p><b>Email: </b><%= current_user.email %></p>
+
+  <%= link_to "edit my details", edit_user_registration_path  %>
+</div>
+
+
