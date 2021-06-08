@@ -55,6 +55,10 @@ Spain
 Ukraine
 )
 
+
+################################################################################
+# WANDERLUST scraper
+################################################################################
 def create_country(raw_text)
   # store content
   content = raw_text
@@ -66,7 +70,7 @@ def create_country(raw_text)
   end
 
   if !name.nil? && ARRAY.include?(name)
-    puts "Creating country...#{name}"
+
     # find STATUS
     match_data = content.match(/^(?<name>.*):(.*(?<status>(\s?not allowed|\s?not permitted|\s?only|\s?Only|\s?closed|\s?ban|\s?banned|\s?cannot|\s?prohibited).*\.))?/)
     if !match_data.nil?
@@ -88,31 +92,28 @@ def create_country(raw_text)
       # puts quarantine
     end
 
-    country = {
+    Country.create!({
       name: name,
       content: content,
       status: status,
       test: test,
       quarantine: quarantine
-    }
+    })
     # puts "--------------------------------------------------------------"
     # puts country
     # puts "--------------------------------------------------------------"
-
+    # return country
   end
 end
 
 
-
+puts "Scraping from WANDERLUST"
 url = "https://www.wanderlust.co.uk/content/coronavirus-travel-updates/"
 html_file = URI.open(url).read
 noko_doc = Nokogiri::HTML(html_file)
-# p noko_doc
-
 
 noko_doc.search("ul > li").each do |element|
   raw_text = element.text.strip
-  # puts raw_text
 
   # check if element contains 2 countries info
   match_data = raw_text.match(/^(?<country1>.*:.*)\.(?<country2>.*:.*)\./)
@@ -120,14 +121,53 @@ noko_doc.search("ul > li").each do |element|
     country1 = match_data[:country1]
     country2 = match_data[:country2]
     country2 = country2[1..-1] # for ICELAND only
+
     create_country(country1)
     create_country(country2)
+
+    # country1 = create_country(country1)
+    # country2 = create_country(country2)
+
+    # countries << country1 if (!country1.nil?)
+    # countries << country2 if (!country2.nil?)
+
   else
     create_country(raw_text)
+    # country = create_country(raw_text)
+    # countries << country if (!country.nil?)
   end
 end
-puts "Finished!"
-# ------------------------------------------------------------------
+
+
+
+################################################################################
+# UK GOV scraper
+################################################################################
+puts "Scraping from UK GOV"
+url = "https://www.gov.uk/guidance/red-amber-and-green-list-rules-for-entering-england"
+html_file = URI.open(url).read
+noko_doc = Nokogiri::HTML(html_file)
+# p noko_doc
+
+noko_doc.search("table").each do |element|
+  color = element.search("thead > tr > th:nth-child(1)").text.strip.split(" ")[0]
+
+  element.search("tbody > tr").each do |row|
+    name = row.search("th").text.strip
+    upcoming_changes = row.search("td").text.strip
+    # puts "#{color}: #{name} - #{upcoming_changes}"
+
+    if !name.nil? && ARRAY.include?(name)
+      country = Country.find_by_name(name)
+
+      country[:color] = color
+      country[:upcoming_changes] = upcoming_changes
+      puts country
+    end
+  end
+end
+################################################################################
+
 
 
 
