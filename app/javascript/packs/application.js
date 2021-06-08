@@ -24,6 +24,9 @@ import { listen_to_form } from "../components/submit_form"
 
 // External imports
 import "bootstrap";
+import submitToggle from "./toggle.js";
+
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -31,5 +34,7 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  submitToggle();
   listen_to_form()
 });
+
