@@ -12,4 +12,5 @@ Rails.application.routes.draw do
 
   resources :alerts, only: [:index, :destroy]
   resources :reviews, only: [:destroy]
+  resources :users, only: [:show]
 end

@@ -1,5 +1,5 @@
 class CountriesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show] 
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @countries = Country.all
   end
@@ -22,4 +22,6 @@ class CountriesController < ApplicationController
     end
     @countries = Country.all
   end
+
+
 end
