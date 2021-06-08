@@ -92,12 +92,15 @@ def create_country(raw_text)
       # puts quarantine
     end
 
+    url = "https://source.unsplash.com/random?#{name}"
+
     Country.create!({
       name: name,
       content: content,
       status: status,
       test: test,
-      quarantine: quarantine
+      quarantine: quarantine,
+      photo_url: url
     })
     # puts "--------------------------------------------------------------"
     # puts country
