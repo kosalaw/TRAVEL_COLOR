@@ -8,8 +8,12 @@
     "@rails/webpacker": "4.3.0",
     "bootstrap": "4.6",
     "jquery": "^3.6.0",
+    "jvectormap": "^2.0.4",
+    "jvectormap-next": "^3.1.1",
+    "mapbox-gl": "^2.3.0",
     "popper.js": "^1.16.1",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "typed.js": "^2.0.12"
   },
   "version": "0.1.0",
   "devDependencies": {

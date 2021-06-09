@@ -5,6 +5,11 @@ en:
     required:
       text: 'required'
       mark: '*'
+    placeholders:
+      user:
+        email: 'exemple@hotmail.com'
+        password: 'Enter a password'
+        password_confirmation: 'Re-enter password'
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
