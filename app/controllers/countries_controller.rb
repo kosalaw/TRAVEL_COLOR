@@ -6,6 +6,7 @@ class CountriesController < ApplicationController
 
   def show
     @country = Country.find(params[:id])
+    @alert = Alert.where(country: @country, user: current_user).first
   end
 
   def compare

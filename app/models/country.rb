@@ -1,4 +1,4 @@
 class Country < ApplicationRecord
-  has_many :reviews
-  has_many :alerts
+  has_many :reviews, dependent: :destroy
+  has_many :alerts, dependent: :destroy
 end
