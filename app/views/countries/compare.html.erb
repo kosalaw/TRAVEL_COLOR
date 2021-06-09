@@ -7,10 +7,10 @@
       <% if @country_1 %>
         <%= f.input :country_1, collection: @countries, value_method: :id, label_method: :name, label: false, selected: @country_1&.id %>
         <div class="d-flex justify-content-center">
-          <div class="circle" style="background-color: <%= @country_1&.color %>"></div>
+          <div class="circle" style="background-color: <%= @country_1&.color == 'Amber' ? 'Orange': @country_1&.color %>"></div>
         </div>
         <br>
-        <p><b>Status: </b><%= @country_1&.status %></p>
+        <p class="module_status"><b>Status: </b><%= @country_1&.status %></p>
         <hr class="solid">
         <p><b>Quarantine: </b><%= @country_1&.quarantine %></p>
         <hr class="solid">
@@ -30,10 +30,10 @@
       <% if @country_2 %>
         <%= f.input :country_2, collection: @countries, value_method: :id, label_method: :name, label: false, selected: @country_2&.id %>
         <div class="d-flex justify-content-center">
-          <div class="circle" style="background-color: <%= @country_2&.color %>"></div>
+          <div class="circle" style="background-color: <%= @country_2&.color == 'Amber' ? 'Orange': @country_2&.color %>"></div>
         </div>
         <br>
-        <p><b>Status: </b><%= @country_2&.status %></p>
+        <p class="module_status"><b>Status: </b><%= @country_2&.status %></p>
         <hr class="solid">
         <p><b>Quarantine: </b><%= @country_2&.quarantine %></p>
         <hr class="solid">
@@ -53,10 +53,10 @@
       <% if @country_3 %>
         <%= f.input :country_3, collection: @countries, value_method: :id, label_method: :name, label: false, selected: @country_3&.id %>
         <div class="d-flex justify-content-center">
-          <div class="circle" style="background-color: <%= @country_3&.color %>"></div>
+          <div class="circle" style="background-color: <%= @country_3&.color == 'Amber' ? 'Orange': @country_3&.color %>"></div>
         </div>
         <br>
-        <p><b>Status: </b><%= @country_3&.status %></p>
+        <p class="module_status"><b>Status: </b><%= @country_3&.status %></p>
         <hr class="solid">
         <p><b>Quarantine: </b><%= @country_3&.quarantine %></p>
         <hr class="solid">

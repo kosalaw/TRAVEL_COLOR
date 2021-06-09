@@ -12,8 +12,18 @@
 }
 
 .module_URL {
+  min-height: 30px;
   display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
+.module_status {
+  min-height: 60px;
+  display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+

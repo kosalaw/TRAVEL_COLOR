@@ -20,7 +20,7 @@ class CountriesController < ApplicationController
         @country_3 = Country.find(params['/countries/compare'][:country_3].to_i)
       end
     end
-    @countries = Country.all
+    @countries = Country.order(name: :asc)
   end
 
 
