@@ -208,11 +208,11 @@ end
 ################################################################################
 ################################################################################
 
-def compare_with_db(country_hash)
-  db_country = Country.find_by_name(country_hash[:name])
+def different_to_db?(country_hash, db_country)
+  # db_country = Country.find_by_name(country_hash[:name])
 
   errors_array = []
-  errors_array << db_country
+  # errors_array << db_country
 
   if db_country[:name] != country_hash[:name]
     puts "Alert: #{db_country[:name]} NAME difference"
@@ -221,9 +221,9 @@ def compare_with_db(country_hash)
   end
 
   if db_country[:content] != country_hash[:content]
-    puts "Alert: #{db_country[:name]} CONTENT difference"
-    puts "  In DB: " + db_country[:content].to_s
-    puts "  Scraped info: " + country_hash[:content].to_s
+    # puts "Alert: #{db_country[:name]} CONTENT difference"
+    # puts "  In DB: " + db_country[:content].to_s
+    # puts "  Scraped info: " + country_hash[:content].to_s
     content_error = {
       error: "content",
       db: db_country[:content],
@@ -233,9 +233,9 @@ def compare_with_db(country_hash)
   end
 
   if db_country[:status] != country_hash[:status]
-    puts "Alert: #{db_country[:name]} STATUS difference"
-    puts "  In DB: " + db_country[:status].to_s
-    puts "  Scraped info: " + country_hash[:status].to_s
+    # puts "Alert: #{db_country[:name]} STATUS difference"
+    # puts "  In DB: " + db_country[:status].to_s
+    # puts "  Scraped info: " + country_hash[:status].to_s
     status_error = {
       error: "status",
       db: db_country[:status],
@@ -246,9 +246,9 @@ def compare_with_db(country_hash)
   end
 
   if db_country[:test] != country_hash[:test]
-    puts "Alert: #{db_country[:name]} TEST difference"
-    puts "  In DB: " + db_country[:test].to_s
-    puts "  Scraped info: " + country_hash[:test].to_s
+    # puts "Alert: #{db_country[:name]} TEST difference"
+    # puts "  In DB: " + db_country[:test].to_s
+    # puts "  Scraped info: " + country_hash[:test].to_s
     test_error = {
       error: "test",
       db: db_country[:test],
@@ -258,9 +258,9 @@ def compare_with_db(country_hash)
   end
 
   if db_country[:quarantine] != country_hash[:quarantine]
-    puts "Alert: #{db_country[:name]} Quarantine difference"
-    puts "  In DB: " + db_country[:quarantine].to_s
-    puts "  Scraped info: " + country_hash[:quarantine].to_s
+    # puts "Alert: #{db_country[:name]} Quarantine difference"
+    # puts "  In DB: " + db_country[:quarantine].to_s
+    # puts "  Scraped info: " + country_hash[:quarantine].to_s
     quarantine_error = {
       error: "quarantine",
       db: db_country[:quarantine],
@@ -270,9 +270,9 @@ def compare_with_db(country_hash)
   end
 
   if db_country[:color] != country_hash[:color]
-    puts "Alert: #{db_country[:name]} COLOR difference"
-    puts "  In DB: " + db_country[:color].to_s
-    puts "  Scraped info: " + country_hash[:color].to_s
+    # puts "Alert: #{db_country[:name]} COLOR difference"
+    # puts "  In DB: " + db_country[:color].to_s
+    # puts "  Scraped info: " + country_hash[:color].to_s
     color_error = {
       error: "color",
       db: db_country[:color],
@@ -282,9 +282,9 @@ def compare_with_db(country_hash)
   end
 
   if db_country[:upcoming_changes] != country_hash[:upcoming_changes]
-    puts "Alert: #{db_country[:name]} Upcoming_Changes difference"
-    puts "  In DB: " + db_country[:upcoming_changes].to_s
-    puts "  Scraped info: " + country_hash[:upcoming_changes].to_s
+    # puts "Alert: #{db_country[:name]} Upcoming_Changes difference"
+    # puts "  In DB: " + db_country[:upcoming_changes].to_s
+    # puts "  Scraped info: " + country_hash[:upcoming_changes].to_s
     upcoming_changes_error = {
       error: "upcoming_changes",
       db: db_country[:upcoming_changes],
@@ -293,13 +293,23 @@ def compare_with_db(country_hash)
     errors_array << upcoming_changes_error
   end
 
-  if errors_array.size > 1
-    p errors_array
+  # IF THERE ARE CHANGES, SEND OUT ALERTS TO USERS, and update db?
+  if errors_array.size >= 1
+    puts "-------------------------------------------------------------"
+    puts "Sending ALERTS for #{db_country[:name]}"
+    puts "-------------------------------------------------------------"
 
+    # SEND ALERTS
     db_country.alerts.each do |alert|
-      AlertMailer.with(id: alert.id).alert.deliver_later
+      AlertMailer.with(id: alert.id, error: errors_array).alert.deliver_now
     end
 
+    # AND UPDATE DB WITH NEW INFORMATION????????????? check this with Leonard
+    return true
+
+  # ELSE do not update countries ???????? check this with Leonard
+  else
+    return false
   end
 end
 
@@ -313,6 +323,7 @@ namespace :countries do
     color_array = scrape_ukgov
     # p color_array.size
 
+    puts "Combining information"
     countries_array.each do |country_hash|
       color_array.each do |color_hash|
         if country_hash[:name] == color_hash[:name]
@@ -323,8 +334,22 @@ namespace :countries do
       # p country_hash
     end
 
+    puts "Checking for changes"
     countries_array.each do |country_hash|
-      compare_with_db(country_hash)
+      db_country = Country.find_by_name(country_hash[:name])
+
+      # if different, update db with new info
+      if different_to_db?(country_hash, db_country) == false
+
+        # db_country[:name] = country_hash[:name]
+        # db_country[:content] = country_hash[:content]
+        # db_country[:status] = country_hash[:status]
+        # db_country[:test] = country_hash[:test]
+        # db_country[:quarantine] = country_hash[:quarantine]
+        # db_country[:color] = country_hash[:color]
+        # db_country[:upcoming_changes] = country_hash[:upcoming_changes]
+        # db_country.save!
+      end
     end
   end
 end

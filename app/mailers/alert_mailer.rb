@@ -7,6 +7,7 @@ class AlertMailer < ApplicationMailer
   def alert
     # FOR REAL USE (also with letter opener)
     @alert = Alert.find(params[:id])
+    @errors_array = params[:error]
 
     # FOR PREVIEW USE
     # @alert = Alert.first
