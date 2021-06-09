@@ -22,6 +22,4 @@ class CountriesController < ApplicationController
     end
     @countries = Country.order(name: :asc)
   end
-
-
 end
