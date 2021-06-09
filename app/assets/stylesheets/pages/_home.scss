@@ -1,1 +1,40 @@
 // Specific CSS for your home-page
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  margin: 0px;
+}
+#orange-home-page-banner {
+  background-color: #F66625;
+  width: 100%;
+  height: 220px;
+ 
+}
+.text-banner-one {
+  font-size: 45px;
+  position: relative;
+  top: 30%;
+  color: #fff;
+  font-weight: 900;
+
+}
+.text-banner-two {
+  font-size: 25px;
+  font-family: 'Nunito';
+  position: relative;
+  top: 30%;
+  color: #fff;
+  font-weight: 900;
+  
+}
+#map {
+  height: 600px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  top: -70px;
+}
+
+.container-map {
+  margin: 0px 80px;
+}
