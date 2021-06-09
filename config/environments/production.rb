@@ -90,6 +90,12 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  # ...
+  config.action_mailer.delivery_method     = :postmark
+  config.action_mailer.postmark_settings   = { api_token: ENV['943ccba4-e52d-4782-b254-ad44f354761a'] }
+  config.action_mailer.default_url_options = { host: "travel-color.herokuapp.com" }
+  # or your custom domain name eg. "www.yourdomain.com"
+
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
   # middleware. The `delay` is used to determine how long to wait after a write
