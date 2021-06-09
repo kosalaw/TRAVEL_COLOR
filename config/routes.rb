@@ -12,8 +12,5 @@ Rails.application.routes.draw do
 
   resources :alerts, only: [:index, :destroy]
   resources :reviews, only: [:destroy]
-
-  # # compare route
-  # get "countries/compare", to: "countries#compare", as: "compare"
-
+  resources :users, only: [:show]
 end

@@ -1,0 +1,19 @@
+.module {
+  min-height: 120px;
+  display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.module_URL {
+  display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
