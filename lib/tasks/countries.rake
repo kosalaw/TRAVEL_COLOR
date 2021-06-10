@@ -1,55 +1,55 @@
 require 'nokogiri'
 require 'open-uri'
 
-# ARRAY = %w(
-# Austria
-# Belgium
-# Czech\ Republic
-# Denmark
-# Finland
-# France
-# Germany
-# Hungary
-# Latvia
-# Liechtenstein
-# Luxembourg
-# Netherlands
-# Norway
-# Russia
-# Switzerland
-# Slovakia
-# Sweden
-# Turkey
-# Albania
-# Azores
-# Andorra
-# Armenia
-# Azerbaijan
-# Bosnia\ and\ Herzegovina
-# Bulgaria
-# Croatia
-# Cyprus
-# Estonia
-# Georgia
-# Greece
-# Gibraltar
-# Ireland
-# Iceland
-# Italy
-# Lithuania
-# Madeira
-# Malta
-# Moldova
-# Montenegro
-# Poland
-# Portugal
-# Romania
-# San\ Marino
-# Serbia
-# Slovenia
-# Spain
-# Ukraine
-# )
+Default_Array = %w(
+Austria
+Belgium
+Czech\ Republic
+Denmark
+Finland
+France
+Germany
+Hungary
+Latvia
+Liechtenstein
+Luxembourg
+Netherlands
+Norway
+Russia
+Switzerland
+Slovakia
+Sweden
+Turkey
+Albania
+Azores
+Andorra
+Armenia
+Azerbaijan
+Bosnia\ and\ Herzegovina
+Bulgaria
+Croatia
+Cyprus
+Estonia
+Georgia
+Greece
+Gibraltar
+Ireland
+Iceland
+Italy
+Lithuania
+Madeira
+Malta
+Moldova
+Montenegro
+Poland
+Portugal
+Romania
+San\ Marino
+Serbia
+Slovenia
+Spain
+Ukraine
+)
 
 ################################################################################
 # WANDERLUST scraper
@@ -64,7 +64,7 @@ def parse_info(raw_text)
     name = match_data[:name]
   end
 
-  if !name.nil? && ARRAY.include?(name)
+  if !name.nil? && Default_Array.include?(name)
     # find STATUS
     match_data = content.match(/^(?<name>.*):(.*(?<status>(\s?not allowed|\s?not permitted|\s?only|\s?Only|\s?closed|\s?ban|\s?banned|\s?cannot|\s?prohibited).*\.))?/)
     if !match_data.nil?
@@ -159,7 +159,7 @@ def scrape_ukgov
       upcoming_changes = row.search("td").text.strip
       # puts "#{color}: #{name} - #{upcoming_changes}"
 
-      if !name.nil? && ARRAY.include?(name)
+      if !name.nil? && Default_Array.include?(name)
         # p name
 
         # sql_query = "name @@ :name"
@@ -177,35 +177,15 @@ def scrape_ukgov
     end
   end
 
-  # # Ireland - green
-  # ireland = Country.find_by_name("Ireland")
-  # ireland[:color] = "Green"
-  # ireland.save!
-
-
-  # # Azores and Madeira - same as Portugal
-  # portugal = Country.find_by_name("Portugal")
-
-  # azores = Country.find_by_name("Azores")
-  # azores[:color] = portugal[:color]
-  # azores[:upcoming_changes] = portugal[:upcoming_changes]
-  # azores.save!
-
-  # madeira = Country.find_by_name("Madeira")
-  # madeira[:color] = portugal[:color]
-  # madeira[:upcoming_changes] = portugal[:upcoming_changes]
-  # madeira.save!
-
-  # ARRAY.each do |country|
-  #   if !color_array.include?(country)
-  #     puts "ERROR! UKgov info not available for: #{country}"
-  #   end
-  # end
-
   return color_array
 
 end
 ################################################################################
+################################################################################
+
+
+################################################################################
+# DRIVER CODE
 ################################################################################
 
 def different_to_db?(country_hash, db_country)
@@ -293,7 +273,7 @@ def different_to_db?(country_hash, db_country)
     errors_array << upcoming_changes_error
   end
 
-  # IF THERE ARE CHANGES, SEND OUT ALERTS TO USERS, and update db?
+  # IF THERE ARE CHANGES, send ALERTS to USERS, and RETURN TRUE (db should be updated)
   if errors_array.size >= 1
     puts "-------------------------------------------------------------"
     puts "Sending ALERTS for #{db_country[:name]}"
@@ -304,10 +284,10 @@ def different_to_db?(country_hash, db_country)
       AlertMailer.with(id: alert.id, error: errors_array).alert.deliver_now
     end
 
-    # AND UPDATE DB WITH NEW INFORMATION????????????? check this with Leonard
+    # Return True so the DB will update
     return true
 
-  # ELSE do not update countries ???????? check this with Leonard
+  # ELSE do not update countries, return FALSE
   else
     return false
   end
@@ -339,18 +319,48 @@ namespace :countries do
       db_country = Country.find_by_name(country_hash[:name])
 
       # if different, update db with new info
-      if different_to_db?(country_hash, db_country) == false
+      if different_to_db?(country_hash, db_country) == true
 
-        # db_country[:name] = country_hash[:name]
-        # db_country[:content] = country_hash[:content]
-        # db_country[:status] = country_hash[:status]
-        # db_country[:test] = country_hash[:test]
-        # db_country[:quarantine] = country_hash[:quarantine]
-        # db_country[:color] = country_hash[:color]
-        # db_country[:upcoming_changes] = country_hash[:upcoming_changes]
-        # db_country.save!
+        db_country.update({
+          name: country_hash[:name],
+          content: country_hash[:content],
+          status: country_hash[:status],
+          test: country_hash[:test],
+          quarantine: country_hash[:quarantine],
+          color: country_hash[:color],
+          upcoming_changes: country_hash[:upcoming_changes]
+        })
+        db_country.save!
       end
     end
+
+    # ANOMOLY COUNTRIES
+
+      # RUSSIA
+
+
+
+
+      # # Ireland - green
+      # ireland = Country.find_by_name("Ireland")
+      # ireland[:color] = "Green"
+      # ireland.save!
+
+
+      # # Azores and Madeira - same as Portugal
+      # portugal = Country.find_by_name("Portugal")
+
+      # azores = Country.find_by_name("Azores")
+      # azores[:color] = portugal[:color]
+      # azores[:upcoming_changes] = portugal[:upcoming_changes]
+      # azores.save!
+
+      # madeira = Country.find_by_name("Madeira")
+      # madeira[:color] = portugal[:color]
+      # madeira[:upcoming_changes] = portugal[:upcoming_changes]
+      # madeira.save!
+
+
   end
 end
 
