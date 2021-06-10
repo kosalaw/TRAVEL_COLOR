@@ -1,0 +1,7 @@
+<div class="container">
+  <h2>Your alerts: </h2>
+  <% @alerts.each do |alert|  %>
+
+  <%= link_to alert.country.name, country_path(alert.country_id)  %>
+  <% end %>
+</div>

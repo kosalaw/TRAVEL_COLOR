@@ -301,7 +301,7 @@ def different_to_db?(country_hash, db_country)
 
     # SEND ALERTS
     db_country.alerts.each do |alert|
-      AlertMailer.with(id: alert.id, error: errors_array).alert.deliver_now
+      AlertMailer.with(id: alert.id, error: errors_array).alert.deliver_later
     end
 
     # AND UPDATE DB WITH NEW INFORMATION????????????? check this with Leonard
