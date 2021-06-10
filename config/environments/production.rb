@@ -92,7 +92,7 @@ Rails.application.configure do
 
   # ...
   config.action_mailer.delivery_method     = :postmark
-  config.action_mailer.postmark_settings   = { api_token: ENV['943ccba4-e52d-4782-b254-ad44f354761a'] }
+  config.action_mailer.postmark_settings   = { api_token: ENV['POSTMARK_API_TOKEN'] }
   config.action_mailer.default_url_options = { host: "travel-color.herokuapp.com" }
   # or your custom domain name eg. "www.yourdomain.com"
 
