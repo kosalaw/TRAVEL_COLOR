@@ -1,55 +1,55 @@
 require 'nokogiri'
 require 'open-uri'
 
-ARRAY = %w(
-Austria
-Belgium
-Czech\ Republic
-Denmark
-Finland
-France
-Germany
-Hungary
-Latvia
-Liechtenstein
-Luxembourg
-Netherlands
-Norway
-Russia
-Switzerland
-Slovakia
-Sweden
-Turkey
-Albania
-Azores
-Andorra
-Armenia
-Azerbaijan
-Bosnia\ and\ Herzegovina
-Bulgaria
-Croatia
-Cyprus
-Estonia
-Georgia
-Greece
-Gibraltar
-Ireland
-Iceland
-Italy
-Lithuania
-Madeira
-Malta
-Moldova
-Montenegro
-Poland
-Portugal
-Romania
-San\ Marino
-Serbia
-Slovenia
-Spain
-Ukraine
-)
+# ARRAY = %w(
+# Austria
+# Belgium
+# Czech\ Republic
+# Denmark
+# Finland
+# France
+# Germany
+# Hungary
+# Latvia
+# Liechtenstein
+# Luxembourg
+# Netherlands
+# Norway
+# Russia
+# Switzerland
+# Slovakia
+# Sweden
+# Turkey
+# Albania
+# Azores
+# Andorra
+# Armenia
+# Azerbaijan
+# Bosnia\ and\ Herzegovina
+# Bulgaria
+# Croatia
+# Cyprus
+# Estonia
+# Georgia
+# Greece
+# Gibraltar
+# Ireland
+# Iceland
+# Italy
+# Lithuania
+# Madeira
+# Malta
+# Moldova
+# Montenegro
+# Poland
+# Portugal
+# Romania
+# San\ Marino
+# Serbia
+# Slovenia
+# Spain
+# Ukraine
+# )
 
 ################################################################################
 # WANDERLUST scraper
