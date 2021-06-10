@@ -1,7 +1,7 @@
 class AlertsController < ApplicationController
   # display in account page
   def index
-    @alerts = Alert.all
+    @alerts = current_user.alerts
   end
 
   # new alert button in on country show page
