@@ -1,5 +1,5 @@
 <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @country.photo_url %>)">
-  <%= @country.name %> <img src="<%= @country.flag_url %>" />
+  <div> <%= @country.name %> <img src="<%= @country.flag_url %>" /> </div>
 </div>
 
 
@@ -10,7 +10,7 @@
 
     <div class="col-8">
       <div class="travel-info">
-          <button type="button" id="flt-explr" class="btn btn-outline-success country-show-btn">Explore Flights</button>
+          <a class="btn country-show-btn" id="flt-explr" href="#" class="btn btn-info" role="button">Explore Flights</a>
           <h2>Travel information</h2>   
           <% if @alert.nil? %>
             <div class="d-inline bell"><i class="far fa-bell"></i></div>
@@ -22,13 +22,30 @@
           
           <br>
           <br>
-          <h5>Entry requirments</h5>
-          <p> All categories of travelers from Australia, South Korea, Israel, Japan, New Zealand, the United Kingdom and Singapore are allowed to enter the metropolitan territory. The compelling reasons regime does not apply to these countries. </p>
-          <p> All travellers, regardless of their nationality, must present the following to the transport company and border control authorities: </p>
-          <p> for travellers over 11 years of age only, the result of an "RT-PCR-COVID" virological screening test conducted less than 72 hours before departure (i.e. departure of first flight in case of connecting flight) which is negative for infection by Covid-19. </p>
-          <p> - that they undertake to voluntarily isolate for seven days after their arrival in Metropolitan France and to carry out at the end of this period, for travellers aged over eleven years, a virological screening test (PCR). </p>
+          <h5>Entry requirments</h5><br>
+          <div class="entry-req-card">
+            <div class="d-flex ">
+              <p class="d-inline"><b>Colour Code:</b></p>&nbsp;&nbsp;<div class="color-box" style="background-color: <%= @country&.color == 'Amber' ? 'Orange': @country&.color %>"></div>
+            </div>
+          </div>
+          <div class="entry-req-card">
+            <p class="d-inline"><b>Status:</b></p> <%= @country.status.nil? ? "N/A" : @country.status.capitalize %><br>
+          </div>
+          <div class="entry-req-card">
+            <p class="d-inline"><b>Quarantine Requirments:</b></p> <%= @country.quarantine.nil? ? "N/A" : @country.quarantine.capitalize %><br>
+          </div>
+          <div class="entry-req-card">
+            <p class="d-inline"><b>COVID Test Before Arrival:</b></p> <%= @country.test.nil? ? "N/A" : @country.test.capitalize %><br>
+          </div>
+          <div class="entry-req-card">
+            <p class="d-inline"><b>Extra Details:</b></p>  <%= @country.content %><br>
+          </div>
+          <div class="entry-req-card" id="bottom">
+            <p class="d-inline"><b>Upcomming Changes:</b></p> <%= @country.upcoming_changes != " " ? "N/A" : @country.upcoming_changes.capitalize %><br>
+          </div>
           <br>
-          <button type="button" class="btn btn-outline-success country-show-btn">Government Website</button>          
+          <a class="btn country-show-btn" href="<%= @country.government_url %>" target="_blank" class="btn btn-info" role="button">Government Website</a> 
+          <a class="btn country-show-btn" href="<%= compare_countries_path('/countries/compare' => {country_1:@country.id}) %>" class="btn btn-info" role="button">Compare Countries</a>   
       </div>
     </div>
 
