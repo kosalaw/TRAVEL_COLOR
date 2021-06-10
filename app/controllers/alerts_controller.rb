@@ -21,8 +21,8 @@ class AlertsController < ApplicationController
   def destroy
     @alert = Alert.find(params[:id])
     @alert.destroy
-
-    redirect_to country_path(@alert.country)
+    redirect_back(fallback_location: country_path(@alert.country))
+    # redirect_to country_path(@alert.country)
   end
 
   # private
