@@ -1,11 +1,20 @@
-<style></style>
+<style>
+
+  p {
+    line-height: 1.5em;
+    margin: 0px 0px 10px 0px;
+  }
+
+</style>
+
+<image src="https://res.cloudinary.com/dgw2hw9oa/image/upload/v1622817298/phd7cyrs1jjve8lti1vkp2gzd6r6.jpg" style="height: 300px, width: 300px"></image>
+
 <div class="card" style="font-family: Helvetica">
   <h2><b>Hi <%= @alert.user.first_name %>, you have a new alert!</b></h2>
 
   <iframe src="https://giphy.com/embed/Yqhr57aohKbKH2emhK" width="480" height="258" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/memecandy-Yqhr57aohKbKH2emhK">via GIPHY</a></p>
 
   <hr>
-  <p>Errors_Array: <%= @errors_array %><p>
   <% @errors_array.each do |error| %>
     <p><strong>What has changed?:</strong> <%= error[:error].capitalize %></p>
     <p><strong>Previously was:</strong> <%= error[:db] %></p>

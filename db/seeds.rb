@@ -256,6 +256,7 @@ last_name: 'Smith')
 
 user_3 = User.create!(email: 'test2@test.com',
 password: "123456",
+admin: true,
 first_name: 'Alex',
 last_name: 'Rodrigo')
 
