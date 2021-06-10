@@ -24,3 +24,22 @@
   margin-left: -20px;
  
 }
+
+.navbar-light .navbar-nav .nav-link {
+  color: black;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: rgb(122, 119, 119);
+}
+
+.dropdown-menu {
+  border-radius: 4px;
+}
+
+hr {
+  margin-top: 0;
+  margin-bottom: 0;
+  border: 0;
+  border-top: 1px solid rgba(128, 125, 125, 0.1);
+}
