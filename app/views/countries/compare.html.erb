@@ -7,7 +7,7 @@
       <% if @country_1 %>
         <%= f.input :country_1, collection: @countries, value_method: :id, label_method: :name, label: false, selected: @country_1&.id %>
         <div class="d-flex justify-content-center">
-          <div class="circle" style="background-color: <%= @country_1&.color == 'Amber' ? 'Orange': @country_1&.color %>"></div>
+          <div class="color-box" style="background-color: <%= @country_1&.color == 'Amber' ? 'Orange': @country_1&.color %>"></div>
         </div>
         <br>
         <p class="module_status"><b>Status: </b><%= @country_1&.status %></p>
@@ -16,7 +16,7 @@
         <hr class="solid">
         <p><b>Test: </b><%= @country_1&.test %></p>
         <hr class="solid">
-        <p class="module"><b>Content: </b><%= @country_1&.content %></p>
+        <p class="module"><b>Details: </b><%= @country_1&.content %></p>
         <hr class="solid">
         <p><b>Government URL: </b></p>
         <a class="module_URL" href="<%= @country_1&.government_url %>"><%= @country_1&.government_url %></a>
@@ -30,7 +30,7 @@
       <% if @country_2 %>
         <%= f.input :country_2, collection: @countries, value_method: :id, label_method: :name, label: false, selected: @country_2&.id %>
         <div class="d-flex justify-content-center">
-          <div class="circle" style="background-color: <%= @country_2&.color == 'Amber' ? 'Orange': @country_2&.color %>"></div>
+          <div class="color-box" style="background-color: <%= @country_2&.color == 'Amber' ? 'Orange': @country_2&.color %>"></div>
         </div>
         <br>
         <p class="module_status"><b>Status: </b><%= @country_2&.status %></p>
@@ -39,7 +39,7 @@
         <hr class="solid">
         <p><b>Test: </b><%= @country_2&.test %></p>
         <hr class="solid">
-        <p class="module"><b>Content: </b><%= @country_2&.content %></p>
+        <p class="module"><b>Details: </b><%= @country_2&.content %></p>
         <hr class="solid">
         <p><b>Government URL: </b></p>
         <a class="module_URL" href="<%= @country_2&.government_url %>"><%= @country_2&.government_url %></a>
@@ -53,7 +53,7 @@
       <% if @country_3 %>
         <%= f.input :country_3, collection: @countries, value_method: :id, label_method: :name, label: false, selected: @country_3&.id %>
         <div class="d-flex justify-content-center">
-          <div class="circle" style="background-color: <%= @country_3&.color == 'Amber' ? 'Orange': @country_3&.color %>"></div>
+          <div class="color-box" style="background-color: <%= @country_3&.color == 'Amber' ? 'Orange': @country_3&.color %>"></div>
         </div>
         <br>
         <p class="module_status"><b>Status: </b><%= @country_3&.status %></p>
@@ -62,7 +62,7 @@
         <hr class="solid">
         <p><b>Test: </b><%= @country_3&.test %></p>
         <hr class="solid">
-        <p class="module"><b>Content: </b><%= @country_3&.content %></p>
+        <p class="module"><b>Details: </b><%= @country_3&.content %></p>
         <hr class="solid">
         <p><b>Government URL: </b></p>
         <a class="module_URL" href="<%= @country_3&.government_url %>"><%= @country_3&.government_url %></a>
@@ -72,7 +72,6 @@
         <%= f.input :country_3, collection: @countries, value_method: :id, label_method: :name, label: false %>
       <% end %>
     </div>
-  </div>
+   </div>
 </div>
 <% end %>
-
