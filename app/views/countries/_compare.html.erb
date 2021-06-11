@@ -1,4 +1,22 @@
 <% if !hide %>
+  <h5>Colour</h5>
+<% else %>
+  <h5 class="trans"> jhfjyfkug</h5>
+<% end %>
+<hr class="solid">
+<br>
+<div class="d-flex justify-content-center">
+  <div>
+    <div class="d-flex justify-content-center">
+      <div class="color-box" style="background-color: <%= country&.color_code %>"></div>
+    </div>
+    <br>
+    <p style="text-align: center"><%= country&.color %></p>
+  </div>
+</div>
+<br>
+
+<% if !hide %>
   <h5>Infos</h5>
 <% else %>
   <h5 class="trans"> jhfjyfkug</h5>
@@ -12,7 +30,7 @@
     </div>
   </div>
   <% if country.content.present? %>
-    <div class="filled mt-3">
+    <div class="filled f-start mt-3">
       <p class="module_info"><%= country&.content %></p>
     </div>
     <% else %>
@@ -38,11 +56,11 @@
     </div>
   </div>
   <% if country.test.present? %>
-    <div class="filled mt-3">
+    <div class="filled short mt-3">
       <p><%= country&.test %></p>
     </div>
     <% else %>
-    <div class="empty mt-3">
+    <div class="empty short mt-3">
       <h5>-</h5>
     </div>
   <% end %>
@@ -50,21 +68,6 @@
 <br>
 
 
-<% if !hide %>
-  <h5>Colour</h5>
-<% else %>
-  <h5 class="trans"> jhfjyfkug</h5>
-<% end %>
-<hr class="solid">
-<br>
-<div class="d-flex justify-content-center">
-  <div>
-    <div class="color-box" style="background-color: <%= country&.color_code %>"></div>
-    <br>
-    <p style="text-align: center"><%= country&.color %></p>
-  </div>
-</div>
-<br>
 
 
 <% if !hide %>
@@ -81,11 +84,11 @@
     </div>
   </div>
   <% if country.status.present? %>
-    <div class="filled mt-3">
+    <div class="filled short mt-3">
       <p><%= country&.status %></p>
     </div>
     <% else %>
-    <div class="empty mt-3">
+    <div class="empty short mt-3">
       <h5>-</h5>
     </div>
   <% end %>
@@ -107,11 +110,11 @@
     </div>
   </div>
   <% if country.quarantine.present? %>
-    <div class="filled mt-3">
+    <div class="filled short mt-3">
       <p><%= country&.quarantine %></p>
     </div>
     <% else %>
-    <div class="empty mt-3">
+    <div class="empty short mt-3">
       <h5>-</h5>
     </div>
   <% end %>
@@ -126,18 +129,18 @@
 <% end %>
 <hr class="solid">
 <br>
-<div class="module">
+<div class="module_one">
   <div class="d-flex justify-content-center">
     <div>
       <span style="color: #9f9aa4; font-size: 40px"><i class="fas fa-link"></i></span>
     </div>
   </div>
   <% if country.government_url.present? %>
-    <div class="filled mt-3">
+    <div class="filled short mt-3">
       <a class="module_URL" href="<%= country&.government_url %>"><%= country&.government_url %></a>
     </div>
     <% else %>
-    <div class="empty mt-3">
+    <div class="empty short mt-3">
       <h5>-</h5>
     </div>
   <% end %>
