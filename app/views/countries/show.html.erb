@@ -10,14 +10,14 @@
 
     <div class="col-8">
       <div class="travel-info">
-          <a class="btn country-show-btn" id="flt-explr" href="#" class="btn btn-info" role="button">Explore Flights</a>
+          <%= link_to 'Explore Flights', explore_country_path(@country), class: 'btn country-show-btn', id: 'flt-explr' %>
           <h2>Travel information</h2>   
           <% if @alert.nil? %>
             <div class="d-inline bell"><i class="far fa-bell"></i></div>
             <%= link_to "Notify me on status changes", country_alerts_path(@country), method: :post %>
           <% else %>
               <div class="d-inline bell"><i class="far fa-bell-slash"></i></div>
-              <%= link_to "Turn off Notifications", alert_path(@alert), method: :delete %>
+              <%= link_to "Turn off Notifications", alert_path(@alert), method: :delete , data: {confirm: "Are you sure?"} %>
           <% end %>
           
           <br>

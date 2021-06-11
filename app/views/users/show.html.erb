@@ -26,7 +26,7 @@ My Account
         <% @alerts.each do |alert|  %>
             <li> <%= link_to alert.country.name, country_path(alert.country_id)  %> 
             <div class="d-inline bell"><i class="far fa-bell-slash"></i></div>
-            <%= link_to "Mute", alert, method: :delete %> </li>
+            <%= link_to "Mute", alert, method: :delete , data: {confirm: "Are you sure?"} %> </li>
             
           <% end %>
       </ol> 
