@@ -25,10 +25,8 @@ import { listen_to_form } from "../components/submit_form"
 // External imports
 import "bootstrap";
 import { loadDynamicBannerText } from '../components/banner';
-import { initMapbox } from '../components/mapbox';
 import submitToggle from "./toggle.js";
-
-
+import { initMap } from "../components/home-map";
 
 
 
@@ -40,8 +38,8 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   loadDynamicBannerText();
-  initMapbox();
   submitToggle();
   listen_to_form();
+  initMap();
 });
 

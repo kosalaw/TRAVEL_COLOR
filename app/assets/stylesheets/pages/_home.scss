@@ -1,5 +1,6 @@
 // Specific CSS for your home-page
 body {
+  
   font-family: 'Lato', sans-serif;
   margin: 0px;
 }
@@ -35,5 +36,34 @@ body {
 }
 
 .container-map {
-  margin: 0px 80px;
+  margin: 5px 30px;
+}
+
+#my_dataviz {
+  height: 500px;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  box-shadow: 10px 0px 15px rgba(255, 255, 255, 0.3);
+  margin-top: 10px
+}
+
+#info {
+  font-family: "nunito";
+  font-size: 30px;
+}
+#box-country {
+  margin-top: 10px;
+  height: 500px;
+  width: 100%;
+  box-shadow: 10px 0px 15px rgba(10, 10, 10, 0.3);
+  
+  margin-top: 15px 0px;
+  background-color: white;
+  border-radius: 10px;
+}
+#title {
+  font-size: 35px;
+  margin-bottom: 20px;
+  padding: 20px;
 }
