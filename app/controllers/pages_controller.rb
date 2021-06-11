@@ -8,12 +8,13 @@ class PagesController < ApplicationController
     countries.each do |country|
       if country.status == nil || country.status == " "
           @temp_array[country.name] = {
-            content: country.content,
+            id: country.id,
             status: country.status,
             test: country.test,
             quarantine: country.quarantine,
             color: country.color,
-            upcoming_changes: country.upcoming_changes
+            upcoming_changes: country.upcoming_changes,
+            content: country.content
           }
 
       end
