@@ -39,6 +39,6 @@ document.addEventListener('turbolinks:load', () => {
   loadDynamicBannerText();
   initMapbox();
   submitToggle();
-  listen_to_form()
+  listen_to_form();
 });
 
