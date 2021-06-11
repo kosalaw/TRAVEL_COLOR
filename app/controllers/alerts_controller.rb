@@ -1,7 +1,7 @@
 class AlertsController < ApplicationController
   # display in account page
   def index
-    @alerts = Alert.all
+    @alerts = current_user.alerts
   end
 
   # new alert button in on country show page
@@ -11,7 +11,7 @@ class AlertsController < ApplicationController
     @alert.country = @country
     @alert.user = current_user
 
-    if @alert.save?
+    if @alert.save
       redirect_to country_path(@country)
     else
       render "countries/show"
@@ -19,10 +19,10 @@ class AlertsController < ApplicationController
   end
 
   def destroy
-    @alert = Alert.find(:id)
+    @alert = Alert.find(params[:id])
     @alert.destroy
-
-    redirect_to alerts_path
+    redirect_back(fallback_location: country_path(@alert.country))
+    # redirect_to country_path(@alert.country)
   end
 
   # private

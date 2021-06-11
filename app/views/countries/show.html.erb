@@ -1,5 +1,5 @@
 <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @country.photo_url %>)">
-  <%= @country.name %> <img class="flag-icon" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIHN0eWxlPSJmaWxsOiM0MTQ3OUI7IiBkPSJNMzguMzQ1LDg4LjI3M0MxNy4xNjcsODguMjczLDAsMTA1LjQ0LDAsMTI2LjYxOHYyNTguNzU5YzAsMjEuMTc3LDE3LjE2NywzOC4zNDUsMzguMzQ1LDM4LjM0NQ0KCWgxMzIuMzIyVjg4LjI3M0gzOC4zNDV6Ii8+DQo8cmVjdCB4PSIxNzAuNjciIHk9Ijg4LjI3NyIgc3R5bGU9ImZpbGw6I0Y1RjVGNTsiIHdpZHRoPSIxNzAuNjciIGhlaWdodD0iMzM1LjQ1Ii8+DQo8cGF0aCBzdHlsZT0iZmlsbDojRkY0QjU1OyIgZD0iTTQ3My42NTUsODguMjczSDM0MS4zMzN2MzM1LjQ0OGgxMzIuMzIyYzIxLjE3NywwLDM4LjM0NS0xNy4xNjcsMzguMzQ1LTM4LjM0NVYxMjYuNjE4DQoJQzUxMiwxMDUuNDQsNDk0LjgzMyw4OC4yNzMsNDczLjY1NSw4OC4yNzN6Ii8+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==" />
+  <div> <%= @country.name %> <img src="<%= @country.flag_url %>" /> </div>
 </div>
 
 
@@ -10,35 +10,44 @@
 
     <div class="col-8">
       <div class="travel-info">
-          <button type="button" id="flt-explr" class="btn btn-outline-success country-show-btn">Explore Flights</button>
-          <h2>Travel information</h2>
-          <%= simple_form_for(:togglebtn, url: country_alerts_path(@country)) do |f| %>
-            <%= f.input :key1, wrapper: :custom_boolean_switch, label: "Notify when status change", class: "notify-toggle"%>
-          <% end %>
-        
-          <% if true %>
-            <a href="#"> 
-              <div>
-                <div class="d-inline"><i class="far fa-bell"></i></div>
-                <div class="d-inline"> Notify me on status changes </div>
-              </div>
-            </a>
+          <%= link_to 'Explore Flights', explore_country_path(@country), class: 'btn country-show-btn', id: 'flt-explr' %>
+          <h2>Travel information</h2>   
+          <% if @alert.nil? %>
+            <div class="d-inline bell"><i class="far fa-bell"></i></div>
+            <%= link_to "Notify me on status changes", country_alerts_path(@country), method: :post %>
           <% else %>
-            <a href="#">
-              <div class="d-inline"><i class="far fa-bell-slash"></i></div>
-              <div class="d-inline"> Turn off Country Notifications </div>
-            </a>
+              <div class="d-inline bell"><i class="far fa-bell-slash"></i></div>
+              <%= link_to "Turn off Notifications", alert_path(@alert), method: :delete , data: {confirm: "Are you sure?"} %>
           <% end %>
           
           <br>
           <br>
-          <h5>Entry requirments</h5>
-          <p> All categories of travelers from Australia, South Korea, Israel, Japan, New Zealand, the United Kingdom and Singapore are allowed to enter the metropolitan territory. The compelling reasons regime does not apply to these countries. </p>
-          <p> All travellers, regardless of their nationality, must present the following to the transport company and border control authorities: </p>
-          <p> for travellers over 11 years of age only, the result of an "RT-PCR-COVID" virological screening test conducted less than 72 hours before departure (i.e. departure of first flight in case of connecting flight) which is negative for infection by Covid-19. </p>
-          <p> - that they undertake to voluntarily isolate for seven days after their arrival in Metropolitan France and to carry out at the end of this period, for travellers aged over eleven years, a virological screening test (PCR). </p>
+          <h5>Entry requirments</h5><br>
+          <div class="entry-req-card">
+            <div class="d-flex colorcrd">
+              <p class="d-inline"><b>Colour Code:</b></p>&nbsp;&nbsp;<div class="color-box" style="background-color: <%= @country&.color == 'Amber' ? 'Orange': @country&.color %>"></div>
+            </div>
+          </div>
+          <div class="entry-req-card">
+            <p class="d-inline"><b>Status:</b></p> <%= @country.status.nil? ? "N/A" : @country.status.capitalize %><br>
+          </div>
+          <div class="entry-req-card">
+            <p class="d-inline"><b>Quarantine Requirments:</b></p> <%= @country.quarantine.nil? ? "N/A" : @country.quarantine.capitalize %><br>
+          </div>
+          <div class="entry-req-card">
+            <p class="d-inline"><b>COVID Test Before Arrival:</b></p> <%= @country.test.nil? ? "N/A" : @country.test.capitalize %><br>
+          </div>
+          <div class="entry-req-card">
+            <p class="d-inline"><b>Extra Details:</b></p>  <%= @country.content %><br>
+          </div>
+          <div class="entry-req-card" id="bottom">
+            <p class="d-inline"><b>Upcomming Changes:</b></p> <%= @country.upcoming_changes != " " ? "N/A" : @country.upcoming_changes.capitalize %><br>
+          </div>
           <br>
-          <button type="button" class="btn btn-outline-success country-show-btn">Government Website</button>          
+          <div d-flex>
+            <a class="btn country-show-btn" href="<%= @country.government_url %>" target="_blank" class="btn btn-info" role="button">Government Website</a> 
+            <a class="btn country-show-btn" href="<%= compare_countries_path('/countries/compare' => {country_1:@country.id}) %>" class="btn btn-info" role="button">Compare Countries</a>
+          </div> 
       </div>
     </div>
 

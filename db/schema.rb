@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_08_161605) do
+ActiveRecord::Schema.define(version: 2021_06_09_213223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,16 +48,17 @@ ActiveRecord::Schema.define(version: 2021_06_08_161605) do
   create_table "countries", force: :cascade do |t|
     t.string "name"
     t.string "iso"
-    t.string "status"
-    t.text "quarantine"
-    t.text "test"
-    t.text "content"
-    t.string "government_url"
+    t.string "status", default: "N/A"
+    t.text "quarantine", default: "N/A"
+    t.text "test", default: "N/A"
+    t.text "content", default: "N/A"
+    t.string "government_url", default: "https://www.gov.uk/guidance/travel-advice-novel-coronavirus"
     t.string "color"
-    t.text "upcoming_changes"
+    t.text "upcoming_changes", default: "N/A"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "photo_url"
+    t.string "flag_url"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(version: 2021_06_08_161605) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "first_name"
     t.string "last_name"
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

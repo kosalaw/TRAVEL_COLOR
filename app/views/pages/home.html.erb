@@ -1,2 +1,49 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<!-- Create an element where the map will take place -->
+<div class="container" style="display: flex; justify-content: center;">
+  <svg id="my_dataviz" width="800" height="500" data-countries="<%= @json_array %>"></svg>
+</div>
+
+
+<script>
+// The svg
+const svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
+
+// Map and projection
+const projection = d3.geoNaturalEarth1()
+    .scale(width / 0.4 / Math.PI)
+    .translate([width / 2, height / 2])
+    .center([10,50])
+counter = 0;
+
+var myJsArray = JSON.parse(  document.getElementById("my_dataviz").dataset.countries  )
+// console.log(myJsArray);
+
+// Load external data and boot
+d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson", function(data){
+
+    // Draw the map
+    svg.append("g")
+        .selectAll("path")
+        .data(data.features)
+        .enter()
+        .append("path")
+        .attr("fill", function (d){
+          // console.log(d.properties.name);
+          if (myJsArray.includes(d.properties.name))
+          {
+            return "green";
+          }
+          else
+          {
+            return "#fff"
+          }
+        })
+        .attr("d", d3.geoPath()
+            .projection(projection)
+        )
+        .style("stroke", "#000")
+})
+</script>

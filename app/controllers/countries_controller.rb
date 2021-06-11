@@ -1,11 +1,12 @@
 class CountriesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :compare]
+  skip_before_action :authenticate_user!, only: [:index, :show, :compare, :explore]
   def index
     @countries = Country.all
   end
 
   def show
     @country = Country.find(params[:id])
+    @alert = Alert.where(country: @country, user: current_user).first
   end
 
   def compare
@@ -20,8 +21,11 @@ class CountriesController < ApplicationController
         @country_3 = Country.find(params['/countries/compare'][:country_3].to_i)
       end
     end
-    @countries = Country.all
+    @countries = Country.order(name: :asc)
   end
 
+  def explore
+    @country = Country.find(params[:id])
+  end
 
 end

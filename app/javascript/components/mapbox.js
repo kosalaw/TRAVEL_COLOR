@@ -9,8 +9,8 @@ const initMapbox = () => {
     center: [12, 55], // starting position
     zoom: 3 // starting zoom
   });
-
-  map();
+    map();
+  }
 }
 
 
