@@ -11,7 +11,7 @@ const initMapbox = () => {
   });
     map();
   }
-}
+
 
 
 export { initMapbox };
