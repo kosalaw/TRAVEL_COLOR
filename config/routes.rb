@@ -13,7 +13,10 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create]
     resources :alerts, only: [:create]
     collection do
-      get :compare
+      get :compare      
+    end
+    member do
+      get :explore
     end
   end
 
