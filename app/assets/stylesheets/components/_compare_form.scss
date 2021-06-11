@@ -67,3 +67,20 @@
 .short {
   height: 50px;
 }
+
+.compare-empty-pic {
+  background-size: cover;
+  background-position: center;
+  height: 600px;  
+  display: flex;
+  justify-content: center!important;
+  align-items: center!important;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.cmpr-emty-cntnr {  
+  width: 80%;
+  justify-content: center!important;
+  align-items: center!important;
+}
