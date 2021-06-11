@@ -31,22 +31,29 @@
         <div class="col-12 col-md-3 card">
           <img src="https://www.kiwi.com/images/hero/icon-self-service.svg" class="card-img-top rounded mx-auto d-block" alt="...">
           <div class="card-body">
-            <p class="card-text">The fastest and easiest way to cancel your booking is online via our refunds & cancellations form.</p>
-            <a type="button" href="#" class="btn">Go somewhere</a>        
+            <p class="card-text">Set up alerts to get notified by email when a country's policy changes</p>
+            <br>
+            <% if user_signed_in? %>
+              <%= link_to "Manage Alerts", user_path(current_user), class: 'btn'  %>
+            <% else %>
+              <a type="button" href="users/sign_in" class="btn">Manage alerts</a>
+            <% end %>
           </div>
         </div>
         <div class="col-12 col-md-3 card">
           <img src="https://www.kiwi.com/images/hero/icon-information.svg" class="card-img-top rounded mx-auto d-block" alt="...">
           <div class="card-body">
-            <p class="card-text">Coronavirus information Read about how the new travel restrictions might affect your trip.</p>
-            <a type="button" href="#" class="btn">Go somewhere</a>
+            <p class="card-text">Compare countries' Coronavirus restrictions data.</p>
+            <br>
+            <a type="button" href="countries/compare" class="btn">Compare countries</a>
           </div>
         </div>
         <div class=" col-12 col-md-3 card">
           <img src="https://www.kiwi.com/images/hero/icon-covid.svg" class="card-img-top rounded mx-auto d-block" alt="...">
           <div class="card-body">
-            <p class="card-text">Get 30% off your COVID-19 test Use the code KIWILGC with our partner LetsGetChecked.</p>
-            <a type="button" href="#" class="btn">Go somewhere</a>
+            <p class="card-text">Explore flights with our partner Kiwi</p>
+            <br>
+            <a type="button" href="#" class="btn">Explore flights</a>
           </div>
         </div>
       </div>
