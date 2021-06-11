@@ -27,7 +27,9 @@ import "bootstrap";
 import { loadDynamicBannerText } from '../components/banner';
 import { initMapbox } from '../components/mapbox';
 import submitToggle from "./toggle.js";
-
+import "d3";
+import "topojson";
+import "d3-queue";
 
 
 // Internal imports, e.g:
