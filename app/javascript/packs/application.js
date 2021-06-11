@@ -26,8 +26,7 @@ import { listen_to_form } from "../components/submit_form"
 import "bootstrap";
 import { loadDynamicBannerText } from '../components/banner';
 import submitToggle from "./toggle.js";
-
-
+import { initMap } from "../components/home-map";
 
 
 
@@ -41,5 +40,6 @@ document.addEventListener('turbolinks:load', () => {
   loadDynamicBannerText();
   submitToggle();
   listen_to_form();
+  initMap();
 });
 
