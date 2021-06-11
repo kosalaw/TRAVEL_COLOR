@@ -9,16 +9,105 @@
         <div class="col-12-text-center col-md-6">
           <h3 class="text-banner-two">Navigate entry restrictions and quarantine requirements for any destination with our live map.</h3>
         </div>
-      </div>        
+      </div>
     </div>
   </div>
 </div>
 
-  <div class="container-map">
-    <div class="row">
-      <div class="" id="map"></div>
-    </div> 
+  <!-- Create an element where the map will take place -->
+<div class="row">
+  <div class="col-md-8">
+    <svg id="my_dataviz" width="800" height="500" data-countries="<%= @json_array %>"></svg>
   </div>
+
+  <div class="col-md-4">
+    <div id="info">
+      <h3 id="title" >Click on a country to explore</h3>
+      <h4 id="status"></h4>
+      <h4 id="test"></h4>
+      <h4 id="quarantine"></h4>
+      <h4 id="color"></h4>
+      <h4 id="content"></h4>
+      <span id="link"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+// The svg
+const svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
+
+// Map and projection
+const projection = d3.geoNaturalEarth1()
+    .scale(width / 0.4 / Math.PI)
+    .translate([width / 2, height / 2])
+    .center([10,50])
+
+var g = svg.append("g");
+let path = d3.geoPath().projection(projection);
+let countryByIso = d3.map(); // Will let us access country data by ISO code
+
+// Load external data and boot
+var myJsArray = JSON.parse(  document.getElementById("my_dataviz").dataset.countries  )
+console.log(myJsArray);
+
+d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson", function(data){
+
+    // Draw the map
+    g.append("g")
+        .attr("id", "countries")
+        .selectAll("path") // Select path
+        .data(data.features)  // Bind geodata
+        .enter()
+        .append("path")  // Add svg path for each country
+        .attr("country", function(d) { return d.properties.name; })
+        .attr("fill", function (d){
+          // console.log(d.properties.name);
+          // console.log(myJsArray[d.properties.name]);
+
+          if (myJsArray[d.properties.name])
+          {
+            console.log(d.properties.name);
+            console.log(myJsArray[d.properties.name]);
+            return "#55A630";
+          }
+          else
+          {
+            return "#BBB"
+          }
+        })
+        .style("stroke", "#fff")
+        .attr("d", path) // Send geometry data to path function to plot points
+        .on("click", function(d){
+          console.log(d);
+          d3.select('#title').html(''); // Empty old data from the info page
+          d3.select('#color').html(''); // Empty old data from the info page
+          d3.select('#status').html(''); // Empty old data from the info page
+          d3.select('#content').html(''); // Empty old data from the info page
+          d3.select('#test').html(''); // Empty old data from the info page
+          d3.select('#quarantine').html(''); // Empty old data from the info page
+
+          d3.select('#title').html(d.properties.name);
+          if (myJsArray[d.properties.name])
+          {
+            // d3.select('#status').html(myJsArray[d.properties.name].["status"];
+            d3.select('#test').html("Requires test no older than: " + myJsArray[d.properties.name]["test"]);
+            d3.select('#quarantine').html("At destination isolate for: " + myJsArray[d.properties.name]["quarantine"]);
+            d3.select('#color').html("UK quarantine tier color: " + myJsArray[d.properties.name]["color"]);
+            // d3.select('#content').html(myJsArray[d.properties.name]["content"]);
+            var id = myJsArray[d.properties.name]["id"];
+            d3.select("#link").html(`<a href="/countries/${id}">More Info</a>`);
+          }
+          else
+          {
+            d3.select('#status').html("Closed to Tourists");
+          }
+        });
+})
+
+</script>
 
   <div class="bg-white m-0">
     <div class="container text-center">
@@ -32,7 +121,7 @@
           <img src="https://www.kiwi.com/images/hero/icon-self-service.svg" class="card-img-top rounded mx-auto d-block" alt="...">
           <div class="card-body">
             <p class="card-text">The fastest and easiest way to cancel your booking is online via our refunds & cancellations form.</p>
-            <a type="button" href="#" class="btn">Go somewhere</a>        
+            <a type="button" href="#" class="btn">Go somewhere</a>
           </div>
         </div>
         <div class="col-12 col-md-3 card">
@@ -54,9 +143,9 @@
   </div>
   <div>
     <div id="widget-holder"></div>
-    <script 
-    data-affilid="rodrigotravelcolor" 
-    data-results-only="true" 
+    <script
+    data-affilid="rodrigotravelcolor"
+    data-results-only="true"
     src="https://widgets.kiwi.com/scripts/widget-search-iframe.js">
     </script>
   </div>
