@@ -269,7 +269,7 @@ puts 'done creating users'
 puts 'adding country flag URLs'
 
 
-country_hash = {
+country_flag_hash = {
 'Austria' => 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiNGRjRCNTU7IiBkPSJNNDczLjY1NSw4OC4yNzZIMzguMzQ1QzE3LjE2Nyw4OC4yNzYsMCwxMDUuNDQzLDAsMTI2LjYyMXY3My40NzFoNTEydi03My40NzENCgkJQzUxMiwxMDUuNDQzLDQ5NC44MzMsODguMjc2LDQ3My42NTUsODguMjc2eiIvPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiNGRjRCNTU7IiBkPSJNMCwzODUuMzc5YzAsMjEuMTc3LDE3LjE2NywzOC4zNDUsMzguMzQ1LDM4LjM0NWg0MzUuMzFjMjEuMTc3LDAsMzguMzQ1LTE3LjE2NywzOC4zNDUtMzguMzQ1DQoJCXYtNzMuNDcxSDBWMzg1LjM3OXoiLz4NCjwvZz4NCjxyZWN0IHk9IjIwMC4wOSIgc3R5bGU9ImZpbGw6I0Y1RjVGNTsiIHdpZHRoPSI1MTIiIGhlaWdodD0iMTExLjgxIi8+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==',
 'Belgium' => 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDUxMS45IDUxMS45IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTEuOSA1MTEuOTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggc3R5bGU9ImZpbGw6I0ZGRTE1QTsiIGQ9Ik00NzMuNyw0MjMuNjVIMzguM2MtMjEuMSwwLTM4LjMtMTcuMS0zOC4zLTM4LjN2LTI1OC44YzAtMjEuMiwxNy4yLTM4LjMsMzguMy0zOC4zaDQzNS4zDQoJYzIxLjIsMCwzOC4zLDE3LjIsMzguMywzOC4zdjI1OC44QzUxMiw0MDYuNTUsNDk0LjgsNDIzLjY1LDQ3My43LDQyMy42NXoiLz4NCjxwYXRoIHN0eWxlPSJmaWxsOiM0NjQ2NTU7IiBkPSJNMzguMyw4OC4yNWMtMjEuMSwwLTM4LjMsMTcuMS0zOC4zLDM4LjN2MjU4LjhjMCwyMS4yLDE3LjIsMzguMywzOC4zLDM4LjNoMTMyLjNWODguMjVIMzguM3oiLz4NCjxwYXRoIHN0eWxlPSJmaWxsOiNGRjRCNTU7IiBkPSJNNDczLjcsODguMjVIMzQxLjNsMCwwdjMzNS40bDAsMGgxMzIuM2MyMS4yLDAsMzguMy0xNy4yLDM4LjMtMzguM3YtMjU4LjgNCglDNTEyLDEwNS4zNSw0OTQuOCw4OC4yNSw0NzMuNyw4OC4yNXoiLz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K',
 'Czech Republic' => 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIHN0eWxlPSJmaWxsOiM0MTQ3OUI7IiBkPSJNMTMuNyw5Ny4yNTFDNS4zMjYsMTA0LjI4NiwwLDExNC44MjksMCwxMjYuNjIxVjM4NS4zOGMwLDExLjc5MSw1LjMyNiwyMi4zMzUsMTMuNywyOS4zNjlMMjU2LDI1Ng0KCUwxMy43LDk3LjI1MXoiLz4NCjxwYXRoIHN0eWxlPSJmaWxsOiNGRjRCNTU7IiBkPSJNMTMuNyw0MTQuNzQ5YzYuNjY1LDUuNTk5LDE1LjI1OCw4Ljk3NSwyNC42NDQsOC45NzVoNDM1LjMxYzIxLjE3NywwLDM4LjM0NS0xNy4xNjcsMzguMzQ1LTM4LjM0NQ0KCVYyNTZIMjU2TDEzLjcsNDE0Ljc0OXoiLz4NCjxwYXRoIHN0eWxlPSJmaWxsOiNGNUY1RjU7IiBkPSJNNDczLjY1NSw4OC4yNzZIMzguMzQ1Yy05LjM4NiwwLTE3Ljk4LDMuMzc4LTI0LjY0NCw4Ljk3NUwyNTYsMjU2aDI1NlYxMjYuNjIxDQoJQzUxMiwxMDUuNDQzLDQ5NC44MzMsODguMjc2LDQ3My42NTUsODguMjc2eiIvPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=',
@@ -322,8 +322,66 @@ country_hash = {
 
 Alert.create!(user: user_1, country: Country.find_by_name("Ireland"))
 
-country_hash.each do |country, value|
+country_flag_hash.each do |country, value|
   Country.find_by_name(country).update(flag_url: value)
 end
 
 puts 'Completed adding flag URLs!!!'
+
+puts 'adding country ISO'
+
+country_iso_hash = {
+'Austria' => 'AT',
+'Belgium' => 'BE',
+'Czech Republic' => 'CZ',
+'Denmark' => 'DK',
+'Finland' => 'FI',
+'France' => 'FR',
+'Germany' => 'DE',
+'Hungary' => 'HU',
+'Latvia' => 'LV',
+'Liechtenstein' => 'LI',
+'Luxembourg' => 'LU',
+'Netherlands' => 'NL',
+'Norway' =>  'NO',
+'Russia' => 'RU',
+'Switzerland' => 'CH',
+'Slovakia' => 'SK',
+'Sweden' => 'SE',
+'Turkey' => 'TR',
+'Albania' => 'AL',
+'Azores' => 'horta_pt',
+'Andorra' => 'AD',
+'Armenia' => 'AM',
+'Azerbaijan' => 'AZ',
+'Bosnia and Herzegovina' =>'BA',
+'Bulgaria' => 'BG',
+'Croatia' => 'HR',
+'Cyprus' => 'CY',
+'Estonia' => 'EE',
+'Georgia' => 'GE',
+'Greece' => 'GR',
+'Gibraltar' => 'GI',
+'Ireland' => 'IE',
+'Iceland' => 'IS',
+'Italy' => 'IT',
+'Lithuania' => 'LT',
+'Madeira' => 'sao-joao-da-madeira_pt',
+'Malta' => 'MT',
+'Moldova' => 'MD',
+'Montenegro' => 'ME',
+'Poland' => 'PL',
+'Portugal' => 'PT',
+'Romania' => 'RO',
+'San Marino' => 'RMI',
+'Serbia' => 'RS',
+'Slovenia' => 'SI',
+'Spain' => 'ES',
+'Ukraine' => 'UA'
+}
+
+country_iso_hash.each do |country, value|
+  Country.find_by_name(country).update(iso: value)
+end
+
+puts 'Completed adding ISOs!!!'

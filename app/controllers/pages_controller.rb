@@ -3,12 +3,19 @@ class PagesController < ApplicationController
 
   def home
     countries = Country.all
-    @temp_array = []
+    @temp_array = {}
 
     countries.each do |country|
       if country.status == nil || country.status == " "
-          country.name
-          @temp_array << country.name
+          @temp_array[country.name] = {
+            content: country.content,
+            status: country.status,
+            test: country.test,
+            quarantine: country.quarantine,
+            color: country.color,
+            upcoming_changes: country.upcoming_changes
+          }
+
       end
     end
 

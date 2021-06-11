@@ -7,13 +7,17 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
-  root to: 'countries#index' #'pages#home'
+  root to: 'countries#index'
+  # root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :countries, only: [:index, :show] do
     resources :reviews, only: [:create]
     resources :alerts, only: [:create]
     collection do
-      get :compare
+      get :compare      
+    end
+    member do
+      get :explore
     end
   end
 

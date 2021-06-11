@@ -1,5 +1,5 @@
 class CountriesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :compare]
+  skip_before_action :authenticate_user!, only: [:index, :show, :compare, :explore]
   def index
     @countries = Country.all
   end
@@ -23,4 +23,9 @@ class CountriesController < ApplicationController
     end
     @countries = Country.order(name: :asc)
   end
+
+  def explore
+    @country = Country.find(params[:id])
+  end
+
 end
