@@ -1,3 +1,21 @@
+<style>
+  svg {
+      background-color: rgb(150,200,240);
+  }
+  .hidden {
+        display: none;
+  }
+  div.tooltip {
+        color: #222;
+        background: #fff;
+        border-radius: 3px;
+        box-shadow: 0px 0px 2px 0px #a6a6a6;
+        padding: .2em;
+        text-shadow: #f5f5f5 0 1px 0;
+        opacity: 0.9;
+        position: absolute;
+</style>
+
 <div id="orange-home-page-banner">
   <div class="container">
     <div class="row">
@@ -20,6 +38,7 @@
     <div class="row">
       <div class="col-md-8">
         <svg id="my_dataviz" width="800" height="500" data-countries="<%= @json_array %>"></svg>
+        <div class="tooltip"></div>
       </div>
 
       <div class="col-md-4 text-center">
@@ -38,6 +57,7 @@
     </div>
   </div>
 </div>
+
 
   <div class="bg-white m-0">
     <div class="container text-center">

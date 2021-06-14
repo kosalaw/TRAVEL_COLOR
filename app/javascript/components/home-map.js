@@ -37,32 +37,21 @@ const initMap = () => {
         d3.select('#quarantine').html("At destination isolate for: " + myJsArray[d.properties.name]["quarantine"]);
         d3.select('#color').html("UK quarantine tier color: " + myJsArray[d.properties.name]["color"]);
         // d3.select('#content').html(myJsArray[d.properties.name]["content"]);
-        var id = myJsArray[d.properties.name]["id"];
+
+        let id = myJsArray[d.properties.name]["id"];
+
         d3.select("#link").html(`<a href="/countries/${id}">More Info</a>`);
       }
       else {
         d3.select('#status').html("Closed to Tourists");
+        let id = myJsArray[d.properties.name]["id"];
         d3.select("#link").html(`<a href="/countries/${id}">More Info</a>`);
 
       }
     }
 
-    let mouseOver = function(d) {
-        let country = d3.select(this).raise();
-          // .transition()
-          // .duration(200)
-          country.style("opacity", 1)
-          country.style("stroke", "black")
 
-      }
-      let mouseLeave = function(d) {
-        d3.select(this)
-          // .transition()
-          // .duration(200)
-          .style("opacity", 0.8)
-          .style("stroke", "white")
-      }
-
+    let tooltip = d3.select("div.tooltip");
 
 
     d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson", function (error, data) {
@@ -87,9 +76,22 @@ const initMap = () => {
         })
         .style("stroke", "#fff")
         .style("opacity", 0.8)
-        .on("mouseover", mouseOver)
-        .on("mouseleave", mouseLeave)
         .on("click", onClick)
+        .on("mouseover",function(d,i){
+                d3.select(this).raise().style("opacity", 1).style("stroke", "black");
+                return tooltip.style("hidden", false).html(d.properties.name);
+            })
+            .on("mousemove",function(d){
+                tooltip.classed("hidden", false)
+                       .style("top", ((d3.event.pageY) - 300) + "px")
+                       .style("left", (d3.event.pageX + 10) + "px")
+                       .html(d.properties.name);
+            })
+            .on("mouseout",function(d,i){
+                d3.select(this).style("opacity", 0.8).style("stroke", "white");
+                tooltip.classed("hidden", true);
+            });
+
 
     })
   }
