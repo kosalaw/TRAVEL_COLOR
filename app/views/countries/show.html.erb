@@ -53,10 +53,14 @@
 
     <div class="col cntry-shw-reviews">
       <h2> Users’ feedback </h2>
-      <%= @country.reviews.sum(:stars).fdiv(@country.reviews.size).round(1) %>
-      <% @country.reviews.sum(:stars).fdiv(@country.reviews.size).round.times do %>
-        <i class="fas fa-star"></i>
-      <% end  %>
+      <% if @country.reviews.length > 0 %>
+        <%= @country.reviews.sum(:stars).fdiv(@country.reviews.size).round(1) %>
+        <% @country.reviews.sum(:stars).fdiv(@country.reviews.size).round.times do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+      <% else %>
+         <p>Be the first to leave a review!</p>
+      <% end %>
       <br>
       <br>
       <div class="container">
