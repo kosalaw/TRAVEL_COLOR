@@ -1,4 +1,4 @@
-<div id="orange-home-page-banner">
+<div id="main-home-page-banner">
   <div class="container">
     <div class="row">
         <div class="col-md-6 d-none d-md-block">
@@ -13,17 +13,15 @@
     </div>
   </div>
 </div>
-
-  <!-- Create an element where the map will take place -->
-<div class="container-map">
-  <div class="">
-    <div class="row">
-      <div class="col-md-8">
-        <svg id="my_dataviz" width="800" height="500" data-countries="<%= @json_array %>"></svg>
-      </div>
-
-      <div class="col-md-4 text-center">
-        <div class="container" id="box-country">
+<!-- The Modal -->
+<div id="myModal" class="modal">
+<div id="myBtn"></div>
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+      <div class="container text-center" id="box-co3suntry">
+        <div class="row">
+          <div class="col-12">
           <div id="info">
             <h3 id="title">Click on a country to explore</h3>
             <h4 id="status"></h4>
@@ -33,9 +31,59 @@
             <h4 id="content"></h4>
             <span id="link"></span>
           </div>
+          </div>
         </div>
       </div>
-    </div>
+  </div>
+</div>
+
+
+
+<!-- Open modal box for the map --> 
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+  <!-- Create an element where the map will take place -->
+<div class="container-map">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-sm-12">
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Hey!!</strong> Click on a country to explore.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+        <svg id="my_dataviz" width="800" height="500" data-countries="<%= @json_array %>"></svg>
+      </div>    
+    </div>  
   </div>
 </div>
 <script>
@@ -46,9 +94,9 @@ const svg = d3.select("svg"),
 
 // Map and projection
 const projection = d3.geoNaturalEarth1()
-    .scale(width / 0.4 / Math.PI)
+    .scale(width / 0.25 / Math.PI)
     .translate([width / 2, height / 2])
-    .center([10,50])
+    .center([0,60])
 
 var g = svg.append("g");
 let path = d3.geoPath().projection(projection);
@@ -83,10 +131,11 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
             return "#BBB"
           }
         })
-        .style("stroke", "#fff")
+        .style("stroke", "#000")
         .attr("d", path) // Send geometry data to path function to plot points
         .on("click", function(d){
           console.log(d);
+          modal.style.display = "block";
           d3.select('#title').html(''); // Empty old data from the info page
           d3.select('#color').html(''); // Empty old data from the info page
           d3.select('#status').html(''); // Empty old data from the info page
