@@ -328,6 +328,8 @@ end
 
 puts 'Completed adding flag URLs!!!'
 
+############################################################################################################
+
 puts 'adding country ISO'
 
 country_iso_hash = {
@@ -385,3 +387,123 @@ country_iso_hash.each do |country, value|
 end
 
 puts 'Completed adding ISOs!!!'
+
+#########################################################################################################################
+
+puts 'adding country government website URLs'
+
+country_gvnmnt_url_hash = {
+'Austria' => 'https://www.austria.info/en/service-and-facts/coronavirus-information',
+'Belgium' => 'https://www.info-coronavirus.be/en/travels/',
+'Czech Republic' => 'https://www.mvcr.cz/mvcren/article/coronavirus-information-of-moi.aspx',
+'Denmark' => 'https://um.dk/en/travel-and-residence/coronavirus-covid-19/',
+'Finland' => 'https://valtioneuvosto.fi/en/entry-restrictions',
+'France' => 'https://www.gouvernement.fr/en/coronavirus-covid-19',
+'Germany' => 'https://www.auswaertiges-amt.de/en/einreiseundaufenthalt/EinreiseUndAufenthalt',
+'Hungary' => 'https://www.bud.hu/en/covid_19',
+'Latvia' => 'https://www.mfa.gov.lv/en/consular-information/news/66019-emergency-situation-in-latvia-to-restrict-the-spread-of-covid-19',
+'Liechtenstein' => 'https://tourismus.li/en/our-country/about-liechtenstein/current-information-on-covid-19-in-the-principality-of-liechtenstein/',
+'Luxembourg' => 'https://covid19.public.lu/en.html',
+'Netherlands' => 'https://www.government.nl/topics/coronavirus-covid-19',
+'Norway' =>  'https://www.fhi.no/en/op/novel-coronavirus-facts-advice/facts-and-general-advice/entry-quarantine-travel-covid19/#map-of-nordic-region-europe-with-status-for-entry-quarantine',
+'Russia' => 'http://government.ru/en/',
+'Switzerland' => 'https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov.html',
+'Slovakia' => 'https://korona.gov.sk/en/',
+'Sweden' => 'https://www.government.se/',
+'Turkey' => 'https://covid19.tubitak.gov.tr/en/homepage',
+'Albania' => 'http://albania.al/',
+'Azores' => 'https://destinoseguro.azores.gov.pt/',
+'Andorra' => 'https://www.govern.ad/coronavirus',
+'Armenia' => 'https://www.gov.am/en/covid-travel-restrictions/',
+'Azerbaijan' => 'https://azerbaijan.travel/covid-19-en',
+'Bosnia and Herzegovina' =>'http://www.fbihvlada.gov.ba/english/',
+'Bulgaria' => 'https://www.tourism.government.bg/en/kategorii/covid-19',
+'Croatia' => 'https://mup.gov.hr/uzg-covid/english/286212',
+'Cyprus' => 'https://www.pio.gov.cy/coronavirus/eng',
+'Estonia' => 'https://valitsus.ee/en',
+'Georgia' => 'https://georgia.gov/covid-19-coronavirus-georgia/covid-19-travel-restrictions',
+'Greece' => 'https://travel.gov.gr/#/',
+'Gibraltar' => 'https://www.visitgibraltar.gi/covid-19',
+'Ireland' => 'https://www.gov.ie/en/campaigns/75d92-covid-19-travel-advice/',
+'Iceland' => 'https://www.covid.is/categories/travel-to-and-within-iceland',
+'Italy' => 'https://www.salute.gov.it/portale/nuovocoronavirus/dettaglioContenutiNuovoCoronavirus.jsp?lingua=english&id=5412&area=nuovoCoronavirus&menu=vuoto',
+'Lithuania' => 'https://www.govilnius.lt/media-news/important-information-regarding-the-coronavirus',
+'Madeira' => 'http://www.visitmadeira.pt/en-gb/useful-info/corona-virus-(covid-19)/information-to-visitors-(covid-19)',
+'Malta' => 'https://foreignandeu.gov.mt/en/Government/Pages/COVID-19-Info.aspx',
+'Moldova' => 'https://gov.md/en',
+'Montenegro' => 'https://www.montenegro.travel/en/info/montenegro',
+'Poland' => 'https://www.gov.pl/web/coronavirus/travel',
+'Portugal' => 'https://www.visitportugal.com/en/content/covid-19-measures-implemented-portugal',
+'Romania' => 'https://www.mae.ro/en/node/2084',
+'San Marino' => 'https://www.gov.sm/',
+'Serbia' => 'https://www.srbija.gov.rs/#covid-19',
+'Slovenia' => 'https://www.gov.si/en/topics/coronavirus-disease-covid-19/border-crossing/',
+'Spain' => 'https://www.spth.gob.es/',
+'Ukraine' => 'https://visitukraine.today/'
+}
+
+country_gvnmnt_url_hash.each do |country, value|
+  Country.find_by_name(country).update(government_url: value)
+end
+
+puts 'Completed adding government website URLs!!!'
+
+#######################################################################################################################
+
+puts 'adding country banner URLs'
+
+country_banner_url_hash = {
+'Austria' => 'https://source.unsplash.com/3O7C8le4f5o/1600x900',
+'Belgium' => 'https://source.unsplash.com/3lxrM5yvkcI/1600x900',
+'Czech Republic' => 'https://source.unsplash.com/ubQDHALqKiM/1600x900',
+'Denmark' => 'https://source.unsplash.com/tcE9zSc2SU8/1600x900',
+'Finland' => 'https://source.unsplash.com/JvV4bT_vLt8/1600x900',
+'France' => 'https://source.unsplash.com/R5scocnOOdM/1600x900',
+'Germany' => 'https://source.unsplash.com/mtfTz0FnwBw/1600x900',
+'Hungary' => 'https://source.unsplash.com/EOPxyBK53pc/1600x900',
+'Latvia' => 'https://source.unsplash.com/uft-MemToy0/1600x900',
+'Liechtenstein' => 'https://source.unsplash.com/DxgjKKPhTi0/1600x900',
+'Luxembourg' => 'https://source.unsplash.com/fqRooyIkTDs/1600x900',
+'Netherlands' => 'https://source.unsplash.com/x2XDMf-rirc/1600x900',
+'Norway' =>  'https://source.unsplash.com/e1sTn8-hGEE/1600x900',
+'Russia' => 'https://source.unsplash.com/xRf_ux39v9w/1600x900',
+'Switzerland' => 'https://source.unsplash.com/hmBJtWxFOdg/1600x900',
+'Slovakia' => 'https://source.unsplash.com/14kPGsdTELE/1600x900',
+'Sweden' => 'https://source.unsplash.com/bK2nx6uEJnc/1600x900',
+'Turkey' => 'https://source.unsplash.com/nTE88akjSos/1600x900',
+'Albania' => 'https://source.unsplash.com/699Jtv8f6MY/1600x900',
+'Azores' => 'https://source.unsplash.com/kgL3KMjRNnY/1600x900',
+'Andorra' => 'https://source.unsplash.com/GWsi4vf0Nnw/1600x900',
+'Armenia' => 'https://source.unsplash.com/VQ07UveM3-U/1600x900',
+'Azerbaijan' => 'https://source.unsplash.com/tMztctdTK3c/1600x900',
+'Bosnia and Herzegovina' =>'https://source.unsplash.com/GZjH4cVGgCs/1600x900',
+'Bulgaria' => 'https://source.unsplash.com/61iLua7pgn8/1600x900',
+'Croatia' => 'https://source.unsplash.com/ybUdMTw7-0c/1600x900',
+'Cyprus' => 'https://source.unsplash.com/hUrjGZ1sg0U/1600x900',
+'Estonia' => 'https://source.unsplash.com/KhOjSm5ShJs/1600x900',
+'Georgia' => 'https://source.unsplash.com/Edx0NpJ29fQ/1600x900',
+'Greece' => 'https://source.unsplash.com/tPPi0jzLP_w/1600x900',
+'Gibraltar' => 'https://source.unsplash.com/dVoNU7j3o_0/1600x900',
+'Ireland' => 'https://source.unsplash.com/ezJhm4xrHAM/1600x900',
+'Iceland' => 'https://source.unsplash.com/meOFNlRbHmY/1600x900',
+'Italy' => 'https://source.unsplash.com/db2MwXX-0CQ/1600x900',
+'Lithuania' => 'https://source.unsplash.com/f4vWB9JegpY/1600x900',
+'Madeira' => 'https://source.unsplash.com/d3I85kxrZLE/1600x900',
+'Malta' => 'https://source.unsplash.com/5-czY1bIqsQ/1600x900',
+'Moldova' => 'https://source.unsplash.com/7b2TYicH-xI/1600x900',
+'Montenegro' => 'https://source.unsplash.com/Ax86jYak1MY/1600x900',
+'Poland' => 'https://source.unsplash.com/b_RemSkG2uE/1600x900',
+'Portugal' => 'https://source.unsplash.com/cWdefpoj3PU/1600x900',
+'Romania' => 'https://source.unsplash.com/eW4ctVJqcIM/1600x900',
+'San Marino' => 'https://source.unsplash.com/gPgsRyZFiQQ/1600x900',
+'Serbia' => 'https://source.unsplash.com/VkeuvuTOCdc/1600x900',
+'Slovenia' => 'https://source.unsplash.com/7Pa6z4Pl2Jo/1600x900',
+'Spain' => 'https://source.unsplash.com/hECemcb_3cc/1600x900',
+'Ukraine' => 'https://source.unsplash.com/NXWMVjvFQoM/1600x900'
+}
+
+country_banner_url_hash.each do |country, value|
+  Country.find_by_name(country).update(photo_url: value)
+end
+
+puts 'Completed adding banner URLs!!!'

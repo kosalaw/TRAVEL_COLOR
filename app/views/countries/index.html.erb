@@ -1,4 +1,23 @@
 <div id="main-home-page-banner">
+=======
+<style>
+  svg {
+      background-color: rgb(150,200,240);
+  }
+  .hidden {
+        display: none;
+  }
+  div.tooltip {
+        color: #222;
+        background: #fff;
+        border-radius: 3px;
+        box-shadow: 0px 0px 2px 0px #a6a6a6;
+        padding: .2em;
+        text-shadow: #f5f5f5 0 1px 0;
+        opacity: 0.9;
+        position: absolute;
+</style>
+
   <div class="container">
     <div class="row">
         <div class="col-md-6 d-none d-md-block">
@@ -22,6 +41,20 @@
       <div class="container text-center" id="box-co3suntry">
         <div class="row">
           <div class="col-12">
+
+
+  <!-- Create an element where the map will take place -->
+<div class="container-map">
+  <div class="">
+    <div class="row">
+      <div class="col-md-8">
+        <svg id="my_dataviz" width="800" height="500" data-countries="<%= @json_array %>"></svg>
+        <div class="tooltip"></div>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <div class="container" id="box-country">
+
           <div id="info">
             <h3 id="title">Click on a country to explore</h3>
             <h4 id="status"></h4>
@@ -86,82 +119,6 @@ window.onclick = function(event) {
     </div>  
   </div>
 </div>
-<script>
-// The svg
-const svg = d3.select("svg"),
-    width = +svg.attr("width"),
-    height = +svg.attr("height");
-
-// Map and projection
-const projection = d3.geoNaturalEarth1()
-    .scale(width / 0.25 / Math.PI)
-    .translate([width / 2, height / 2])
-    .center([0,60])
-
-var g = svg.append("g");
-let path = d3.geoPath().projection(projection);
-let countryByIso = d3.map(); // Will let us access country data by ISO code
-
-// Load external data and boot
-var myJsArray = JSON.parse(  document.getElementById("my_dataviz").dataset.countries  )
-console.log(myJsArray);
-
-d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson", function(data){
-
-    // Draw the map
-    g.append("g")
-        .attr("id", "countries")
-        .selectAll("path") // Select path
-        .data(data.features)  // Bind geodata
-        .enter()
-        .append("path")  // Add svg path for each country
-        .attr("country", function(d) { return d.properties.name; })
-        .attr("fill", function (d){
-          // console.log(d.properties.name);
-          // console.log(myJsArray[d.properties.name]);
-
-          if (myJsArray[d.properties.name])
-          {
-            console.log(d.properties.name);
-            console.log(myJsArray[d.properties.name]);
-            return "#55A630";
-          }
-          else
-          {
-            return "#BBB"
-          }
-        })
-        .style("stroke", "#000")
-        .attr("d", path) // Send geometry data to path function to plot points
-        .on("click", function(d){
-          console.log(d);
-          modal.style.display = "block";
-          d3.select('#title').html(''); // Empty old data from the info page
-          d3.select('#color').html(''); // Empty old data from the info page
-          d3.select('#status').html(''); // Empty old data from the info page
-          d3.select('#content').html(''); // Empty old data from the info page
-          d3.select('#test').html(''); // Empty old data from the info page
-          d3.select('#quarantine').html(''); // Empty old data from the info page
-
-          d3.select('#title').html(d.properties.name);
-          if (myJsArray[d.properties.name])
-          {
-            // d3.select('#status').html(myJsArray[d.properties.name].["status"];
-            d3.select('#test').html("Requires test no older than: " + myJsArray[d.properties.name]["test"]);
-            d3.select('#quarantine').html("At destination isolate for: " + myJsArray[d.properties.name]["quarantine"]);
-            d3.select('#color').html("UK quarantine tier color: " + myJsArray[d.properties.name]["color"]);
-            // d3.select('#content').html(myJsArray[d.properties.name]["content"]);
-            var id = myJsArray[d.properties.name]["id"];
-            d3.select("#link").html(`<a class="btn" href="/countries/${id}" target="_blank" >More Info</a>`);
-          }
-          else
-          {
-            d3.select('#status').html("Closed to Tourists");
-          }
-        });
-});
-</script>
-
   <div class="bg-white m-0">
     <div class="container text-center">
       <div class="row">

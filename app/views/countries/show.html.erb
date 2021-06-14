@@ -53,28 +53,52 @@
 
     <div class="col cntry-shw-reviews">
       <h2> Users’ feedback </h2>
+      <%= @country.reviews.sum(:stars).fdiv(@country.reviews.size).round(1) %>
+      <% @country.reviews.sum(:stars).fdiv(@country.reviews.size).round.times do %>
         <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <br>
-        <br>
-          <p>“Just travelled from London to Marseille, and had a horrible time landing at the airport, where I had to wait one hour to get tested.”</p>
-          <div class="d-inline">- Theresa,</div>
-          <div class="d-inline"> 01/07/21 </div>
-          <br>
-          <br>
-          <p>“They cancelled my flight last minute”</p>
-          <div class="d-inline">- Julia,</div>
-          <div class="d-inline"> 01/10/21 </div>  
-          <br>
-          <br>
-          <p>“Had a hard time returning from France at Luton airport”</p>
-          <div class="d-inline">- Rob,</div>
-          <div class="d-inline"> 01/08/21 </div>  
+      <% end  %>
+      <br>
+      <br>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-4">
+              <% @country.reviews.first(5).each do |review| %>
+                <div class="container">
+                  <div>
+                    "<%= review.content %>"
+                  </div>
+                  - <b><%= review.user.first_name %></b>
+                  <br>
+                  <br>
+                </div>
+              <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-4">
+            <%= simple_form_for [@country, @review] do |f| %>
+              <%= f.input :stars, collection: (1..5).to_a, label: "Rate your experience" %>
+              <%= f.input :content  %>
+              <%= f.submit %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-
   </div>
-
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
