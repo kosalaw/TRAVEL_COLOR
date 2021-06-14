@@ -21,17 +21,29 @@ My Account
 
     <div class="col user-shw-alerts">
       <h1>My Alerts: </h1>
-
       <ol> 
         <% @alerts.each do |alert|  %>
             <li> <%= link_to alert.country.name, country_path(alert.country_id)  %> 
             <div class="d-inline bell"><i class="far fa-bell-slash"></i></div>
             <%= link_to "Mute", alert, method: :delete , data: {confirm: "Are you sure?"} %> </li>
-            
           <% end %>
       </ol> 
     </div>
+  </div>
 
+
+  <div class="col user-shw-alerts">
+  <h1>My Reviews: </h1>
+  <ol>
+    <% @user.reviews.each do |review|  %>
+        <li> <%= link_to review.country.name, country_path(review.country_id)  %>
+        <%= link_to  review, method: :delete , data: {confirm: "Are you sure?"} do %>
+          <i class="fas fa-trash"></i>
+        <% end %>
+      </li>
+
+      <% end %>
+  </ol>
   </div>
 
 </div>
