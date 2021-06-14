@@ -37,7 +37,9 @@ const initMap = () => {
         d3.select('#quarantine').html("At destination isolate for: " + myJsArray[d.properties.name]["quarantine"]);
         d3.select('#color').html("UK quarantine tier color: " + myJsArray[d.properties.name]["color"]);
         // d3.select('#content').html(myJsArray[d.properties.name]["content"]);
+
         let id = myJsArray[d.properties.name]["id"];
+
         d3.select("#link").html(`<a href="/countries/${id}">More Info</a>`);
       }
       else {
@@ -48,21 +50,9 @@ const initMap = () => {
       }
     }
 
-    // let mouseOver = function(d) {
-    //     d3.select(this).style("opacity", 1).style("stroke", "black");
-    //     console.log(d.properties.name)
-    //     return tooltip.style("hidden", false).html(d.name);
-
-    //   }
-    // let mouseLeave = function(d) {
-    //   d3.select(this)
-    //     // .transition()
-    //     // .duration(200)
-    //     .style("opacity", 0.8)
-    //     .style("stroke", "white")
-    // }
 
     let tooltip = d3.select("div.tooltip");
+
 
     d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson", function (error, data) {
       // if(error) return console.error(error);
