@@ -1,5 +1,5 @@
 <% if !hide %>
-  <h5>Colour</h5>
+  <div class="d-flex align-items-baseline" style="color: #9f9aa4; font-size: 20px"><h5>Colour</h5><i class="fas fa-tint ml-2"></i></div>
 <% else %>
   <h5 class="trans"> jhfjyfkug</h5>
 <% end %>
@@ -8,7 +8,7 @@
 <div class="d-flex justify-content-center">
   <div>
     <div class="d-flex justify-content-center">
-      <div class="color-box" style="background-color: <%= country&.color_code %>"></div>
+      <div style="color: <%= country&.color_code %>; font-size: 40px"><i class="fas fa-globe-europe"></i></div>
     </div>
     <br>
     <p style="text-align: center"><%= country&.color %></p>
@@ -17,18 +17,13 @@
 <br>
 
 <% if !hide %>
-  <h5>Infos</h5>
+  <div class="d-flex align-items-baseline" style="color: #9f9aa4; font-size: 20px"><h5>Infos</h5><i class="fas fa-info-circle ml-2"></i></div>
 <% else %>
   <h5 class="trans"> jhfjyfkug</h5>
 <% end %>
 <hr class="solid">
 <br>
 <div class="module">
-  <div class="d-flex justify-content-center">
-    <div>
-      <span style="color: #9f9aa4; font-size: 40px"><i class="fas fa-info-circle"></i></span>
-    </div>
-  </div>
   <% if country.content.present? %>
     <div class="filled f-start mt-3">
       <p class="module_info"><%= country&.content %></p>
@@ -41,20 +36,14 @@
 </div>
 <br>
 
-
 <% if !hide %>
-  <h5>Test</h5>
+  <div class="d-flex align-items-baseline" style="color: #9f9aa4; font-size: 20px"><h5>Test</h5><i class="fas fa-vial ml-2"></i></div>
 <% else %>
   <h5 class="trans"> jhfjyfkug</h5>
 <% end %>
 <hr class="solid">
 <br>
 <div class="module">
-  <div class="d-flex justify-content-center">
-    <div>
-      <span style="color: #9f9aa4; font-size: 40px"><i class="fas fa-vial"></i></span>
-    </div>
-  </div>
   <% if country.test.present? %>
     <div class="filled short mt-3">
       <p><%= country&.test %></p>
@@ -67,22 +56,14 @@
 </div>
 <br>
 
-
-
-
 <% if !hide %>
-  <h5>Status</h5>
+  <div class="d-flex align-items-baseline" style="color: #9f9aa4; font-size: 20px"><h5>Status</h5><i class="fas fa-virus ml-2"></i></div>
 <% else %>
   <h5 class="trans"> jhfjyfkug</h5>
 <% end %>
 <hr class="solid">
 <br>
 <div class="module">
-  <div class="d-flex justify-content-center">
-    <div>
-      <span style="color: #9f9aa4; font-size: 40px"><i class="fas fa-virus"></i></span>
-    </div>
-  </div>
   <% if country.status.present? %>
     <div class="filled short mt-3">
       <p><%= country&.status %></p>
@@ -95,20 +76,14 @@
 </div>
 <br>
 
-
 <% if !hide %>
-  <h5>Quarantine</h5>
+  <div class="d-flex align-items-baseline" style="color: #9f9aa4; font-size: 20px"><h5>Quarantine</h5><i class="fas fa-house-user ml-2"></i></div>
 <% else %>
   <h5 class="trans"> jhfjyfkug</h5>
 <% end %>
 <hr class="solid">
 <br>
 <div class="module">
-  <div class="d-flex justify-content-center">
-    <div>
-      <span style="color: #9f9aa4; font-size: 40px"><i class="fas fa-house-user"></i></span>
-    </div>
-  </div>
   <% if country.quarantine.present? %>
     <div class="filled short mt-3">
       <p><%= country&.quarantine %></p>
@@ -121,20 +96,14 @@
 </div>
 <br>
 
-
 <% if !hide %>
-  <h5>Government URL</h5>
+  <div class="d-flex align-items-baseline" style="color: #9f9aa4; font-size: 20px"><h5>Government URL</h5><i class="fas fa-link ml-2"></i></div>
 <% else %>
   <h5 class="trans"> jhfjyfkug</h5>
 <% end %>
 <hr class="solid">
 <br>
 <div class="module_one">
-  <div class="d-flex justify-content-center">
-    <div>
-      <span style="color: #9f9aa4; font-size: 40px"><i class="fas fa-link"></i></span>
-    </div>
-  </div>
   <% if country.government_url.present? %>
     <div class="filled short mt-3">
       <a class="module_URL" href="<%= country&.government_url %>"><%= country&.government_url %></a>
@@ -147,20 +116,14 @@
 </div>
 <br>
 
-
 <% if !hide %>
-  <h5>Upcoming changes</h5>
+  <div class="d-flex align-items-baseline" style="color: #9f9aa4; font-size: 20px"><h5>Upcoming changes</h5><i class="fas fa-plus-circle ml-2"></i></div>
 <% else %>
   <h5 class="trans"> jhfjyfkug</h5>
 <% end %>
 <hr class="solid">
 <br>
 <div class="module">
-  <div class="d-flex justify-content-center">
-    <div>
-      <span style="color: #9f9aa4; font-size: 40px"><i class="fas fa-plus-circle"></i></span>
-    </div>
-  </div>
   <% if country.upcoming_changes.present? %>
     <div class="filled mt-3">
       <p><%= country&.upcoming_changes %></p>
@@ -172,4 +135,3 @@
   <% end %>
 </div>
 <br>
-
