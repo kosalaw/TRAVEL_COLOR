@@ -22,6 +22,7 @@ class CountriesController < ApplicationController
   end
 
   def show
+    @review = Review.new
     @country = Country.find(params[:id])
     @alert = Alert.where(country: @country, user: current_user).first
   end
