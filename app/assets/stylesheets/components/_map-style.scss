@@ -7,6 +7,7 @@ svg {
 div.tooltip {
   color: #222;
   background: #fff;
+  border: 1px solid black;
   border-radius: 3px;
   box-shadow: 0px 0px 2px 0px #a6a6a6;
   padding: 0.2em;
@@ -14,3 +15,16 @@ div.tooltip {
   opacity: 0.9;
   position: absolute;
 }
+
+
+
+
+
+.list-card > ul {
+  padding: 2px 20px;
+}
+
+ul > li {
+  font-size: 12px;
+}
+

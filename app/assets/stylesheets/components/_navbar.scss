@@ -1,14 +1,14 @@
 .navbar-lewagon {
+  background-color: #fff;
   background-position: center;
   background-repeat: no-repeat;
   justify-content: space-between;
   max-height: 80px;
-  position:fixed;
-  top:0;
+  position: fixed;
+  top: 0;
   width: 100%;
   z-index:1000;
   background-color: #F4F4F4;
-
 }
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
