@@ -5,14 +5,7 @@ footer {
   bottom: 0;
   left: 0;
 }
-footer::before {
-  content: "";
-  position: relative;
-  left: 0;
-  top: 100px;
-  height: 1px;
-  width: 100%;
-}
+
 footer .content {
   max-width: 1250px;
   margin: auto;
