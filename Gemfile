@@ -33,6 +33,7 @@ gem 'cloudinary', '~> 1.16.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
+gem 'mjml-rails'
 
 gem 'letter_opener', group: :development
 gem 'postmark-rails'
