@@ -1,0 +1,49 @@
+<mjml>
+  <mj-body>
+    <mj-raw>
+    </mj-raw>
+    <mj-section background-color="#00a891">
+      <mj-column>
+        <mj-text font-size="20px" color="#fff">Travel Color</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-raw>
+    </mj-raw>
+    <mj-section background-color="#fafafa">
+      <mj-column width="400px">
+        <mj-text font-size="12px" font-family="Lato" color="#626262"><h2><b>Hi <%= @alert.user.first_name %>, you have a new alert!</mj-text>
+        <mj-text color="#525252">
+          <% @errors_array.each do |error| %>
+            <p><strong>What has changed?:</strong> <%= error[:error].capitalize %></p>
+            <p><strong>Previously was:</strong> <%= error[:db] %></p>
+            <p><strong>Has changed to:</strong> <%= (error[:new] == nil) ? "NIL" : error[:new] %></p>
+          <% end %>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    </mj-section>
+    <mj-section padding="20px 0px">
+    </mj-section>
+    <mj-section background-color="white">
+      <mj-column>
+        <mj-image width="10000px" src="https://images.unsplash.com/photo-1502301197179-65228ab57f78?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=664&q=80"></mj-image>
+      </mj-column>
+      <mj-column>
+        <mj-text font-style="italic" font-size="20px" font-family="Helvetica Neue" color="#626262"><p><b><%= @alert.country.name %> government's policies have changed</b></p></mj-text>
+        <mj-text color="#525252">
+          <p>Status: <%= @alert.country.status %></p>
+          <p>Quarantine: <%= @alert.country.quarantine %></p>
+          <p>Test: <%= @alert.country.test %></p>
+          <p>Content: <%= @alert.country.content %></p>
+          <p>Goverment URL: <%= @alert.country.government_url %></p>
+          <p>Colour: <%= @alert.country.color %></p>
+          <p>Upcoming changes: <%= @alert.country.upcoming_changes %></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="20px 0px">
+    </mj-section>
+    <mj-section padding="30px 0px" background-color="#00a891">
+    </mj-section>
+  </mj-body>
+</mjml>
