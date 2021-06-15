@@ -32,8 +32,9 @@
         </li>
       <% else %>
         <li type="button" class="nav-item d-flex">
+          <b><%= link_to "Compare Countries", "/countries/compare", class: "nav-link" %> </b>
           <b> <%= link_to "Home", "/", class: "nav-link" %> </b>
-          <b> <%= link_to "Login", new_user_session_path, class: "nav-link" %> </b>  
+          <b> <%= link_to "Login", new_user_session_path, class: "nav-link" %> </b>
         </li>
           
       <% end %>

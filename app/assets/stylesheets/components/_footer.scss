@@ -6,6 +6,7 @@ footer {
   left: 0;
 }
 footer::before {
+  content: "";
   position: relative;
   left: 0;
   top: 100px;
