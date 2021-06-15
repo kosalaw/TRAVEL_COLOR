@@ -1,17 +1,16 @@
 footer {
+  margin-top: auto;
   background: #00a991;
   width: 100%;
   bottom: 0;
   left: 0;
 }
 footer::before {
-  content: "";
-  position: absolute;
+  position: relative;
   left: 0;
   top: 100px;
   height: 1px;
   width: 100%;
-  background: #afafb6;
 }
 footer .content {
   max-width: 1250px;
@@ -226,4 +225,7 @@ footer .bottom-details .bottom_text {
   footer .content .link-boxes .input-box {
     width: 100%;
   }
+}
+.min-height {
+  min-height: calc(100vh - 86px);
 }
