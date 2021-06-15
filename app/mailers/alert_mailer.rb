@@ -20,8 +20,8 @@ class AlertMailer < ApplicationMailer
 
   def subscribe
     # Real
-    @country = Country.find(params[:id])
-    @user = User.find(params[:id])
+    @country = Country.find(params[:country_id])
+    @user = User.find(params[:user_id])
 
     # Fake
     # @country = Country.first
