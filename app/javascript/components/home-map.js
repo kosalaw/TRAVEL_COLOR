@@ -7,9 +7,9 @@ const initMap = () => {
     // Map and projection
     const projection = d3
       .geoNaturalEarth1()
-      .scale(width / 0.4 / Math.PI)
+      .scale(width / 0.37 / Math.PI)
       .translate([width / 2, height / 2])
-      .center([10, 50]);
+      .center([15, 50]);
 
     var g = svg.append("g");
     let path = d3.geoPath().projection(projection);
@@ -57,6 +57,7 @@ const initMap = () => {
     };
 
     let tooltip = d3.select("div.tooltip");
+    tooltip.classed("hidden", true);
 
     d3.json(
       "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson",
@@ -92,18 +93,42 @@ const initMap = () => {
               .raise()
               .style("opacity", 1)
               .style("stroke", "black");
-            return tooltip.style("hidden", false).html(d.properties.name);
+            return tooltip.style("hidden", false).html(d.properties.name)
           })
           .on("mousemove", function (d) {
             tooltip
               .classed("hidden", false)
-              .style("top", d3.event.pageY - 300 + "px")
-              .style("left", d3.event.pageX + 10 + "px")
-              .html(d.properties.name);
+              .style("top", (d3.mouse(d3.select('#my_dataviz').node()).map( function(d) { return parseInt(d); })[1]) + (250 - 280) + "px")
+              .style("left", (d3.mouse(d3.select('#my_dataviz').node()).map( function(d) { return parseInt(d); })[0]) + (250 - 310) + "px")
+
+              if (d.properties.name === "England"){
+                tooltip.html("United Kingdom")
+              }
+              else if (myJsArray[d.properties.name]) {
+                tooltip
+                  .html(d.properties.name + ": " + myJsArray[d.properties.name]["color"])
+                  .style("color", "#fff")
+
+                if (myJsArray[d.properties.name]["color"] === "Amber") {
+                  tooltip.style("background-color", "#FF8800")
+                }
+                if (myJsArray[d.properties.name]["color"] === "Green") {
+                  tooltip.style("background-color", "#55A630")
+                }
+                if (myJsArray[d.properties.name]["color"] === "Red") {
+                  tooltip.style("background-color", "#CC0022")
+                }
+              }
+              else {
+                tooltip.html(d.properties.name + ": Closed to UK tourists");
+              }
           })
           .on("mouseout", function (d, i) {
             d3.select(this).style("opacity", 0.8).style("stroke", "white");
-            tooltip.classed("hidden", true);
+            tooltip.classed("hidden", true)
+            .html("")
+            .style("background-color", "#fff")
+            .style("color", "#000");
           });
       }
     );
