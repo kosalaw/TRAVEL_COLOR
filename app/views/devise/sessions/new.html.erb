@@ -13,9 +13,13 @@
                     placeholder: 'Enter your password' %>
         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
       </div>
-        <%= f.submit 'Log in', class: "button form-actions btn btn-block mb-3" %>
+
+      <div type="button" class="form-actions btn btn-block mb-3">
+        <%= f.button :submit, "Log in" %>
+      </div>
     <% end %>
     <%= render "devise/shared/links" %>
     <div>
   <div>
 </div>
+      
