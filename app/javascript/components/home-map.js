@@ -48,11 +48,15 @@ const initMap = () => {
 
         let id = myJsArray[d.properties.name]["id"];
 
-        d3.select("#link").html(`<a href="/countries/${id}">More Info</a>`);
+        d3.select("#link").html(
+          `<a class="btn" href="/countries/${id}">More Info</a>`
+        );
       } else {
         d3.select("#status").html("Closed to Tourists");
         let id = myJsArray[d.properties.name]["id"];
-        d3.select("#link").html(`<a href="/countries/${id}">More Info</a>`);
+        d3.select("#link").html(
+          `<a class="btn" href="/countries/${id}">More Info</a>`
+        );
       }
     };
 
