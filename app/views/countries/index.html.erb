@@ -43,7 +43,7 @@
 </div>
 
 
-<!-- Open modal box for the map --> 
+<!-- Open modal box for the map -->
 
 <script>
 // Get the modal
@@ -55,7 +55,7 @@ var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal 
+// When the user clicks the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
 }
@@ -73,15 +73,103 @@ window.onclick = function(event) {
 }
 </script>
 
-  <!-- Create an element where the map will take place -->
+<style>
+  .container-map{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 900px;
+    padding: 10px;
+  }
+  .svg-frame{
+    width: 1200px;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.1);
+  }
+  .cards-container {
+    height: 265px;
+    width: 900px;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .list-card{
+    width: 295px;
+    height: 100%;
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.1);
+    padding-top: 4px;
+  }
+
+</style>
+ <!-- when 'Amber' -->
+        <!-- "#FF8800" -->
+      <!-- when 'Green' -->
+        <!-- "#55A630" -->
+      <!-- when 'Red' -->
+        <!-- "#CC0022" -->
+
+<!-- Create an element where the map will take place -->
+
 <div class="container-map">
-  <div class="row">
-    <div class="col-md-12">
-      <svg id="my_dataviz" width="800" height="500" data-countries="<%= @json_array %>"></svg>
-      <div class="tooltip"></div>
-    </div>    
-  </div>  
+  <div class="svg-frame">
+    <svg id="my_dataviz" width="1200" height="600" data-countries="<%= @json_array %>"></svg>
+    <div class="tooltip">
+      <span id="tooltip-color"></span>
+    </div>
+  </div>
+
+  <div class="cards-container">
+    <div id="list-red" class="list-card alert-danger" >
+      <ul>
+        <h5>Red List countries</h5>
+        <h6>Before return:</h6>
+        <li>Take a COVID-19 test</li>
+        <li>Book a <a href="https://www.gov.uk/guidance/booking-and-staying-in-a-quarantine-hotel-when-you-arrive-in-england" target="_blank">quarantine hotel</a> , and 2 COVID-19 tests – for use after return</li>
+        <li>Complete passenger locator <a href="https://www.gov.uk/provide-journey-contact-details-before-travel-uk" target="_blank">form</a></li>
+        <br>
+        <h6>On return:</h6>
+        <li>Quarantine for 10 days in quarantine hotel</li>
+        <li>Take a COVID-19 test on or before day 2 and on or after day 8 of quarantining</li>
+      </ul>
+    </div>
+
+    <div id="list-amber" class="list-card alert-warning">
+      <ul>
+        <h5>Amber List countries</h5>
+        <h6>Before return:</h6>
+        <li>Take a COVID-19 test</li>
+        <li>Book and pay for day 2 and day 8 COVID-19 <a href="https://www.gov.uk/find-travel-test-provider" target="_blank">travel tests</a>  – for use after return</li>
+        <li>Complete a passenger locator <a href="https://www.gov.uk/provide-journey-contact-details-before-travel-uk" target="_blank">form</a></li>
+        <br>
+        <h6>On return:</h6>
+        <li>Quarantine for 10 days at home/where you are staying</li>
+        <li>Take a COVID-19 test on or before day 2 and on or after day 8 of quarantining</li>
+      </ul>
+    </div>
+    <div id="list-green" class="list-card alert-success">
+      <ul>
+        <h5>Green List countries</h5>
+        <h6>Before return:</h6>
+        <li>Take a COVID-19 test</li>
+        <li>book and pay for a day 2 COVID-19 <a href="https://www.gov.uk/find-travel-test-provider" target="_blank">travel test</a>  – for use after return</li>
+        <li>Complete passenger locator <a href="https://www.gov.uk/provide-journey-contact-details-before-travel-uk" target="_blank">form</a></li>
+        <br>
+        <h6>On return:</h6>
+        <li>Take a COVID-19 test on or before day 2 after you arrive.</li>
+        <li>You do not need to quarantine unless the test result is positive.</li>
+      </ul>
+    </div>
+  </div>
 </div>
+
+
 
 <div>
   <div class="bg-white m-0">

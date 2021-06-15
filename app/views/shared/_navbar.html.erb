@@ -1,7 +1,8 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container">
+
+<div style="height:80px">
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
     <div class="navbar-brand">
-      <%= link_to "/", class: "navbar-brand title-navbar" do %>
+      <%= link_to "/", class: "navbar-brand title-navbar" do %>   
       <%= image_tag "https://res.cloudinary.com/dx2wfsuym/image/upload/v1623098850/logo_rmaxvx.png" %>
         <span class="d-inline travel-color-title">Travel colour</span>
       <% end %>
@@ -13,8 +14,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto text-center">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", "/", class: "nav-link" %>
+          <li class="nav-item active d-flex">
+            <b> <%= link_to "Book Flights", '/flights', class: "nav-link" %> </b>
+            <b><%= link_to "Compare Countries", "/countries/compare", class: "nav-link" %> </b>
+            <b> <%= link_to "Home", "/", class: "nav-link" %> </b>
           </li>
           <li class="nav-item dropdown">
             <% if current_user.photo.attached? %>
@@ -29,10 +32,11 @@
             </div>
           </li>
         <% else %>
-          <li type="button" class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <li type="button" class="nav-item d-flex">
+            <b><%= link_to "Compare Countries", "/countries/compare", class: "nav-link" %> </b>
+            <b> <%= link_to "Home", "/", class: "nav-link" %> </b>
+            <b> <%= link_to "Login", new_user_session_path, class: "nav-link" %> </b>
           </li>
-
         <% end %>
       </ul>
     </div>
