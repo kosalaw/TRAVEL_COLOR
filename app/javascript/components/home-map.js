@@ -77,8 +77,8 @@ const initMap = () => {
           .attr("d", path) // Send geometry data to path function to plot points
           .attr("fill", function (d) {
             if (myJsArray[d.properties.name]) {
-              console.log(d.properties.name);
-              console.log(myJsArray[d.properties.name]);
+              // console.log(d.properties.name);
+              // console.log(myJsArray[d.properties.name]);
               return "#55A630";
             } else {
               return "#BBB";
