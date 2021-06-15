@@ -7,7 +7,7 @@ const initMap = () => {
     // Map and projection
     const projection = d3
       .geoNaturalEarth1()
-      .scale(width / 0.37 / Math.PI)
+      .scale(width / 0.5 / Math.PI)
       .translate([width / 2, height / 2])
       .center([15, 50]);
 
@@ -53,10 +53,9 @@ const initMap = () => {
         );
       } else {
         d3.select("#status").html("Closed to Tourists");
-        let id = myJsArray[d.properties.name]["id"];
-        d3.select("#link").html(
-          `<a class="btn" href="/countries/${id}">More Info</a>`
-        );
+        // let id = myJsArray[d.properties.name]["id"];
+        // d3.select("#link").html(`<a href="/countries/${id}">More Info</a>`);
+
       }
     };
 
@@ -104,13 +103,15 @@ const initMap = () => {
               .classed("hidden", false)
               .style("top", (d3.mouse(d3.select('#my_dataviz').node()).map( function(d) { return parseInt(d); })[1]) + (250 - 280) + "px")
               .style("left", (d3.mouse(d3.select('#my_dataviz').node()).map( function(d) { return parseInt(d); })[0]) + (250 - 310) + "px")
-
               if (d.properties.name === "England"){
                 tooltip.html("United Kingdom")
               }
+              else if (d.properties.name === "Ireland"){
+                tooltip.html("Ireland")
+              }
               else if (myJsArray[d.properties.name]) {
                 tooltip
-                  .html(d.properties.name + ": " + myJsArray[d.properties.name]["color"])
+                  .html(d.properties.name + ": " + myJsArray[d.properties.name]["color"]  + " List country")
                   .style("color", "#fff")
 
                 if (myJsArray[d.properties.name]["color"] === "Amber") {
