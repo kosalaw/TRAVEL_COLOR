@@ -1,4 +1,4 @@
-<div class="usr-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(/assets/francesca-tirico-9G9vxsMzi18-unsplash.jpg)">
+<div class="usr-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/W_-6PWGbYaU/1600x900)">
 My Account
 </div>
 
@@ -7,7 +7,7 @@ My Account
   <div class="row">
 
     <div class="col-6">
-      <div class="container">
+      <div class="usr-my-dtls">
         <h1>My Details</h1>
         <ul>
           <li><b>First Name: </b><%= current_user.first_name %> </li>
@@ -17,6 +17,21 @@ My Account
       
         <%= link_to "Edit", edit_user_registration_path  %>
       </div>
+
+      
+      <div class="user-accnt-rvw">
+        <h1>My Reviews: </h1>
+        <ol>
+          <% @user.reviews.each do |review|  %>
+            <li> <%= link_to review.country.name, country_path(review.country_id)  %>
+              <%= link_to  review, method: :delete , data: {confirm: "Are you sure?"} do %>
+                  <i class="fas fa-trash"></i>
+              <% end %> - <%= review.content %>
+            </li>
+          <% end %>
+        </ol>
+      </div>
+
     </div>
 
     <div class="col user-shw-alerts">
@@ -24,26 +39,18 @@ My Account
       <ol> 
         <% @alerts.each do |alert|  %>
             <li> <%= link_to alert.country.name, country_path(alert.country_id)  %> 
+            <%= alert.country.content  %>
             <div class="d-inline bell"><i class="far fa-bell-slash"></i></div>
-            <%= link_to "Mute", alert, method: :delete , data: {confirm: "Are you sure?"} %> </li>
+            <%= link_to "Mute", alert, method: :delete , data: {confirm: "Are you sure?"} %> 
+            </li>
           <% end %>
-      </ol> 
+      </ol>
+      
+      <div>
+        <h4>Subscribe Alerts</h4>
+     
+      </div>
+
     </div>
   </div>
-
-
-  <div class="col user-shw-alerts">
-  <h1>My Reviews: </h1>
-  <ol>
-    <% @user.reviews.each do |review|  %>
-        <li> <%= link_to review.country.name, country_path(review.country_id)  %>
-        <%= link_to  review, method: :delete , data: {confirm: "Are you sure?"} do %>
-          <i class="fas fa-trash"></i>
-        <% end %>
-      </li>
-
-      <% end %>
-  </ol>
-  </div>
-
 </div>

@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get "/flights", to: 'countries#flights'
+
   resources :alerts, only: [:index, :destroy]
   resources :reviews, only: [:destroy]
   resources :users, only: [:show]

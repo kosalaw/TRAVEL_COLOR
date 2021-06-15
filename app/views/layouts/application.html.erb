@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Travel Color</title>
+    <title>Travel Colour - Find out which European countries are accepting UK tourists</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
@@ -12,9 +12,8 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
 
     <script src="https://kit.fontawesome.com/3aff7f93f9.js" crossorigin="anonymous"></script>
 
@@ -24,14 +23,16 @@
   </head>
 
   <body>
+
     <%= render 'shared/navbar' %>
+
     <%= render 'shared/flashes' %>
 
 
-    <%= yield %>
+      <%= yield %>
 
+    <%= render 'shared/footer' %>
 
   </body>
-  <%= render 'shared/footer' %>
 </html>
 
