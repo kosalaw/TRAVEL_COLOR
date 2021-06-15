@@ -1,0 +1,35 @@
+<mjml>
+  <mj-body>
+    <mj-raw>
+    </mj-raw>
+    <mj-section background-color="#00a891">
+      <mj-column>
+        <mj-text font-size="20px" color="#fff">Travel Color</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section padding="30px 0px">
+    </mj-section>
+
+    <mj-section padding="135px 0px" background-url="https://images.unsplash.com/photo-1488085061387-422e29b40080?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3289&q=80" background-size="cover" background-repeat="no-repeat">
+    </mj-section>
+
+    <mj-section padding="30px 0px">
+    </mj-section>
+
+
+    <mj-section background-color="#fafafa">
+      <mj-column width="400px">
+        <mj-text font-size="12px" font-family="Lato" color="#626262"><h2><b>Hi <%= @user.first_name %>, you have a set an alert for <%= @country.name %></mj-text>
+    </mj-column>
+   </mj-section>
+   </mj-section>
+
+
+    <mj-section padding="70px 0px">
+    </mj-section>
+
+    <mj-section padding="30px 0px" background-color="#00a891">
+    </mj-section>
+  </mj-body>
+</mjml>
