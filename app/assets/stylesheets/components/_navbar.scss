@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'PaytoneOne-Regular';
+  src: url('/assets/PaytoneOne-Regular.ttf');
+}
+
 .navbar-lewagon {
   background-position: center;
   background-repeat: no-repeat;
@@ -5,6 +10,7 @@
   background-color: #fff;
   max-height: 80px;
 }
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
@@ -14,14 +20,20 @@
   height: 55px;
   margin-bottom: 20px;
 }
+
 .title-navbar {
   font-family: "Lato";
   font-weight: 500;
   font-size: 40px;
   margin: 0px;
 }
+
 .travel-color-title {
   margin-left: -20px;
+  color: #00a891;
+  font-family: 'PaytoneOne-Regular';
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .navbar-light .navbar-nav .nav-link {
