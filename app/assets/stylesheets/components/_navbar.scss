@@ -4,6 +4,10 @@
   justify-content: space-between;
   background-color: #fff;
   max-height: 80px;
+  position:fixed;
+  top:0;
+  width: 100%;
+  z-index:1000;
 }
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
@@ -42,3 +46,23 @@ hr {
   border: 0;
   border-top: 1px solid rgba(128, 125, 125, 0.1);
 }
+
+.avatar {
+  width: 74px;
+  border-radius: 50%;
+}
+
+.nav-link {
+  display: block;
+  padding: 1.5rem 1rem;
+}
+
+/* li {
+  float: left;
+}
+
+.nav-item a {
+  display: block;
+  padding: 8px;
+  background-color: #dddddd;
+} */
