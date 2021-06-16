@@ -7,7 +7,7 @@ class Country < ApplicationRecord
     when 'Amber'
       "#ff8800"
     when 'Green'
-      "#55a630"
+      "#00a891"
     when 'Red'
       "#cc0022"
     else
