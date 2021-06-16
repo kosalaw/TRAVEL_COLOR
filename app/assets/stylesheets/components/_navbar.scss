@@ -1,28 +1,40 @@
-@font-face {
-  font-family: 'Pacifico-Regular';
-  src: url('/assets/Pacifico-Regular.ttf');
-}
+// @font-face {
+//   font-family: 'Pacifico-Regular';
+//   src: font-url('/assets/Pacifico-Regular.ttf');
+// }
 
-@font-face {
-  font-family: 'Montserrat-Light';
-  src: url('/assets/Montserrat-Light.ttf');
-}
+// @font-face {
+//   font-family: 'Montserrat-Light';
+//   src: font-url('/assets/Montserrat-Light.ttf');
+// }
 
-.Montserrat {
-  font-family: 'Montserrat-Light'
-}
 
 .navbar-lewagon {
-  background-color: #fff;
   background-position: center;
   background-repeat: no-repeat;
   justify-content: space-between;
   max-height: 80px;
+  padding: 0px 280px;
+  background-color: white;
+}
+
+.sticky-navbar {
   position: fixed;
   top: 0;
   width: 100%;
   z-index:1000;
+  background-color: transparent;
+  transition: 0.5s background-color ease;
 }
+
+.navbar-lewagon-white {
+  background-color: white;
+}
+
+.Montserrat {
+  font-family: 'Montserrat'
+}
+
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
@@ -48,7 +60,7 @@
 .travel-color-title {
   margin-left: -20px;
   color: #00016b;
-  font-family: 'Pacifico-Regular';
+  font-family: 'Pacifico';
   font-size: 25px;
   font-weight: bold;
 }
@@ -83,6 +95,7 @@ hr {
   display: block;
   padding: 1.5rem 1rem;
   font-size: 14px;
+  margin-right: 5px;
 }
 
 /* li {
