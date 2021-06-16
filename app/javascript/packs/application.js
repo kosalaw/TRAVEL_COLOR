@@ -23,10 +23,7 @@ import { listen_to_form } from "../components/submit_form";
 
 // External imports
 import "bootstrap";
-import {
-  loadDynamicBannerText,
-  destroyDynamicBannerText,
-} from "../components/banner";
+import { loadDynamicBannerText, destroyDynamicBannerText, } from "../components/banner";
 import submitToggle from "./toggle.js";
 import { initMap } from "../components/home-map";
 import { popUpModal } from "../components/pop-up";

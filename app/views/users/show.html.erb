@@ -6,8 +6,8 @@ My Account
 
   <div class="row">
 
-    <div class="col-6">
-      <div class="container">
+    <div class="col-6" style="display:flex; flex-direction:column; flex:1;">
+      <div class="usr-my-dtls">
         <h1>My Details</h1>
         <ul>
           <li><b>First Name: </b><%= current_user.first_name %> </li>
@@ -17,33 +17,39 @@ My Account
       
         <%= link_to "Edit", edit_user_registration_path  %>
       </div>
+
+      
+      <div class="user-accnt-rvw" style="margin-top: auto;">
+        <h1>My Reviews: </h1>
+        <ol>
+          <% @user.reviews.each do |review|  %>
+            <li> <%= link_to review.country.name, country_path(review.country_id)  %>
+              <%= link_to  review, method: :delete , data: {confirm: "Are you sure?"} do %>
+                  <i class="fas fa-trash"></i>
+              <% end %> - <%= review.content %>
+            </li>
+          <% end %>
+        </ol>
+      </div>
+
     </div>
 
-    <div class="col user-shw-alerts">
+    <div class="col user-shw-alerts" style="display:flex; flex-direction:column; flex:1;">
       <h1>My Alerts: </h1>
       <ol> 
-        <% @alerts.each do |alert|  %>
+        <% @user.alerts.each do |alert|  %>
             <li> <%= link_to alert.country.name, country_path(alert.country_id)  %> 
+            <%= alert.country.content  %>
             <div class="d-inline bell"><i class="far fa-bell-slash"></i></div>
-            <%= link_to "Mute", alert, method: :delete , data: {confirm: "Are you sure?"} %> </li>
+            <%= link_to "Mute", alert, method: :delete , data: {confirm: "Are you sure?"} %> 
+            </li>
           <% end %>
-      </ol> 
+      </ol>
+      
+      <div style="margin-top: auto;">
+        <h4>Subscribe Alerts</h4> 
+      </div>
+
     </div>
   </div>
-
-
-  <div class="col user-shw-alerts">
-  <h1>My Reviews: </h1>
-  <ol>
-    <% @user.reviews.each do |review|  %>
-        <li> <%= link_to review.country.name, country_path(review.country_id)  %>
-        <%= link_to  review, method: :delete , data: {confirm: "Are you sure?"} do %>
-          <i class="fas fa-trash"></i>
-        <% end %>
-      </li>
-
-      <% end %>
-  </ol>
-  </div>
-
 </div>

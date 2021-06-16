@@ -1,13 +1,42 @@
 // Specific CSS for your home-page
 #main-home-page-banner {
-  background-image: url("../../images/Mailbox-Q85.png");
+  background-image: url("https://res.cloudinary.com/dgw2hw9oa/image/upload/v1623769956/banner_bjtpsu.jpg");
   background-size: cover;
-  background-color: #00a991;
   width: 100%;
-  height: 160px;
+  height: 250px;
 }
+
+.search {
+  width: 40%;
+}
+
+.title-card {
+  color: #00a891;
+  font-family: 'PaytoneOne-Regular';
+}
+
+.search-bar {
+  font-size: 20px;
+  border-radius: 16px;
+  background-color: rgba(0,0,0,0);
+  box-shadow: none;
+  color: white;
+  border: 1px solid white;
+  width: 340px;
+  height: 35px;
+  padding: 20px;
+}
+
+.search-bar::placeholder {
+    color: white;
+}
+
+.special {
+  background-color: #cf61e4;
+}
+
 .text-banner-one {
-  font-size: 45px;
+  font-size: 30px;
   position: relative;
   top: 30%;
   color: #fff;

@@ -8,7 +8,15 @@
         <%= f.error_notification %>
 
         <div class="form-inputs">
-          <%= f.input :email,
+        <%= f.input :first_name,
+                      required: true,
+                      autofocus: true,    
+                      placeholder: 'John', label:false %>
+        <%= f.input :last_name,
+                      required: true,
+                      autofocus: true,    
+                      placeholder: 'Lennon', label:false %>  
+        <%= f.input :email,
                       required: true,
                       autofocus: true,    
                       placeholder: 'exemple@hotmail.com', label:false %>
@@ -21,10 +29,7 @@
                       required: true,
                       placeholder: 'Re-enter password', label:false %>
         </div>
-
-        <div type="button" class="form-actions btn btn-block  mb-3">
-          <%= f.button :submit, "Sign up" %>
-        </div>
+          <%= f.submit 'Sign up', class: "button form-actions btn btn-block mb-3" %>
       <% end %>
       Already a member?
       <%= render "devise/shared/links" %>

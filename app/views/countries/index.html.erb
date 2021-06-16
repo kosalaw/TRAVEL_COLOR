@@ -1,29 +1,21 @@
 <div id="main-home-page-banner">
-  <div class="container">
-    <div class="row">
+  <div class="container h-100">
+    <div class="row d-flex align-items-center h-100">
         <div class="col-md-6 d-none d-md-block">
           <p class="text-banner-one">
             <span id="banner-typed-text"></span>
+            <h3 class="text-banner-two">Navigate entry restrictions and quarantine requirements for any destination with our live map.</h3>
           </p>
         </div>
-        <div class="col-12-text-center col-md-6">
-          <h3 class="text-banner-two">Navigate entry restrictions and quarantine requirements for any destination with our live map.</h3>
+        <div class="d-flex align-items-center justify-content-center search">
+          <form action="/countries" accept-charset="UTF-8" method="get" class="d-flex grid justify-content-center align-items-stretch">
+            <input type="search" name="name" id="name" class="left search-bar" placeholder="Where are you travelling to?" required>
+          </form>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<div class="container-map">
-  <div class="row">
-    <div class="col-12">
-      <div class="svg-frame">
-        <svg id="my_dataviz" width="1800" height="600" data-countries="<%= @json_array %>"></svg>
-        <div class="tooltip">
-          <span id="tooltip-color"></span>
-        </div>
-      </div>
-    </div>
 
      < <!-- The Modal -->
   <div id="myMoodal" class="modals">
@@ -45,60 +37,120 @@
           </div>
         </div>
     </div>
-  </div>
+  </div> 
 
-    <div class="cards-container">
-      <div id="list-red" class="list-card alert-danger">
-        <ul>
-          <h5>Red List countries</h5>
-          <h6>Before return:</h6>
-          <li>Take a COVID-19 test</li>
-          <li>Book a <a href="https://www.gov.uk/guidance/booking-and-staying-in-a-quarantine-hotel-when-you-arrive-in-england">quarantine hotel</a> , and 2 COVID-19 tests – for use after return</li>
-          <li>Complete passenger locator <a href="https://www.gov.uk/provide-journey-contact-details-before-travel-uk">form</a></li>
-          <br>
-          <h6>On return:</h6>
-          <li>Quarantine for 10 days in quarantine hotel</li>
-          <li>Take a COVID-19 test on or before day 2 and on or after day 8 of quarantining</li>
-        </ul>
-      </div>
+<style>
+  .container-map{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 800px;
+    padding: 10px;
+  }
+  .svg-frame{
+    width: 1200px;
+    height: 600px;
+    position: relative;
 
-      <div id="list-amber" class="list-card alert-warning">
-        <ul>
-          <h5>Amber List countries</h5>
-          <h6>Before return:</h6>
-          <li>Take a COVID-19 test</li>
-          <li>Book and pay for day 2 and day 8 COVID-19 travel tests – for use after return</li>
-          <li>Complete a passenger locator <a href="https://www.gov.uk/provide-journey-contact-details-before-travel-uk">form</a></li>
-          <br>
-          <h6>On return:</h6>
-          <li>Quarantine for 10 days at home/where you are staying</li>
-          <li>Take a COVID-19 test on or before day 2 and on or after day 8 of quarantining</li>
-        </ul>
-      </div>
-      <div id="list-green" class="list-card alert-success">
-        <ul>
-          <h5>Green List countries</h5>
-          <h6>Before return:</h6>
-          <li>Take a COVID-19 test</li>
-          <li>book and pay for a day 2 COVID-19 test – for use after return</li>
-          <li>Complete passenger locator <a href="https://www.gov.uk/provide-journey-contact-details-before-travel-uk">form</a></li>
-          <br>
-          <h6>On return:</h6>
-          <li>Take a COVID-19 test on or before day 2 after you arrive.</li>
-          <li>You do not need to quarantine unless the test result is positive.</li>
-        </ul>
-      </div>
+    border-radius: 4px;
+    box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.1);
+  }
+  .cards-container {
+    position: absolute;
+    top: -75px;
+    left: -75px;
+    height: 760px;
+    width: 300px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .list-card{
+    width: 100%;
+    height: 250px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.1);
+    padding-top: 4px;
+  }
+  .map-title{
+    text-align: center;
+    position: absolute;
+    top: -75px;
+    left: 325px;
+  }
+
+</style>
+ <!-- when 'Amber' -->
+        <!-- "#FF8800" -->
+      <!-- when 'Green' -->
+        <!-- "#55A630" -->
+      <!-- when 'Red' -->
+        <!-- "#CC0022" -->
+
+<!-- Create an element where the map will take place -->
+
+<div class="container-map">
+  <div class="svg-frame">
+    <div class="map-title">
+      <h3>European Countries open to UK tourists</h3>
+      <h6>Open countries are coloured based on the UK Gov travel lists </h6>
+    </div>
+    <svg id="my_dataviz" width="1200" height="600" data-countries="<%= @json_array %>"></svg>
+    <div class="tooltip">
+      <span id="tooltip-color"></span>
+    </div>
+
+
+  <div class="cards-container">
+    <div id="list-red" class="list-card alert-danger" >
+      <ul>
+        <h5>Red List countries</h5>
+        <h6>Before return:</h6>
+        <li>Take a COVID-19 test</li>
+        <li>Book a <a href="https://www.gov.uk/guidance/booking-and-staying-in-a-quarantine-hotel-when-you-arrive-in-england" target="_blank">quarantine hotel</a> , and 2 COVID-19 tests – for use after return</li>
+        <li>Complete passenger locator <a href="https://www.gov.uk/provide-journey-contact-details-before-travel-uk" target="_blank">form</a></li>
+        <h6>On return:</h6>
+        <li>Quarantine for 10 days in quarantine hotel</li>
+        <li>Take a COVID-19 test on or before day 2 and on or after day 8 of quarantining</li>
+      </ul>
+    </div>
+
+    <div id="list-amber" class="list-card alert-warning">
+      <ul>
+        <h5>Amber List countries</h5>
+        <h6>Before return:</h6>
+        <li>Take a COVID-19 test</li>
+        <li>Book and pay for day 2 and day 8 COVID-19 <a href="https://www.gov.uk/find-travel-test-provider" target="_blank">travel tests</a>  – for use after return</li>
+        <li>Complete a passenger locator <a href="https://www.gov.uk/provide-journey-contact-details-before-travel-uk" target="_blank">form</a></li>
+        <h6>On return:</h6>
+        <li>Quarantine for 10 days at home/where you are staying</li>
+        <li>Take a COVID-19 test on or before day 2 and on or after day 8 of quarantining</li>
+      </ul>
+    </div>
+    <div id="list-green" class="list-card alert-success">
+      <ul>
+        <h5>Green List countries</h5>
+        <h6>Before return:</h6>
+        <li>Take a COVID-19 test</li>
+        <li>book and pay for a day 2 COVID-19 <a href="https://www.gov.uk/find-travel-test-provider" target="_blank">travel test</a>  – for use after return</li>
+        <li>Complete passenger locator <a href="https://www.gov.uk/provide-journey-contact-details-before-travel-uk" target="_blank">form</a></li>
+        <h6>On return:</h6>
+        <li>Take a COVID-19 test on or before day 2 after you arrive.</li>
+        <li>You do not need to quarantine unless the test result is positive.</li>
+      </ul>
     </div>
   </div>
+  </div>
 </div>
-
-
-
 <div>
   <div class="bg-white m-0">
     <div class="container text-center">
       <div class="row">
-        <h1 class="col-12 mt-4">Solutions for travelers during the COVID-19 pandemic</h1>
+        <h1 class="col-12 mt-4 title-card">Solutions for travelers during the COVID-19 pandemic</h1>
       </div>
     </div>
     <div class="container text-center">
