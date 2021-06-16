@@ -1,5 +1,10 @@
+<div class="d-flex justify-content-center">
+  <%= link_to "Explore", country_path(country), class: 'btn' %>
+</div>
+<br>
+<br>
 <% if !hide %>
-  <div class="d-flex align-items-baseline sub-title"><h5>Colour</h5><i class="fas fa-palette ml-2"></i></div>
+  <div class="d-flex align-items-baseline sub-title"><h5><b>Colour</b></h5><i class="fas fa-palette ml-2"></i></div>
 <% else %>
   <h5 class="trans"> jhfjyfkug</h5>
 <% end %>
@@ -115,7 +120,7 @@
 <br>
 
 <% if !hide %>
-  <div class="d-flex align-items-baseline sub-title"><h5>Upcoming changes</h5><i class="fas fa-dice ml-2"></i></div>
+  <div class="d-flex align-items-baseline sub-title"><h5><b>Upcoming changes</b></h5><i class="fas fa-dice ml-2"></i></div>
 <% else %>
   <h5 class="trans"> jhfjyfkug</h5>
 <% end %>
@@ -132,10 +137,5 @@
     </div>
   <% end %>
 </div>
-<div class="d-flex justify-content-center">
-  <%= link_to "Explore", country_path(country), class: 'btn' %>
-</div>
-<br>
-<br>
 <br>
 
