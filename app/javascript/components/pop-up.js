@@ -4,6 +4,7 @@ const popUpModal = () => {
   var modals = document.getElementById("myMoodal");
   var spans = document.getElementsByClassName("close")[0];
 
+  if (spans&&modals) {
   // When the user clicks on <span> (x), close the modal
   spans.onclick = function () {
     modals.style.display = "none";
@@ -15,6 +16,7 @@ const popUpModal = () => {
       modals.style.display = "none";
     }
   };
+  }
 };
 
 export { popUpModal };

@@ -28,7 +28,6 @@
       <% end %>
     </div>
   </div>
-
   <% if (!@country_1 && !@country_2 && !@country_3) %>
     <div class="container cmpr-emty-cntnr justify-content-center text-center my-5">
       <div class="compare-empty">
@@ -36,13 +35,9 @@
         <h3> <b>You are too close... Please select countries to explore more....</b> </h3>
         <br>
         <div class="compare-empty-pic" style="background-image: url(https://media.giphy.com/media/1EACpNdoT31tusELVr/giphy.gif)">
-        
       </div>
     </div>
-  
-  
   <% else %>
-
     <div class="row pt-3">
       <div class="col-4 country-col">
         <% if @country_1 %>
