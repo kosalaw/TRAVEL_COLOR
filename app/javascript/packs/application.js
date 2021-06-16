@@ -27,7 +27,7 @@ import { loadDynamicBannerText, destroyDynamicBannerText, } from "../components/
 import submitToggle from "./toggle.js";
 import { initMap } from "../components/home-map";
 import { popUpModal } from "../components/pop-up";
-
+import { initUpdateNavbarOnScroll } from '../components/navbar';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
@@ -39,15 +39,9 @@ document.addEventListener("turbolinks:load", () => {
   listen_to_form();
   initMap();
   popUpModal();
+  initUpdateNavbarOnScroll();
 });
 
 document.addEventListener("turbolinks:before-cache", () => {
   destroyDynamicBannerText();
-});
-
-import { initUpdateNavbarOnScroll } from '../components/navbar';
-
-document.addEventListener('turbolinks:load', () => {
-  // Call your JS functions here
-  initUpdateNavbarOnScroll();
 });
