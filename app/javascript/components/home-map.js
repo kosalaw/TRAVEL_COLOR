@@ -83,7 +83,18 @@ const initMap = () => {
             if (myJsArray[d.properties.name]) {
               // console.log(d.properties.name);
               // console.log(myJsArray[d.properties.name]);
-              return "#55A630";
+              if (myJsArray[d.properties.name]["color"] === "Amber") {
+                return "#FF8800";
+              }
+              if (myJsArray[d.properties.name]["color"] === "Green") {
+                return "#55A630";
+              }
+              if (myJsArray[d.properties.name]["color"] === "Red") {
+                return "#CC0022";
+              }
+              if (d.properties.name === "Ireland"){
+                return "#55A630";
+              }
             } else {
               return "#BBB";
             }
