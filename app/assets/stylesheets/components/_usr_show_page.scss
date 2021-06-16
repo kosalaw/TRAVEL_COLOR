@@ -34,3 +34,17 @@
 .usr-my-dtls { 
     max-height: 30vh;
 }
+
+#add_alert_form {
+
+    display: flex;
+    .form-group {
+      height: 100%;
+      margin: 0;
+    }
+    .form-control {
+      border: 1px solid rgb(24, 14, 165);
+      background-color: transparent;
+    }
+  }
+    

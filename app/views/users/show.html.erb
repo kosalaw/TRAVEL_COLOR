@@ -39,15 +39,20 @@ My Account
       <ol> 
         <% @user.alerts.each do |alert|  %>
             <li> <%= link_to alert.country.name, country_path(alert.country_id)  %> 
-            <%= alert.country.content  %>
-            <div class="d-inline bell"><i class="far fa-bell-slash"></i></div>
-            <%= link_to "Mute", alert, method: :delete , data: {confirm: "Are you sure?"} %> 
+              <%= alert.country.content  %>
+              <div class="d-inline bell"><i class="far fa-bell-slash"></i></div>
+              <%= link_to "Mute", alert, method: :delete , data: {confirm: "Are you sure?"} %>
+              <br>
             </li>
           <% end %>
       </ol>
       
-      <div style="margin-top: auto;">
-        <h4>Subscribe Alerts</h4> 
+      <div style="margin-top: 10px, margin-bottom: 10px">
+        <h4>Subscribe for new alerts</h4>
+        <%= simple_form_for Alert.new, html: { id: 'add_alert_form' } do |f| %>
+          <%= f.input :country_id, as: :select, collection: Country.all.order(:name), value_method: :id, label_method: :name, label: false, selected: Country.all.order(:name).first.id, include_blank: false, include_hidden: false %>
+          <%= f.button :submit, "Create Alert" %>
+        <% end %>
       </div>
 
     </div>

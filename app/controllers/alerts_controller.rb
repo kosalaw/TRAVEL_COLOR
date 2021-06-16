@@ -6,13 +6,22 @@ class AlertsController < ApplicationController
 
   # new alert button in on country show page
   def create
-    @alert = Alert.new
-    @country = Country.find(params[:country_id])
-    @alert.country = @country
+    if params[:alert].present?
+      @alert = Alert.new(alert_params)
+    else 
+      @alert = Alert.new()
+    end
+
+    @country = Country.find(params[:country_id]) if @alert.country.blank?
+    @alert.country = @country if @alert.country.blank?
     @alert.user = current_user
 
     if @alert.save
-      redirect_to country_path(@country)
+      if params.dig(:alert, :country_id).present?
+        redirect_to user_path(:id)
+      else
+       redirect_to country_path(@alert.country)
+      end
     else
       render "countries/show"
     end
@@ -25,9 +34,9 @@ class AlertsController < ApplicationController
     # redirect_to country_path(@alert.country)
   end
 
-  # private
+  private
 
-  # def alert_params
-  #   params.require(:alert).permit()
-  # end
+   def alert_params
+    params.require(:alert).permit(:country_id)
+   end
 end
