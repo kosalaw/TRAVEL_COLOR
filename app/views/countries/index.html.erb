@@ -58,6 +58,8 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
+  model.style("position", "absolute")
+  model.style("top", "0")
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -110,6 +112,12 @@ window.onclick = function(event) {
     box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.1);
     padding-top: 4px;
   }
+  .map-title{
+    text-align: center;
+    position: absolute;
+    top: -75px;
+    left: 325px;
+  }
 
 </style>
  <!-- when 'Amber' -->
@@ -122,7 +130,12 @@ window.onclick = function(event) {
 <!-- Create an element where the map will take place -->
 
 <div class="container-map">
+
   <div class="svg-frame">
+    <div class="map-title">
+      <h3>European Countries open to UK tourists</h3>
+      <h6>Open countries are coloured based on the UK Gov travel lists </h6>
+    </div>
     <svg id="my_dataviz" width="1200" height="600" data-countries="<%= @json_array %>"></svg>
     <div class="tooltip">
       <span id="tooltip-color"></span>
