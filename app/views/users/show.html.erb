@@ -6,7 +6,7 @@ My Account
 
   <div class="row">
 
-    <div class="col-6">
+    <div class="col-6" style="display:flex; flex-direction:column; flex:1;">
       <div class="usr-my-dtls">
         <h1>My Details</h1>
         <ul>
@@ -19,7 +19,7 @@ My Account
       </div>
 
       
-      <div class="user-accnt-rvw">
+      <div class="user-accnt-rvw" style="margin-top: auto;">
         <h1>My Reviews: </h1>
         <ol>
           <% @user.reviews.each do |review|  %>
@@ -34,10 +34,10 @@ My Account
 
     </div>
 
-    <div class="col user-shw-alerts">
+    <div class="col user-shw-alerts" style="display:flex; flex-direction:column; flex:1;">
       <h1>My Alerts: </h1>
       <ol> 
-        <% @alerts.each do |alert|  %>
+        <% @user.alerts.each do |alert|  %>
             <li> <%= link_to alert.country.name, country_path(alert.country_id)  %> 
             <%= alert.country.content  %>
             <div class="d-inline bell"><i class="far fa-bell-slash"></i></div>
@@ -46,9 +46,8 @@ My Account
           <% end %>
       </ol>
       
-      <div>
-        <h4>Subscribe Alerts</h4>
-     
+      <div style="margin-top: auto;">
+        <h4>Subscribe Alerts</h4> 
       </div>
 
     </div>
