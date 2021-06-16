@@ -1,5 +1,7 @@
 // Specific CSS for your home-page
 #main-home-page-banner {
+  background-image: url("../../images/Mailbox-Q85.png");
+  background-size: cover;
   background-color: #00a991;
   width: 100%;
   height: 160px;
@@ -27,9 +29,6 @@
   position: relative;
   top: -35px;
 }
-
-
-
 
 #info {
   font-family: "nunito";

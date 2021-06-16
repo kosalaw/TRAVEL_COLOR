@@ -16,10 +16,6 @@ div.tooltip {
   position: absolute;
 }
 
-
-
-
-
 .list-card > ul {
   padding: 2px 20px;
 }
@@ -28,3 +24,31 @@ ul > li {
   font-size: 12px;
 }
 
+.container-map {
+  width: 100%;
+  height: 900px;
+  padding: 10px;
+}
+.svg-frame {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.cards-container {
+  height: 265px;
+  width: 900px;
+  padding: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.list-card {
+  width: 295px;
+  height: 100%;
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+  padding-top: 4px;
+}

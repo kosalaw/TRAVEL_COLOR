@@ -12,10 +12,10 @@
   text-decoration: none;
   cursor: pointer;
 }
-.modal {
+.modals {
   top: 340px;
 }
-.modal-content {
+.modals-content {
   background-color: #fefefe;
   margin: auto;
   padding: 10px;
@@ -34,4 +34,8 @@
 #svg {
   width: 100%;
   height: auto;
+}
+#myMoodal {
+  position: absolute;
+  left: 1500px;
 }

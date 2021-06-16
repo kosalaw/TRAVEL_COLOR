@@ -22,7 +22,7 @@ const initMap = () => {
 
     let onClick = function (d) {
       console.log(d);
-      modal.style.display = "block";
+      myMoodal.style.display = "block";
       d3.select("#title").html(""); // Empty old data from the info page
       d3.select("#color").html(""); // Empty old data from the info page
       d3.select("#status").html(""); // Empty old data from the info page
@@ -97,42 +97,59 @@ const initMap = () => {
               .raise()
               .style("opacity", 1)
               .style("stroke", "black");
-            return tooltip.style("hidden", false).html(d.properties.name)
+            return tooltip.style("hidden", false).html(d.properties.name);
           })
           .on("mousemove", function (d) {
             tooltip
               .classed("hidden", false)
-              .style("top", (d3.mouse(d3.select('#my_dataviz').node()).map( function(d) { return parseInt(d); })[1]) + (250 - 280) + "px")
-              .style("left", (d3.mouse(d3.select('#my_dataviz').node()).map( function(d) { return parseInt(d); })[0]) + (250 - 310) + "px")
+              .style(
+                "top",
+                d3.mouse(d3.select("#my_dataviz").node()).map(function (d) {
+                  return parseInt(d);
+                })[1] +
+                  (250 - 280) +
+                  "px"
+              )
+              .style(
+                "left",
+                d3.mouse(d3.select("#my_dataviz").node()).map(function (d) {
+                  return parseInt(d);
+                })[0] +
+                  (250 - 310) +
+                  "px"
+              );
 
-              if (d.properties.name === "England"){
-                tooltip.html("United Kingdom")
-              }
-              else if (myJsArray[d.properties.name]) {
-                tooltip
-                  .html(d.properties.name + ": " + myJsArray[d.properties.name]["color"])
-                  .style("color", "#fff")
+            if (d.properties.name === "England") {
+              tooltip.html("United Kingdom");
+            } else if (myJsArray[d.properties.name]) {
+              tooltip
+                .html(
+                  d.properties.name +
+                    ": " +
+                    myJsArray[d.properties.name]["color"]
+                )
+                .style("color", "#fff");
 
-                if (myJsArray[d.properties.name]["color"] === "Amber") {
-                  tooltip.style("background-color", "#FF8800")
-                }
-                if (myJsArray[d.properties.name]["color"] === "Green") {
-                  tooltip.style("background-color", "#55A630")
-                }
-                if (myJsArray[d.properties.name]["color"] === "Red") {
-                  tooltip.style("background-color", "#CC0022")
-                }
+              if (myJsArray[d.properties.name]["color"] === "Amber") {
+                tooltip.style("background-color", "#FF8800");
               }
-              else {
-                tooltip.html(d.properties.name + ": Closed to UK tourists");
+              if (myJsArray[d.properties.name]["color"] === "Green") {
+                tooltip.style("background-color", "#55A630");
               }
+              if (myJsArray[d.properties.name]["color"] === "Red") {
+                tooltip.style("background-color", "#CC0022");
+              }
+            } else {
+              tooltip.html(d.properties.name + ": Closed to UK tourists");
+            }
           })
           .on("mouseout", function (d, i) {
             d3.select(this).style("opacity", 0.8).style("stroke", "white");
-            tooltip.classed("hidden", true)
-            .html("")
-            .style("background-color", "#fff")
-            .style("color", "#000");
+            tooltip
+              .classed("hidden", true)
+              .html("")
+              .style("background-color", "#fff")
+              .style("color", "#000");
           });
       }
     );
