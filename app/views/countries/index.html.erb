@@ -80,28 +80,32 @@ window.onclick = function(event) {
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    height: 900px;
+    height: 800px;
     padding: 10px;
   }
   .svg-frame{
     width: 1200px;
     height: 600px;
     position: relative;
-    overflow: hidden;
+
     border-radius: 4px;
     box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.1);
   }
   .cards-container {
-    height: 265px;
-    width: 900px;
+    position: absolute;
+    top: -75px;
+    left: -75px;
+    height: 760px;
+    width: 300px;
     padding: 0px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
   }
   .list-card{
-    width: 295px;
-    height: 100%;
+    width: 100%;
+    height: 250px;
     border-radius: 3px;
     box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.1);
     padding-top: 4px;
@@ -123,7 +127,7 @@ window.onclick = function(event) {
     <div class="tooltip">
       <span id="tooltip-color"></span>
     </div>
-  </div>
+
 
   <div class="cards-container">
     <div id="list-red" class="list-card alert-danger" >
@@ -133,7 +137,6 @@ window.onclick = function(event) {
         <li>Take a COVID-19 test</li>
         <li>Book a <a href="https://www.gov.uk/guidance/booking-and-staying-in-a-quarantine-hotel-when-you-arrive-in-england" target="_blank">quarantine hotel</a> , and 2 COVID-19 tests – for use after return</li>
         <li>Complete passenger locator <a href="https://www.gov.uk/provide-journey-contact-details-before-travel-uk" target="_blank">form</a></li>
-        <br>
         <h6>On return:</h6>
         <li>Quarantine for 10 days in quarantine hotel</li>
         <li>Take a COVID-19 test on or before day 2 and on or after day 8 of quarantining</li>
@@ -147,7 +150,6 @@ window.onclick = function(event) {
         <li>Take a COVID-19 test</li>
         <li>Book and pay for day 2 and day 8 COVID-19 <a href="https://www.gov.uk/find-travel-test-provider" target="_blank">travel tests</a>  – for use after return</li>
         <li>Complete a passenger locator <a href="https://www.gov.uk/provide-journey-contact-details-before-travel-uk" target="_blank">form</a></li>
-        <br>
         <h6>On return:</h6>
         <li>Quarantine for 10 days at home/where you are staying</li>
         <li>Take a COVID-19 test on or before day 2 and on or after day 8 of quarantining</li>
@@ -160,12 +162,12 @@ window.onclick = function(event) {
         <li>Take a COVID-19 test</li>
         <li>book and pay for a day 2 COVID-19 <a href="https://www.gov.uk/find-travel-test-provider" target="_blank">travel test</a>  – for use after return</li>
         <li>Complete passenger locator <a href="https://www.gov.uk/provide-journey-contact-details-before-travel-uk" target="_blank">form</a></li>
-        <br>
         <h6>On return:</h6>
         <li>Take a COVID-19 test on or before day 2 after you arrive.</li>
         <li>You do not need to quarantine unless the test result is positive.</li>
       </ul>
     </div>
+  </div>
   </div>
 </div>
 
