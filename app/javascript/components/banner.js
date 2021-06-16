@@ -1,19 +1,15 @@
-import Typed from 'typed.js';
+import Typed from "typed.js";
 
+let typedElement;
 const loadDynamicBannerText = () => {
-  console.log("hello")
-  if (document.getElementById("banner-typed-text")) {
-    new Typed('#banner-typed-text', {
-      strings: ["Travel Colour", "Travel restriction free", "Travel Covid free", "Travel free", "Travel with smile"],
-      typeSpeed: 80,
-      loop: true
-    });
-  }
-}
-
-
+  typedElement = new Typed("#banner-typed-text", {
+    strings: ["Travel Colour", "Travel restriction free", "Travel Covid free", "Travel free", "Travel with smile"],
+    typeSpeed: 50,
+    loop: true,
+  });
+};
 const destroyDynamicBannerText = () => {
-  document.getElementById("banner-typed-text").innerText = ""
-}
+  typedElement.destroy();
+};
 
 export { loadDynamicBannerText, destroyDynamicBannerText };
