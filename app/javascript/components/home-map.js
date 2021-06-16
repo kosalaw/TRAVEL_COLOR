@@ -7,9 +7,9 @@ const initMap = () => {
     // Map and projection
     const projection = d3
       .geoNaturalEarth1()
-      .scale(width / 0.5 / Math.PI)
+      .scale(width / 0.55 / Math.PI)
       .translate([width / 2, height / 2])
-      .center([15, 50]);
+      .center([20, 50]);
 
     var g = svg.append("g");
     let path = d3.geoPath().projection(projection);

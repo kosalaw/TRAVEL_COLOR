@@ -24,7 +24,7 @@
   margin-top: 0px 0px;
   background-color: white;
   border-radius: 10px;
-  height: 450px;
+  height: 300px;
 }
 .alert {
   position: absolute;
@@ -38,5 +38,11 @@
 #myMoodal {
   position: absolute;
   top: 75px;
-  right: -75px;
+  right: -50px;
+}
+h3 {
+  font-size: 20px !important;
+}
+h4 {
+  font-size: 16px !important;
 }
