@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Montserrat-Light';
+  src: url('/assets/Montserrat-Light.ttf');
+}
+
 // Specific CSS for your home-page
 #main-home-page-banner {
   background-image: url("https://res.cloudinary.com/dgw2hw9oa/image/upload/v1623769956/banner_bjtpsu.jpg");
@@ -10,14 +15,27 @@
   width: 40%;
 }
 
+.search-form {
+  display: flex;
+  .form-group {
+    height: 100%;
+    margin: 0;
+  }
+  .form-control {
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+  }
+}
+
 .title-card {
   color: #00a891;
-  font-family: 'PaytoneOne-Regular';
+  font-family: 'Montserrat-Light';
 }
 
 .search-bar {
   font-size: 20px;
-  border-radius: 16px;
+  border-radius: 4px;
   background-color: rgba(0,0,0,0);
   box-shadow: none;
   color: white;
@@ -44,7 +62,7 @@
 }
 .text-banner-two {
   font-size: 25px;
-  font-family: "Lato";
+  font-family: "Montserrat-Light";
   position: relative;
   top: 30%;
   color: #fff;
@@ -59,13 +77,11 @@
   top: -35px;
 }
 
-
-
-
 #info {
-  font-family: "nunito";
+  font-family: "Montserrat-Light";
   font-size: 30px;
 }
+
 #box-country {
   margin-top: 10px;
   height: 500px;
@@ -76,6 +92,7 @@
   background-color: white;
   border-radius: 10px;
 }
+
 #title {
   font-size: 35px;
   margin-bottom: 20px;

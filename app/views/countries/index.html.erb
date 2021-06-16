@@ -8,9 +8,10 @@
           </p>
         </div>
         <div class="d-flex align-items-center justify-content-center search">
-          <form action="/countries" accept-charset="UTF-8" method="get" class="d-flex grid justify-content-center align-items-stretch">
-            <input type="search" name="name" id="name" class="left search-bar" placeholder="Where are you travelling to?" required>
-          </form>
+            <%= simple_form_for countries_path, method: :get, html: {class: "search-form"} do |f| %>
+              <%= f.input :country, collection: @countries, value_method: :id, label_method: :name, label: false, include_blank: "Where are you travelling?"  %>
+              <%= f.button :submit, "Go" %>
+            <% end %>
         </div>
       </div>
     </div>

@@ -19,6 +19,9 @@ class CountriesController < ApplicationController
       end
     end
     @json_array = @temp_array.to_json
+    if params.dig("/countries", "country").present?
+      redirect_to country_path(Country.find(params["/countries"]["country"]))
+    end
   end
 
   def show
