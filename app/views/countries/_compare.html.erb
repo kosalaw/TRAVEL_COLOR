@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center">
-  <%= link_to "Explore", country_path(country), class: 'btn' %>
+  <%= link_to "Explore", country_path(country), class: 'btn cta-btn' %>
 </div>
 <br>
 <br>
@@ -109,7 +109,7 @@
 <div class="module_one">
   <% if country.government_url.present? %>
     <div class="filled short mt-3">
-      <a class="module_URL" href="<%= country&.government_url %>" target="_blank" class="btn btn-info" role="button"> Visit <%= country&.name %></a> 
+      <a class="module_URL" href="<%= country&.government_url %>" target="_blank" class="btn btn-info" role="button"> Gov. <%= country&.name %></a> 
     </div>
     <% else %>
     <div class="empty short mt-3">
