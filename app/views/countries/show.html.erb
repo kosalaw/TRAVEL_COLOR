@@ -23,9 +23,6 @@
             </div>
           </div>
           <div class="entry-req-card">
-            <p class="d-inline"><b>Status:</b></p> <%= @country.status.nil? ? "N/A" : @country.status.capitalize %><br>
-          </div>
-          <div class="entry-req-card">
             <p class="d-inline"><b>Quarantine Requirments:</b></p> <%= @country.quarantine.nil? ? "N/A" : @country.quarantine.capitalize %><br>
           </div>
           <div class="entry-req-card">
@@ -35,7 +32,7 @@
             <p class="d-inline"><b>Extra Details:</b></p>  <%= @country.content %><br>
           </div>
           <div class="entry-req-card" id="bottom">
-            <p class="d-inline"><b>Upcomming Changes:</b></p> <%= @country.upcoming_changes != " " ? "N/A" : @country.upcoming_changes.capitalize %><br>
+            <p class="d-inline"><b>Upcoming Changes to UK list:</b></p> <%= @country.upcoming_changes != " " ? @country.upcoming_changes.capitalize : "N/A" %><br>
           </div>
           <br>
           <div d-flex>
