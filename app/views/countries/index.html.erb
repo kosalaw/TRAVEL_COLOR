@@ -1,21 +1,18 @@
 <div class="home-banner">
   <div class="container h-100">
     <div class="row d-flex align-items-center h-100">
-
-        <div class="col-md-6 d-none d-md-block">
-          <p class="text-banner-one">
-            <span id="banner-typed-text"></span>
-            <h3 class="text-banner-two">Navigate entry restrictions and quarantine requirements for any destination with our live map.</h3>
-          </p>
-        </div>
-
-        <div class="d-flex align-items-center   justify-content-center search">
-            <%= simple_form_for countries_path, method: :get, html: {class: "search-form"} do |f| %>
-              <%= f.input :country, collection: @countries, value_method: :id, label_method: :name, label: false, include_blank: "Where are you travelling?"  %>
-              <%= f.button :submit, "Go" %>
-            <% end %>
-        </div>
-
+      <div class="col-md-6 d-none d-md-block">
+        <p class="text-banner-one">
+          <span id="banner-typed-text"></span>
+          <h3 class="text-banner-two">Navigate entry restrictions and quarantine requirements for any destination with our live map.</h3>
+        </p>
+      </div>
+      <div class="d-flex align-items-center   justify-content-center search">
+        <%= simple_form_for countries_path, method: :get, html: {class: "search-form"} do |f| %>
+        <%= f.input :country, collection: @countries, value_method: :id, label_method: :name, label: false, include_blank: "Where are you travelling?"  %>
+        <%= f.button :submit, "Go" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
@@ -23,17 +20,15 @@
 <!-- Create an element where the map will take place -->
 
 <div class="container-map">
-    <div class="svg-frame">
-      <div class="styled-font map-title">
-        <h2>European countries open to uk tourists</h2>
-        <h5>Open countries are coloured based on the UK Gov travel lists </h5>
-      </div>
-      <svg id="my_dataviz" width="1100" height="600" data-countries="<%= @json_array %>"></svg>
-      <div class="tooltip">
-        <span id="tooltip-color"></span>
-      </div>
-
-
+  <div class="svg-frame">
+    <div class="styled-font map-title">
+      <h2>European countries open to uk tourists</h2>
+      <h5>Open countries are coloured based on the UK Gov travel lists </h5>
+    </div>
+    <svg id="my_dataviz" width="1100" height="600" data-countries="<%= @json_array %>"></svg>
+    <div class="tooltip">
+      <span id="tooltip-color"></span>
+    </div>
     <div class="cards-container">
       <div id="list-red" class="list-card alert-danger" >
         <ul>
@@ -47,7 +42,6 @@
           <li>COVID-19 test on day 2 and 8</li>
         </ul>
       </div>
-
       <div id="list-amber" class="list-card alert-warning">
         <ul>
           <!-- <h5>Amber List countries</h5> -->
@@ -73,12 +67,10 @@
         </ul>
       </div>
     </div>
-
-
-  <!-- The Modal -->
-  <div id="myMoodal" class="modals">
-    <div class="modals-content">
-      <span class="close">&times;</span>
+    <!-- The Modal -->
+    <div id="myMoodal" class="modals">
+      <div class="modals-content">
+        <span class="close">&times;</span>
         <div class="pop-info container text-center">
           <h3 id="name">Click on a country to explore</h3>
           <!-- <h4 id="color"></h4> -->
@@ -87,9 +79,10 @@
           <h4 id="quarantine"></h4>
           <span id="link"></span>
         </div>
+      </div>
     </div>
   </div>
-
+</div>
 <div>
   <div class="bg-white m-0">
     <div class="container text-center">
@@ -105,9 +98,9 @@
             <p class="card-text">Set up alerts to get notified by email when a country's policy changes</p>
             <br>
             <% if user_signed_in? %>
-              <%= link_to "Manage Alerts", user_path(current_user), class: 'btn'  %>
+            <%= link_to "Manage Alerts", user_path(current_user), class: 'btn'  %>
             <% else %>
-              <a type="button" href="users/sign_in" class="btn">Manage alerts</a>
+            <a type="button" href="users/sign_in" class="btn">Manage alerts</a>
             <% end %>
           </div>
         </div>
@@ -139,3 +132,4 @@
     </script>
   </div>
 </div>
+
