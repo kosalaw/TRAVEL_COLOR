@@ -36,14 +36,14 @@ const initMap = () => {
       if (myJsArray[d.properties.name]) {
         // d3.select('#status').html(myJsArray[d.properties.name].["status"];
         if (myJsArray[d.properties.name]["test"] === null) {
-          d3.select("#test").html("No test required")
+          d3.select("#test").html("No test required before arrival")
         }
         else{
           d3.select("#test").html("Negative test " + "<b>" + myJsArray[d.properties.name]["test"] + "</b>" + " before arrival");
         }
 
         if (myJsArray[d.properties.name]["quarantine"] === null) {
-          d3.select("#quarantine").html("No quarantine required")
+          d3.select("#quarantine").html("No quarantine required after arrival")
         }
         else{
           d3.select("#quarantine").html("Quarantine on arrival: " + "<b>" +myJsArray[d.properties.name]["quarantine"]+ "</b>");
@@ -68,7 +68,7 @@ const initMap = () => {
         let id = myJsArray[d.properties.name]["id"];
 
         d3.select("#link").html(
-          `<a class="btn" href="/countries/${id}">Explore</a>`
+          `<a class="btn cta-btn" href="/countries/${id}">Explore</a>`
         );
       } else {
         d3.select("#status").html("Closed to Tourists");
