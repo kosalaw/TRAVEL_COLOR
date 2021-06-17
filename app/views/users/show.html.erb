@@ -18,7 +18,7 @@
         <% if @user.reviews.count <= 0 %>
           <br>
           <br>
-          <h2 class="mb-5"> Your travel destionation is awaiting for you and your review... </h2>
+          <h2 class="mb-5"> Your travel destination is awaiting for you and your review... </h2>
         <% else %>
           <ul>
             <% @user.reviews.order(created_at: :desc).each do |review|  %>
