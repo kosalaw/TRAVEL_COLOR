@@ -2,7 +2,7 @@
 My Account
 </div>
 
-<div class="container country-body">
+<div class="container country-body show-page-padding">
 
   <div class="row">
 
@@ -14,7 +14,6 @@ My Account
           <li><b>Last Name: </b><%= current_user.last_name %></li>
           <li><b>Email: </b><%= current_user.email %></l1>
         </ul>
-      
         <%= link_to "Edit", edit_user_registration_path  %>
       </div>
 
@@ -24,7 +23,7 @@ My Account
         <% if @user.reviews.count <= 0 %>
           <br>
           <br>
-          <h2> Your travel destionation is awaiting for you and your review... </h2>
+          <h2 class="mb-5"> Your travel destionation is awaiting for you and your review... </h2>
         <% else %>
           <ul>
             <% @user.reviews.order(created_at: :desc).each do |review|  %>
@@ -38,6 +37,7 @@ My Account
             <% end %>
           </ul>
         <% end %>
+        <a class="btn ma-rvw-hm" href="/" class="btn btn-info" role="button">Go back to the map</a>
       </div>
 
     </div>

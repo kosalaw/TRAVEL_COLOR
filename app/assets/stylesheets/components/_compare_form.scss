@@ -1,10 +1,8 @@
 .title-font {
-  font-family: 'Lato';
   color: #9f9aa4;
 }
 
 .sub-title {
-  font-family: 'Lato';
   color: #9f9aa4;
   font-size: 20px;
 }
@@ -48,6 +46,7 @@
 
 
 .empty {
+  color: #9f9aa4;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -59,6 +58,7 @@
 }
 
 .filled {
+  color: #9f9aa4;
   align-items: center;
   display: flex;
   height: 130px;
@@ -80,18 +80,16 @@
 }
 
 .compare-empty-pic {
-  background-size: cover;
-  background-position: center;
-  height: 600px;  
-  display: flex;
-  justify-content: center!important;
-  align-items: center!important;
-  border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 300px;
+}
+
+.compare-empty {
+  color: #9f9aa4;
 }
 
 .cmpr-emty-cntnr {  
   width: 80%;
   justify-content: center!important;
   align-items: center!important;
+  padding-bottom: 130px;
 }

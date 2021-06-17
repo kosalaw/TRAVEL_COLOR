@@ -1,13 +1,8 @@
 <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @country.photo_url %>)">
   <div> <%= @country.name %> <img src="<%= @country.flag_url %>" /> </div>
 </div>
-
-
-
 <div class="container country-body">
-
   <div class="row">
-
     <div class="col-8">
       <div class="travel-info">
           <%= link_to 'Explore Flights', explore_country_path(@country), class: 'btn country-show-btn', id: 'flt-explr' %>
@@ -19,7 +14,6 @@
               <div class="d-inline bell"><i class="far fa-bell-slash"></i></div>
               <%= link_to "Turn off Notifications", alert_path(@alert), method: :delete , data: {confirm: "Are you sure?"} %>
           <% end %>
-          
           <br>
           <br>
           <h5>Entry requirements</h5><br>
@@ -50,7 +44,6 @@
           </div> 
       </div>
     </div>
-
     <div class="col cntry-shw-reviews">
       <h2> Users’ feedback </h2>
       <% if @country.reviews.length > 0 %>
@@ -64,45 +57,24 @@
       <br>
       <br>
       <div class="container">
-        <div class="row">
-          <div class="col-xs-4">
-              <% @country.reviews.first(5).each do |review| %>
-                <div class="container">
-                  <div>
-                    "<%= review.content %>"
-                  </div>
-                  - <b><%= review.user.first_name %></b>
-                  <br>
-                  <br>
-                </div>
-              <% end %>
+        <% @country.reviews.first(5).each do |review| %>
+          <div class="container">
+            <div>
+              "<%= review.content %>"
+            </div>
+            - <b><%= review.user.first_name %></b>
+            <br>
+            <br>
           </div>
-        </div>
+        <% end %>
       </div>
       <div class="container">
-        <div class="row">
-          <div class="col-xs-4">
-            <%= simple_form_for [@country, @review] do |f| %>
-              <%= f.input :stars, collection: (1..5).to_a, label: false %>
-              <%= f.input :content, label: false, placeholder: 'Write your review here' %>
-              <%= f.submit %>
-            <% end %>
-          </div>
-        </div>
+        <%= simple_form_for [@country, @review] do |f| %>
+          <%= f.input :stars, collection: (1..5).to_a, label: false %>
+          <%= f.input :content, label: false, placeholder: 'Write your review here' %>
+          <%= f.submit %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
