@@ -27,7 +27,6 @@ import {
   loadDynamicBannerText,
   destroyDynamicBannerText,
 } from "../components/banner";
-import submitToggle from "./toggle.js";
 import { initMap } from "../components/home-map";
 import { popUpModal } from "../components/pop-up";
 import { initUpdateNavbarOnScroll } from "../components/navbar";
