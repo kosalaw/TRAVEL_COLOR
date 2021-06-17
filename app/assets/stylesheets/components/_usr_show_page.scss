@@ -14,7 +14,7 @@
 
 .user-shw-alerts {
     background-color: rgb(225, 236, 248)!important;
-    padding-bottom: 15px;
+    padding: 15px;
     border-radius: 5px;
     max-height: 100vh;
     overflow-y: scroll;
@@ -27,6 +27,7 @@
     margin-bottom: 15px;
     border-radius: 5px;
     max-height: 70vh;
+    max-width: 450px;
     overflow-y: scroll;   
     min-height: 50vh;
     position: relative;
@@ -41,6 +42,7 @@
 }
 
 .usr-my-dtls { 
+    padding: 15px;
     height: 30vh;
   li {
     font-size: 16px;
@@ -71,10 +73,14 @@
   padding-bottom: 10px;
 }
 
+.ma-rvw-hm {
+  margin: 0 auto;
+  width: 185px;
+  display: block;
+}
 
-  
-  .ma-rvw-hm {
-    margin: 0 auto;
-    width: 182px;
-    display: block;    
-  }
+.padding-text {
+  padding-bottom: 15px;
+}
+
+

@@ -1,14 +1,11 @@
 <div class="usr-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/W_-6PWGbYaU/1600x900)">
-My Account
+<h2>My Account</h2>
 </div>
-
 <div class="container country-body show-page-padding">
-
   <div class="row">
-
     <div class="col-6" style="display:flex; flex-direction:column; flex:1;">
       <div class="usr-my-dtls">
-        <h1>My Details</h1>
+        <h2>My Details</h2>
         <ul>
           <li><b>First Name: </b><%= current_user.first_name %> </li>
           <li><b>Last Name: </b><%= current_user.last_name %></li>
@@ -16,10 +13,8 @@ My Account
         </ul>
         <%= link_to "Edit", edit_user_registration_path  %>
       </div>
-
-      
       <div class="user-accnt-rvw" style="margin-top: auto;">
-        <h1>My Reviews: </h1>
+        <h2>My Reviews: </h2>
         <% if @user.reviews.count <= 0 %>
           <br>
           <br>
@@ -39,11 +34,9 @@ My Account
         <% end %>
         <a class="btn ma-rvw-hm" href="/" class="btn btn-info" role="button">Go back to the map</a>
       </div>
-
     </div>
-
     <div class="col user-shw-alerts" style="display:flex; flex-direction:column; flex:1;">
-      <h1>My Alerts: </h1>
+      <h2>My Alerts: </h2>
       <ol> 
         <% @user.alerts.each do |alert|  %>
             <li> <%= link_to alert.country.name, country_path(alert.country_id)  %> 
@@ -54,15 +47,16 @@ My Account
             </li>
           <% end %>
       </ol>
-      
+      <br>
       <div style="margin-top: 10px, margin-bottom: 10px">
-        <h3><b>Subscribe for new alerts</b></h3>
-        <%= simple_form_for Alert.new, html: { id: 'add_alert_form' } do |f| %>
-          <%= f.input :country_id, as: :select, collection: Country.all.order(:name), value_method: :id, label_method: :name, label: false, selected: Country.all.order(:name).first.id, include_blank: false, include_hidden: false %>
-          <%= f.button :submit, "Create Alert" %>
-        <% end %>
+        <h3 class="padding-text"><b>Subscribe for new alerts</b></h3>
+        <div class="d-flex justify-content-center">
+          <%= simple_form_for Alert.new, html: { id: 'add_alert_form' } do |f| %>
+            <%= f.input :country_id, as: :select, collection: Country.all.order(:name), value_method: :id, label_method: :name, label: false, selected: Country.all.order(:name).first.id, include_blank: false, include_hidden: false %>
+            <%= f.button :submit, "Create Alert" %>
+          <% end %>
+        </div>
       </div>
-
     </div>
   </div>
 </div>
