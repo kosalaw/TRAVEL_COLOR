@@ -20,27 +20,7 @@
 <br>
 
 <% if !hide %>
-  <div class="d-flex align-items-baseline sub-title"><h5><b>Infos</b></h5><i class="fas fa-info-circle ml-2"></i></div>
-<% else %>
-  <h5 class="trans"> jhfjyfkug</h5>
-<% end %>
-<hr class="solid">
-<br>
-<div class="module">
-  <% if country.content.present? %>
-    <div class="filled f-start mt-3">
-      <p class="module_info"><%= country&.content %></p>
-    </div>
-    <% else %>
-    <div class="empty mt-3">
-      <h5>-</h5>
-    </div>
-  <% end %>
-</div>
-<br>
-
-<% if !hide %>
-  <div class="d-flex align-items-baseline sub-title"><h5><b>Test</b></h5><i class="fas fa-vial ml-2"></i></div>
+  <div class="d-flex align-items-baseline sub-title" title="required before arrival"><h5><b>Test</b></h5><i class="fas fa-vial ml-2"></i></div>
 <% else %>
   <h5 class="trans"> jhfjyfkug</h5>
 <% end %>
@@ -50,26 +30,6 @@
   <% if country.test.present? %>
     <div class="filled short mt-3">
       <p><%= country&.test %></p>
-    </div>
-    <% else %>
-    <div class="empty short mt-3">
-      <h5>-</h5>
-    </div>
-  <% end %>
-</div>
-<br>
-
-<% if !hide %>
-  <div class="d-flex align-items-baseline sub-title"><h5><b>Status</b></h5><i class="fas fa-virus ml-2"></i></div>
-<% else %>
-  <h5 class="trans"> jhfjyfkug</h5>
-<% end %>
-<hr class="solid">
-<br>
-<div class="module">
-  <% if country.status.present? %>
-    <div class="filled short mt-3">
-      <p><%= country&.status %></p>
     </div>
     <% else %>
     <div class="empty short mt-3">
@@ -93,6 +53,26 @@
     </div>
     <% else %>
     <div class="empty short mt-3">
+      <h5>-</h5>
+    </div>
+  <% end %>
+</div>
+<br>
+
+<% if !hide %>
+  <div class="d-flex align-items-baseline sub-title"><h5><b>Infos</b></h5><i class="fas fa-info-circle ml-2"></i></div>
+<% else %>
+  <h5 class="trans"> jhfjyfkug</h5>
+<% end %>
+<hr class="solid">
+<br>
+<div class="module">
+  <% if country.content.present? %>
+    <div class="filled f-start mt-3">
+      <p class="module_info"><%= country&.content %></p>
+    </div>
+    <% else %>
+    <div class="empty mt-3">
       <h5>-</h5>
     </div>
   <% end %>
