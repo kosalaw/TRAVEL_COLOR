@@ -24,21 +24,22 @@ import { listen_to_form } from "../components/submit_form";
 // External imports
 import "bootstrap";
 import { loadDynamicBannerText, destroyDynamicBannerText, } from "../components/banner";
-import submitToggle from "./toggle.js";
 import { initMap } from "../components/home-map";
 import { popUpModal } from "../components/pop-up";
+import { initStarRating } from '../plugins/init_star_rating';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+
 
 document.addEventListener("turbolinks:load", () => {
   // Call your functions here, e.g:
   // initSelect2();
   loadDynamicBannerText();
-  submitToggle();
   listen_to_form();
   initMap();
   popUpModal();
+  initStarRating();
 });
 
 document.addEventListener("turbolinks:before-cache", () => {
