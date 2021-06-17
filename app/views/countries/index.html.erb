@@ -10,7 +10,7 @@
       <div class="d-flex align-items-center   justify-content-center search">
         <%= simple_form_for countries_path, method: :get, html: {class: "search-form"} do |f| %>
         <%= f.input :country, collection: @countries.order(:name), value_method: :id, label_method: :name, label: false, include_blank: "Where are you travelling?"  %>
-        <%= f.button :submit, "Go" %>
+        <%= f.button :submit, "Go", class: "cta-btn" %>
         <% end %>
       </div>
     </div>
@@ -19,18 +19,18 @@
 
 <!-- Create an element where the map will take place -->
 
-<div class="container-map">
+<div class="container-map mt-1">
+  <div class="styled-font map-title">
+    <h2>European countries open to UK tourists</h2>
+    <h5>Open countries are coloured based on the UK Gov travel lists </h5>
+  </div>
   <div class="svg-frame">
-    <div class="styled-font map-title">
-      <h2>European countries open to uk tourists</h2>
-      <h5>Open countries are coloured based on the UK Gov travel lists </h5>
-    </div>
     <svg id="my_dataviz" width="1100" height="600" data-countries="<%= @json_array %>"></svg>
     <div class="tooltip">
       <span id="tooltip-color"></span>
     </div>
     <div class="cards-container">
-      <div id="list-red" class="list-card alert-danger" >
+      <div class="list-card alert-danger" >
         <ul>
           <!-- <h5>Red List countries</h5> -->
           <h6>Red list - Before return:</h6>
@@ -42,7 +42,7 @@
           <li>COVID-19 test on day 2 and 8</li>
         </ul>
       </div>
-      <div id="list-amber" class="list-card alert-warning">
+      <div class="list-card alert-warning">
         <ul>
           <!-- <h5>Amber List countries</h5> -->
           <h6>Amber list - Before return:</h6>
@@ -54,7 +54,7 @@
           <li>COVID-19 test on day 2 and 8</li>
         </ul>
       </div>
-      <div id="list-green" class="list-card alert-success">
+      <div class="list-card alert-success">
         <ul>
           <!-- <h5>Green List countries</h5> -->
           <h6>Green list - Before return:</h6>

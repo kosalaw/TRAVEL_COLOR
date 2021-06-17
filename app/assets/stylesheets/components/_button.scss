@@ -1,12 +1,14 @@
 .btn {
-  background-color: #00a991;
-  color: #fff;
+  background-color: white;
+  color: #00a991;
+  border-color: #00a991;
   font-weight: 600;
-  opacity: 0.8;
+  opacity: 1;
 }
 .btn:hover {
-  color: #fff;
-  opacity: 1;
+  color: #00a991;
+  opacity: 0.8;
+  background-color: #bde0dc;
 }
 
 .already-member {

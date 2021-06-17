@@ -20,7 +20,6 @@
         height: 60px;
         width: 65px;
     }
-
 }
 
 .country-body {
@@ -29,16 +28,10 @@
 }
 
 .country-show-btn {
-    background-color: #009882;
-    border-style: none;
-    color: white;
     margin-right: 10px;
 }
 
 .country-show-btn:hover {
-    background-color: #009882;
-    border-style: none;
-    color: white;
 }
 
 .cntry-shw-reviews {
@@ -47,6 +40,7 @@
     margin-left: 20px;
     border-radius: 5px;
     text-align: center!important;
+    padding-bottom: 15px;
 }
 
 #flt-explr {

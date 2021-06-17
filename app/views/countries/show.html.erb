@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-8">
       <div class="travel-info">
-          <%= link_to 'Explore Flights', explore_country_path(@country), class: 'btn country-show-btn', id: 'flt-explr' %>
+          <%= link_to 'Explore Flights', explore_country_path(@country), class: 'btn cta-btn country-show-btn', id: 'flt-explr' %>
           <h2>Travel information</h2>   
           <% if @alert.nil? %>
             <div class="d-inline bell"><i class="far fa-bell"></i></div>
@@ -40,7 +40,7 @@
           <br>
           <div d-flex>
             <a class="btn country-show-btn" href="<%= @country.government_url %>" target="_blank" class="btn btn-info" role="button">Government Website</a> 
-            <a class="btn cta-btn country-show-btn" href="<%= compare_countries_path('/countries/compare' => {country_1:@country.id}) %>" class="btn btn-info" role="button">Compare Countries</a>
+            <a class="btn country-show-btn" href="<%= compare_countries_path('/countries/compare' => {country_1:@country.id}) %>" class="btn btn-info" role="button">Compare Countries</a>
           </div> 
       </div>
     </div>
@@ -72,7 +72,7 @@
         <%= simple_form_for [@country, @review] do |f| %>
           <%= f.input :stars, collection: (1..5).to_a, label: false %>
           <%= f.input :content, label: false, placeholder: 'Write your review here' %>
-          <%= f.submit %>
+          <%= f.submit "Submit", class: "btn" %>
         <% end %>
       </div>
     </div>

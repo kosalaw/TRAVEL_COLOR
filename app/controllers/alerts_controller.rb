@@ -17,6 +17,7 @@ class AlertsController < ApplicationController
     @alert.user = current_user
 
     if @alert.save
+      AlertMailer.with(country_id: @alert.country.id, user_id: @alert.user.id).subscribe.deliver_later
       if params.dig(:alert, :country_id).present?
         redirect_to user_path(:id)
       else
@@ -36,7 +37,7 @@ class AlertsController < ApplicationController
 
   private
 
-   def alert_params
+  def alert_params
     params.require(:alert).permit(:country_id)
-   end
+  end
 end
