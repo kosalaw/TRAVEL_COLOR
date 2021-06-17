@@ -3,6 +3,7 @@
 //   src: font-url('/assets/Montserrat-Light.ttf');
 // }
 
+
 // Specific CSS for your home-page
 .home-banner {
   background-image: url("https://res.cloudinary.com/dgw2hw9oa/image/upload/v1623769956/banner_bjtpsu.jpg");
@@ -78,6 +79,7 @@
   top: -35px;
 }
 
+
 #info {
   font-family: "Montserrat-Light";
   font-size: 30px;
@@ -98,4 +100,13 @@
   font-size: 35px;
   margin-bottom: 20px;
   padding: 20px;
+}
+
+.styled-font {
+  color: #00016b;
+  font-weight: bold;
+}
+
+.card {
+  color: #00016b;
 }
