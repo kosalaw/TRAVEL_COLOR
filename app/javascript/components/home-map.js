@@ -23,33 +23,52 @@ const initMap = () => {
     let onClick = function (d) {
       console.log(d);
       myMoodal.style.display = "block";
-      d3.select("#title").html(""); // Empty old data from the info page
+      d3.select("#name").html(""); // Empty old data from the info page
       d3.select("#color").html(""); // Empty old data from the info page
       d3.select("#status").html(""); // Empty old data from the info page
       d3.select("#content").html(""); // Empty old data from the info page
       d3.select("#test").html(""); // Empty old data from the info page
       d3.select("#quarantine").html(""); // Empty old data from the info page
       d3.select("#link").html(""); // Empty old data from the info page
+      d3.select("#name").html(d.properties.name);
+      d3.select("#name").style("background-color", "#fff")
 
-      d3.select("#title").html(d.properties.name);
       if (myJsArray[d.properties.name]) {
         // d3.select('#status').html(myJsArray[d.properties.name].["status"];
-        d3.select("#test").html(
-          "Requires test no older than: " + myJsArray[d.properties.name]["test"]
-        );
-        d3.select("#quarantine").html(
-          "At destination isolate for: " +
-            myJsArray[d.properties.name]["quarantine"]
-        );
-        d3.select("#color").html(
-          "UK quarantine tier color: " + myJsArray[d.properties.name]["color"]
-        );
+        if (myJsArray[d.properties.name]["test"] === null) {
+          d3.select("#test").html("No test required before arrival")
+        }
+        else{
+          d3.select("#test").html("Negative test " + "<b>" + myJsArray[d.properties.name]["test"] + "</b>" + " before arrival");
+        }
+
+        if (myJsArray[d.properties.name]["quarantine"] === null) {
+          d3.select("#quarantine").html("No quarantine required after arrival")
+        }
+        else{
+          d3.select("#quarantine").html("Quarantine on arrival: " + "<b>" +myJsArray[d.properties.name]["quarantine"]+ "</b>");
+        }
+        // d3.select("#color").html(
+        //   "UK quarantine tier color: " + myJsArray[d.properties.name]["color"]
+        // );
+        if (myJsArray[d.properties.name]["color"] === "Amber") {
+          d3.select("#name").style("background-color", "#FF8800")
+        }
+        if (myJsArray[d.properties.name]["color"] === "Green") {
+          d3.select("#name").style("background-color", "#55A630")
+        }
+        if (myJsArray[d.properties.name]["color"] === "Red") {
+          d3.select("#name").style("background-color", "#CC0022")
+        }
+        if (d.properties.name === "Ireland" || d.properties.name === "England"){
+          d3.select("#name").style("background-color", "#55A630")
+        }
         // d3.select('#content').html(myJsArray[d.properties.name]["content"]);
 
         let id = myJsArray[d.properties.name]["id"];
 
         d3.select("#link").html(
-          `<a class="btn" href="/countries/${id}">More Info</a>`
+          `<a class="btn cta-btn" href="/countries/${id}">Explore</a>`
         );
       } else {
         d3.select("#status").html("Closed to Tourists");

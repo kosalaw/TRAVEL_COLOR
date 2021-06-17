@@ -26,7 +26,9 @@ import "bootstrap";
 import { loadDynamicBannerText, destroyDynamicBannerText, } from "../components/banner";
 import { initMap } from "../components/home-map";
 import { popUpModal } from "../components/pop-up";
+
 import { initStarRating } from '../plugins/init_star_rating';
+import { initUpdateNavbarOnScroll } from '../components/navbar';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -40,15 +42,10 @@ document.addEventListener("turbolinks:load", () => {
   initMap();
   popUpModal();
   initStarRating();
+  initUpdateNavbarOnScroll();
+
 });
 
 document.addEventListener("turbolinks:before-cache", () => {
   destroyDynamicBannerText();
-});
-
-import { initUpdateNavbarOnScroll } from '../components/navbar';
-
-document.addEventListener('turbolinks:load', () => {
-  // Call your JS functions here
-  initUpdateNavbarOnScroll();
 });
