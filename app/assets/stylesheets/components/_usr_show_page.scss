@@ -30,6 +30,9 @@
     max-height: 70vh;
     overflow-y: scroll;   
     min-height: 50vh;
+    position: relative;
+    padding-bottom: 40px;
+
     ul > li {
       font-size: 16px;
       font-family: "Work Sans", "Helvetica", "sans-serif";
@@ -62,3 +65,8 @@
       margin-bottom: 10px!important;
   }
   
+  .ma-rvw-hm {
+    margin: 0 auto;
+    width: 182px;
+    display: block;    
+  }
