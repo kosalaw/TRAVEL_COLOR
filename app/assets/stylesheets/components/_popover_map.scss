@@ -16,7 +16,6 @@
   top: 340px;
 }
 .modals-content {
-  background-color: #fefefe;
   margin: auto;
   padding: 10px;
   box-shadow: 10px 0px 15px rgba(10, 10, 10, 0.3);
@@ -24,8 +23,25 @@
   margin-top: 0px 0px;
   background-color: white;
   border-radius: 10px;
-  height: 300px;
+
+
 }
+
+
+#name{
+  border-radius: 4px;
+}
+#test{
+  font-size:20px;
+}
+#quarantine{
+  font-size:20px;
+}
+#status{
+  font-size:20px;
+}
+
+
 .alert {
   position: absolute;
   bottom: 640px;

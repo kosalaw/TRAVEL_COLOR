@@ -21,15 +21,24 @@ My Account
       
       <div class="user-accnt-rvw" style="margin-top: auto;">
         <h1>My Reviews: </h1>
-        <ol>
-          <% @user.reviews.each do |review|  %>
-            <li> <%= link_to review.country.name, country_path(review.country_id)  %>
-              <%= link_to  review, method: :delete , data: {confirm: "Are you sure?"} do %>
-                  <i class="fas fa-trash"></i>
-              <% end %> - <%= review.content %>
-            </li>
-          <% end %>
-        </ol>
+        <% if @user.reviews.count <= 0 %>
+          <br>
+          <br>
+          <h2 class="mb-5"> Your travel destionation is awaiting for you and your review... </h2>
+        <% else %>
+          <ul>
+            <% @user.reviews.order(created_at: :desc).each do |review|  %>
+              <li>
+                <%= review.created_at.strftime("%d-%m-%Y") %>:
+                <%= link_to review.country.name, country_path(review.country_id) %> - <%= review.content %>           
+                <%= link_to  review, method: :delete , data: {confirm: "Are you sure?"} do %>
+                  <i class="far fa-trash-alt"></i>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+        <a class="btn ma-rvw-hm" href="/" class="btn btn-info" role="button">Go back to the map</a>
       </div>
 
     </div>
@@ -48,7 +57,7 @@ My Account
       </ol>
       
       <div style="margin-top: 10px, margin-bottom: 10px">
-        <h4>Subscribe for new alerts</h4>
+        <h3><b>Subscribe for new alerts</b></h3>
         <%= simple_form_for Alert.new, html: { id: 'add_alert_form' } do |f| %>
           <%= f.input :country_id, as: :select, collection: Country.all.order(:name), value_method: :id, label_method: :name, label: false, selected: Country.all.order(:name).first.id, include_blank: false, include_hidden: false %>
           <%= f.button :submit, "Create Alert" %>
