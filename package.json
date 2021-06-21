@@ -7,16 +7,40 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
     "bootstrap": "4.6",
+    "d3": "^6.7.0",
+    "d3-geo-projection": "^3.0.0",
     "jquery": "^3.6.0",
     "jvectormap": "^2.0.4",
     "jvectormap-next": "^3.1.1",
     "mapbox-gl": "^2.3.0",
+    "mjml": "^4.9.3",
     "popper.js": "^1.16.1",
+    "topojson": "^3.0.2",
     "turbolinks": "^5.2.0",
     "typed.js": "^2.0.12"
   },
   "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^3.11.2"
-  }
+  },
+  "description": "Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.",
+  "main": "babel.config.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afsanehs/TRAVEL_COLOR.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/afsanehs/TRAVEL_COLOR/issues"
+  },
+  "homepage": "https://github.com/afsanehs/TRAVEL_COLOR#readme"
 }

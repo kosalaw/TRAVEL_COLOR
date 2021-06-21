@@ -8,16 +8,22 @@ Rails.application.routes.draw do
 
   devise_for :users
   root to: 'countries#index'
+  # root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :countries, only: [:index, :show] do
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:create, :show]
     resources :alerts, only: [:create]
     collection do
-      get :compare
+      get :compare      
+    end
+    member do
+      get :explore
     end
   end
 
-  resources :alerts, only: [:index, :destroy]
+  get "/flights", to: 'countries#flights'
+
+  resources :alerts, only: [:index, :destroy, :create]
   resources :reviews, only: [:destroy]
   resources :users, only: [:show]
 end

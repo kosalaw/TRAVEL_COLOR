@@ -1,11 +1,60 @@
-
-
-<div class="container">
-  <h1>My details</h1>
-  <p><b>First Name: </b><%= current_user.first_name %> <b>Last Name: </b><%= current_user.last_name %></p>
-  <p><b>Email: </b><%= current_user.email %></p>
-
-  <%= link_to "edit my details", edit_user_registration_path  %>
+<div class="usr-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/W_-6PWGbYaU/1600x900)">
+My Account
 </div>
 
+<div class="container country-body">
 
+  <div class="row">
+
+    <div class="col-6" style="display:flex; flex-direction:column; flex:1;">
+      <div class="usr-my-dtls">
+        <h1>My Details</h1>
+        <ul>
+          <li><b>First Name: </b><%= current_user.first_name %> </li>
+          <li><b>Last Name: </b><%= current_user.last_name %></li>
+          <li><b>Email: </b><%= current_user.email %></l1>
+        </ul>
+      
+        <%= link_to "Edit", edit_user_registration_path  %>
+      </div>
+
+      
+      <div class="user-accnt-rvw" style="margin-top: auto;">
+        <h1>My Reviews: </h1>
+        <ol>
+          <% @user.reviews.each do |review|  %>
+            <li> <%= link_to review.country.name, country_path(review.country_id)  %>
+              <%= link_to  review, method: :delete , data: {confirm: "Are you sure?"} do %>
+                  <i class="fas fa-trash"></i>
+              <% end %> - <%= review.content %>
+            </li>
+          <% end %>
+        </ol>
+      </div>
+
+    </div>
+
+    <div class="col user-shw-alerts" style="display:flex; flex-direction:column; flex:1;">
+      <h1>My Alerts: </h1>
+      <ol> 
+        <% @user.alerts.each do |alert|  %>
+            <li> <%= link_to alert.country.name, country_path(alert.country_id)  %> 
+              <%= alert.country.content  %>
+              <div class="d-inline bell"><i class="far fa-bell-slash"></i></div>
+              <%= link_to "Mute", alert, method: :delete , data: {confirm: "Are you sure?"} %>
+              <br>
+            </li>
+          <% end %>
+      </ol>
+      
+      <div style="margin-top: 10px, margin-bottom: 10px">
+        <h4>Subscribe for new alerts</h4>
+        <%= simple_form_for Alert.new, html: { id: 'add_alert_form' } do |f| %>
+          <%= f.input :country_id, as: :select, collection: Country.all.order(:name), value_method: :id, label_method: :name, label: false, selected: Country.all.order(:name).first.id, include_blank: false, include_hidden: false %>
+          <%= f.button :submit, "Create Alert" %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

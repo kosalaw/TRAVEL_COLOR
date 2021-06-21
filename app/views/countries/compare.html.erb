@@ -1,82 +1,61 @@
+<br>
 <%= simple_form_for compare_countries_path, method: :get, html: { id: 'compare_form' }, remote: true do |f| %>
 <div class="container">
-  <h1 class= "text-center"><b>Compare countries restrictions</b></h1>
+  <h2 class= "text-center title-font">Compare Countries Restrictions</h2>
+  <br>
+  <hr>
   <br>
   <div class="row">
-    <div class="col-4">
+    <div class="col-4 country-col">
       <% if @country_1 %>
         <%= f.input :country_1, collection: @countries, value_method: :id, label_method: :name, label: false, selected: @country_1&.id %>
-        <div class="d-flex justify-content-center">
-          <div class="color-box" style="background-color: <%= @country_1&.color == 'Amber' ? 'Orange': @country_1&.color %>"></div>
-        </div>
-        <br>
-        <p class="module_status"><b>Status: </b><%= @country_1&.status %></p>
-        <hr class="solid">
-
-        <div class="d-flex justify-content-center">
-          <span style="color: red; font-size: 30px"><i class="fas fa-adjust"></i></span>
-        </div>
-
-        <p><b>Quarantine: </b><%= @country_1&.quarantine %></p>
-        <hr class="solid">
-        <p><b>Test: </b><%= @country_1&.test %></p>
-        <hr class="solid">
-        <p class="module"><b>Details: </b><%= @country_1&.content %></p>
-        <hr class="solid">
-        <p><b>Government URL: </b></p>
-        <a class="module_URL" href="<%= @country_1&.government_url %>"><%= @country_1&.government_url %></a>
-        <hr class="solid">
-        <p><b>Upcoming changes: </b><%= @country_1&.upcoming_changes %></p>
       <% else %>
         <%= f.input :country_1, collection: @countries, value_method: :id, label_method: :name, label: false %>
       <% end %>
     </div>
-    <div class="col-4">
+    <div class="col-4 country-col">
       <% if @country_2 %>
         <%= f.input :country_2, collection: @countries, value_method: :id, label_method: :name, label: false, selected: @country_2&.id %>
-        <div class="d-flex justify-content-center">
-          <div class="color-box" style="background-color: <%= @country_2&.color == 'Amber' ? 'Orange': @country_2&.color %>"></div>
-        </div>
-        <br>
-        <p class="module_status"><b>Status: </b><%= @country_2&.status %></p>
-        <hr class="solid">
-        <p><b>Quarantine: </b><%= @country_2&.quarantine %></p>
-        <hr class="solid">
-        <p><b>Test: </b><%= @country_2&.test %></p>
-        <hr class="solid">
-        <p class="module"><b>Details: </b><%= @country_2&.content %></p>
-        <hr class="solid">
-        <p><b>Government URL: </b></p>
-        <a class="module_URL" href="<%= @country_2&.government_url %>"><%= @country_2&.government_url %></a>
-        <hr class="solid">
-        <p><b>Upcoming changes: </b><%= @country_2&.upcoming_changes %></p>
       <% else %>
         <%= f.input :country_2, collection: @countries, value_method: :id, label_method: :name, label: false %>
       <% end %>
     </div>
-    <div class="col-4">
+    <div class="col-4 country-col">
       <% if @country_3 %>
         <%= f.input :country_3, collection: @countries, value_method: :id, label_method: :name, label: false, selected: @country_3&.id %>
-        <div class="d-flex justify-content-center">
-          <div class="color-box" style="background-color: <%= @country_3&.color == 'Amber' ? 'Orange': @country_3&.color %>"></div>
-        </div>
-        <br>
-        <p class="module_status"><b>Status: </b><%= @country_3&.status %></p>
-        <hr class="solid">
-        <p><b>Quarantine: </b><%= @country_3&.quarantine %></p>
-        <hr class="solid">
-        <p><b>Test: </b><%= @country_3&.test %></p>
-        <hr class="solid">
-        <p class="module"><b>Details: </b><%= @country_3&.content %></p>
-        <hr class="solid">
-        <p><b>Government URL: </b></p>
-        <a class="module_URL" href="<%= @country_3&.government_url %>"><%= @country_3&.government_url %></a>
-        <hr class="solid">
-        <p><b>Upcoming changes: </b><%= @country_3&.upcoming_changes %></p>
       <% else %>
         <%= f.input :country_3, collection: @countries, value_method: :id, label_method: :name, label: false %>
       <% end %>
     </div>
-   </div>
+  </div>
+  <% if (!@country_1 && !@country_2 && !@country_3) %>
+    <div class="container cmpr-emty-cntnr justify-content-center text-center my-5">
+      <div class="compare-empty">
+
+        <h3> <b>You are too close... Please select countries to explore more....</b> </h3>
+        <br>
+        <div class="compare-empty-pic" style="background-image: url(https://media.giphy.com/media/1EACpNdoT31tusELVr/giphy.gif)">
+      </div>
+    </div>
+  <% else %>
+    <div class="row pt-3">
+      <div class="col-4 country-col">
+        <% if @country_1 %>
+          <%=  render 'compare', country: @country_1, hide: false %>
+        <% end %>
+      </div>
+      <div class="col-4 country-col">
+        <% if @country_2 %>
+              <%= render 'compare', country: @country_2, hide: true %>
+        <% end %>
+      </div>
+      <div class="col-4 country-col">
+        <% if @country_3 %>
+          <%= render 'compare', country: @country_3, hide: true %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
 <% end %>
+</div>

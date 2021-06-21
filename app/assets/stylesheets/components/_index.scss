@@ -4,6 +4,16 @@
 @import "navbar";
 @import "button";
 @import "card";
-@import "show_page";
+@import "cntry_show_page";
 @import "compare_form";
+@import "footer";
+@import "usr_show_page";
+@import "_popover_map";
+@import "_map-style";
 
+//added below to fix the shared footer to keep at the bottom. please dont remove
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

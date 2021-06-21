@@ -1,10 +1,31 @@
 class CountriesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :compare]
+  skip_before_action :authenticate_user!, only: [:index, :show, :compare, :explore]
   def index
     @countries = Country.all
+
+    countries = Country.all
+    @temp_array = {}
+    countries.each do |country|
+      if country.status == nil || country.status == " "
+          @temp_array[country.name] = {
+            id: country.id,
+            status: country.status,
+            test: country.test,
+            quarantine: country.quarantine,
+            color: country.color,
+            upcoming_changes: country.upcoming_changes,
+            content: country.content
+          }
+      end
+    end
+    @json_array = @temp_array.to_json
+    if params.dig("/countries", "country").present?
+      redirect_to country_path(Country.find(params["/countries"]["country"]))
+    end
   end
 
   def show
+    @review = Review.new
     @country = Country.find(params[:id])
     @alert = Alert.where(country: @country, user: current_user).first
   end
@@ -23,4 +44,12 @@ class CountriesController < ApplicationController
     end
     @countries = Country.order(name: :asc)
   end
+
+  def explore
+    @country = Country.find(params[:id])
+  end
+
+  def flights
+  end
+
 end

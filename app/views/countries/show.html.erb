@@ -10,21 +10,21 @@
 
     <div class="col-8">
       <div class="travel-info">
-          <a class="btn country-show-btn" id="flt-explr" href="#" class="btn btn-info" role="button">Explore Flights</a>
+          <%= link_to 'Explore Flights', explore_country_path(@country), class: 'btn country-show-btn', id: 'flt-explr' %>
           <h2>Travel information</h2>   
           <% if @alert.nil? %>
             <div class="d-inline bell"><i class="far fa-bell"></i></div>
             <%= link_to "Notify me on status changes", country_alerts_path(@country), method: :post %>
           <% else %>
               <div class="d-inline bell"><i class="far fa-bell-slash"></i></div>
-              <%= link_to "Turn off Notifications", alert_path(@alert), method: :delete %>
+              <%= link_to "Turn off Notifications", alert_path(@alert), method: :delete , data: {confirm: "Are you sure?"} %>
           <% end %>
           
           <br>
           <br>
           <h5>Entry requirments</h5><br>
           <div class="entry-req-card">
-            <div class="d-flex ">
+            <div class="d-flex colorcrd">
               <p class="d-inline"><b>Colour Code:</b></p>&nbsp;&nbsp;<div class="color-box" style="background-color: <%= @country&.color == 'Amber' ? 'Orange': @country&.color %>"></div>
             </div>
           </div>
@@ -44,35 +44,65 @@
             <p class="d-inline"><b>Upcomming Changes:</b></p> <%= @country.upcoming_changes != " " ? "N/A" : @country.upcoming_changes.capitalize %><br>
           </div>
           <br>
-          <a class="btn country-show-btn" href="<%= @country.government_url %>" target="_blank" class="btn btn-info" role="button">Government Website</a> 
-          <a class="btn country-show-btn" href="<%= compare_countries_path('/countries/compare' => {country_1:@country.id}) %>" class="btn btn-info" role="button">Compare Countries</a>   
+          <div d-flex>
+            <a class="btn country-show-btn" href="<%= @country.government_url %>" target="_blank" class="btn btn-info" role="button">Government Website</a> 
+            <a class="btn country-show-btn" href="<%= compare_countries_path('/countries/compare' => {country_1:@country.id}) %>" class="btn btn-info" role="button">Compare Countries</a>
+          </div> 
       </div>
     </div>
 
     <div class="col cntry-shw-reviews">
       <h2> Users’ feedback </h2>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <br>
-        <br>
-          <p>“Just travelled from London to Marseille, and had a horrible time landing at the airport, where I had to wait one hour to get tested.”</p>
-          <div class="d-inline">- Theresa,</div>
-          <div class="d-inline"> 01/07/21 </div>
-          <br>
-          <br>
-          <p>“They cancelled my flight last minute”</p>
-          <div class="d-inline">- Julia,</div>
-          <div class="d-inline"> 01/10/21 </div>  
-          <br>
-          <br>
-          <p>“Had a hard time returning from France at Luton airport”</p>
-          <div class="d-inline">- Rob,</div>
-          <div class="d-inline"> 01/08/21 </div>  
+      <% if @country.reviews.length > 0 %>
+        <%= @country.reviews.sum(:stars).fdiv(@country.reviews.size).round(1) %>
+        <% @country.reviews.sum(:stars).fdiv(@country.reviews.size).round.times do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+      <% else %>
+         <p>Be the first to leave a review!</p>
+      <% end %>
+      <br>
+      <br>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-4">
+              <% @country.reviews.first(5).each do |review| %>
+                <div class="container">
+                  <div>
+                    "<%= review.content %>"
+                  </div>
+                  - <b><%= review.user.first_name %></b>
+                  <br>
+                  <br>
+                </div>
+              <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-4">
+            <%= simple_form_for [@country, @review] do |f| %>
+              <%= f.input :stars, collection: (1..5).to_a, label: "Rate your experience" %>
+              <%= f.input :content  %>
+              <%= f.submit %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-
   </div>
-
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+

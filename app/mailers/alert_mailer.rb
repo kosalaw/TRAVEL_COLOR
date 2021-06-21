@@ -11,7 +11,24 @@ class AlertMailer < ApplicationMailer
 
     # FOR PREVIEW USE
     # @alert = Alert.first
+    # @errors_array = [{ error: "content", db: "open", new: "closed" }]
 
-    mail(to: @alert.user.email, subject: 'New alert - TravelColour')
+    mail(to: @alert.user.email, subject: 'New alert - TravelColour') do |format|
+      format.mjml
+    end
+  end
+
+  def subscribe
+    # Real
+    @country = Country.find(params[:country_id])
+    @user = User.find(params[:user_id])
+
+    # Fake
+    # @country = Country.first
+    # @user = User.first
+
+    mail(to: @user.email, subject: 'You set up an alert - TravelColour') do |format|
+      format.mjml
+    end
   end
 end
